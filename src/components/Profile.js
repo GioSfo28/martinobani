@@ -180,7 +180,7 @@ const Profile = () => {
                 <div className="mt-12">
                     <h3 className="text-2xl font-bold text-gray-800 mb-6">
                         <FaStar className="inline-block text-yellow-500 mr-2" />
-                        Servizio Volontario
+                        Servizi di volontariato
                     </h3>
 
                     {/* Introduzione */}
