@@ -205,7 +205,7 @@ const Profile = () => {
                         </h4>
                         <ul className="list-disc list-inside text-gray-700 space-y-2">
                             <li>
-                                <strong>Maxi-emergenze:</strong> Partecipazione ad attività di soccorso per il "terremoto Centro Italia (ottobre 2016) e
+                                <strong>Maxi-emergenze:</strong> Partecipazione ad attività di soccorso per il "Terremoto Centro Italia" (ottobre 2016) e
                                 l'emergenza Emilia Romagna (maggio 2023).
                             </li>
                             <li>
