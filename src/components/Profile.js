@@ -1,6 +1,5 @@
 import React from "react";
 import profileImage from "../assets/gio.jpg"; // Collegamento all'immagine del profilo
-import cvFile from "../assets/CV-GiorgioSforza.pdf"; // Collegamento al file PDF
 import { FaMedkit, FaGraduationCap, FaStar, FaBriefcase } from "react-icons/fa";
 
 const Profile = () => {
@@ -27,7 +26,7 @@ const Profile = () => {
                             <strong>"Incidenti in montagna: gestione e trattamento dell'ipotermia".</strong>
                         </p>
                         <a
-                            href={cvFile}
+                            href="/CV-GiorgioSforza.pdf"
                             download
                             className="inline-block px-6 py-3 bg-blue-600 text-white font-semibold rounded-lg shadow-lg hover:bg-blue-700 transition duration-300"
                         >
