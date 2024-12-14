@@ -2,7 +2,7 @@ import React from "react";
 import prelievoImage from "../assets/Prelievo.png";
 import medicazioneImage from "../assets/Medicazione.jpg";
 import anzianiImage from "../assets/Anziani.jpg";
-import tamponiImage from "../assets/Tamponi.jpg";
+
 
 const Activities = () => {
     return (
