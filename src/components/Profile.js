@@ -26,7 +26,7 @@ const Profile = () => {
                             <strong>"Incidenti in montagna: gestione e trattamento dell'ipotermia".</strong>
                         </p>
                         <a
-                            href="/CV-GiorgioSforza.pdf"
+                            href="/CV-GiorgioSforza.pdf"  // Nota il '/' all'inizio del percorso
                             download
                             className="inline-block px-6 py-3 bg-blue-600 text-white font-semibold rounded-lg shadow-lg hover:bg-blue-700 transition duration-300"
                         >
