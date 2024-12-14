@@ -4,7 +4,7 @@ import { FaBars, FaTimes } from "react-icons/fa";
 const Header = () => {
   const [menuOpen, setMenuOpen] = useState(false);
 
-  // Menu Items senza "Chi sono"
+  // Menu Items senza "Chi sono", con l'aggiunta di "Contatti"
   const menuItems = ["Esperienze", "Attività", "Extra"];
 
   return (
@@ -20,7 +20,7 @@ const Header = () => {
         </a>
 
         {/* Navigazione Desktop */}
-        <nav className="hidden md:flex space-x-8">
+        <nav className="hidden md:flex space-x-8 items-center">
           {menuItems.map((item, index) => (
             <a
               key={index}
@@ -30,6 +30,13 @@ const Header = () => {
               {item}
             </a>
           ))}
+          {/* Pulsante Contatti Desktop */}
+          <a
+            href="#Contatti"
+            className="px-4 py-2 bg-blue-500 text-white rounded-lg font-semibold hover:bg-blue-600 transition-colors duration-300"
+          >
+            Contatti
+          </a>
         </nav>
 
         {/* Menu Hamburger Mobile */}
@@ -62,6 +69,14 @@ const Header = () => {
             {item}
           </a>
         ))}
+        {/* Pulsante Contatti Mobile */}
+        <a
+          href="#Contatti"
+          onClick={() => setMenuOpen(false)}
+          className="px-6 py-3 bg-blue-500 text-white rounded-lg font-semibold hover:bg-blue-600 transition-colors duration-300 text-xl"
+        >
+          Contatti
+        </a>
       </div>
     </header>
   );
