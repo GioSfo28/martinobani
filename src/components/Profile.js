@@ -165,7 +165,7 @@ const Profile = () => {
 
                     {/* Medicina e Chirurgia */}
                     <p className="text-lg text-gray-700 leading-relaxed mb-6">
-                        Attualmente iscritto al corso di laurea in <strong>Medicina e Chirurgia</strong> presso l'Università dell'Insubria a Varese, dal 2021.
+                        Attualmente iscritto al corso di laurea in <strong>Medicina e Chirurgia</strong> presso l'Università dell'Insubria a Varese.
                     </p>
 
                     {/* Esperienze come rappresentante */}
@@ -173,6 +173,7 @@ const Profile = () => {
                         Rappresentante e Consigliere di Facoltà presso "La Sapienza",
                         organizzando eventi sul tema della disabilità che hanno coinvolto oltre 500 studenti.
                     </p>
+                    
                 </div>
 
 
