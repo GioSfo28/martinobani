@@ -171,9 +171,9 @@ const Profile = () => {
                     {/* Esperienze come rappresentante */}
                     <p className="text-lg text-gray-700 leading-relaxed mb-6">
                         Rappresentante e Consigliere di Facoltà presso "La Sapienza",
-                        organizzando eventi sul tema della disabilità che hanno coinvolto oltre 500 studenti.
+                        ho organizzato eventi sul tema della disabilità che hanno coinvolto oltre 500 studenti.
                     </p>
-                    
+
                 </div>
 
 
