@@ -1,6 +1,6 @@
 import React from "react";
 import profileImage from "../assets/gio.jpg"; // Immagine profilo
-import { FaMedkit, FaGraduationCap, FaStar, FaBriefcase } from "react-icons/fa";
+import { FaGraduationCap, FaStar, FaBriefcase } from "react-icons/fa";
 
 const Profile = () => {
     return (
