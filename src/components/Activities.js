@@ -12,7 +12,7 @@ const Activities = () => {
             <section id="Servizi" className="py-20 bg-gray-100">
                 <div className="container mx-auto px-6">
                     {/* Titolo */}
-                    <h2 className="text-4xl font-bold text-center text-gray-800 mb-12 tracking-wider drop-shadow-md">
+                    <h2 className="text-4xl font-bold text-center text-[#3B5D8A] mb-12 tracking-wider drop-shadow-md">
                         Di cosa mi occupo
                     </h2>
 

@@ -1,5 +1,5 @@
 import React from "react";
-import { FaLaptopCode, FaBriefcase, FaLink } from "react-icons/fa";
+import { FaLaptopCode, FaBriefcase, FaLink, FaBook } from "react-icons/fa";
 
 const Extras = () => {
   return (
@@ -41,6 +41,60 @@ const Extras = () => {
                 Contattami tranquillamente: ti guiderò con suggerimenti pratici ed esperienze dirette.<br />
                 <strong> Il servizio è gratuito.</strong>
               </p>
+            </div>
+          </div>
+
+          {/* Separatore */}
+          <div className="my-12 border-t border-gray-300"></div>
+
+          {/* Sezione Libri */}
+          <h3 className="text-3xl font-bold text-center text-[#3B5D8A] mb-8">
+            Libri scritti da me
+          </h3>
+
+          <div className="grid grid-cols-1 md:grid-cols-2 gap-12">
+            {/* Casi Clinici Infermieristici */}
+            <div className="bg-white p-6 rounded-lg shadow-md border border-gray-300 hover:shadow-lg transition-shadow duration-300">
+              <div className="flex items-center mb-4">
+                <FaBook className="text-[#4A6FA5] text-4xl mr-4" />
+                <h3 className="text-2xl font-bold text-gray-800">Casi Clinici Infermieristici</h3>
+              </div>
+              <p className="text-gray-700 leading-relaxed">
+                Un libro che raccoglie casi clinici infermieristici con analisi dettagliate e soluzioni pratiche.
+                Perfetto per studenti e professionisti della sanità.
+              </p>
+              <a
+                href="https://amzn.to/3QNIVJp"
+                target="_blank"
+                rel="noopener noreferrer"
+                className="inline-block mt-4"
+              >
+                <button className="px-6 py-3 bg-[#FF9900] text-white font-semibold rounded-lg shadow-md hover:bg-[#CC7A00] transition-colors duration-300">
+                  Acquista su Amazon
+                </button>
+              </a>
+            </div>
+
+            {/* Le espressioni del cuore */}
+            <div className="bg-white p-6 rounded-lg shadow-md border border-gray-300 hover:shadow-lg transition-shadow duration-300">
+              <div className="flex items-center mb-4">
+                <FaBook className="text-[#E91E63] text-4xl mr-4" />
+                <h3 className="text-2xl font-bold text-gray-800">Le espressioni del cuore</h3>
+              </div>
+              <p className="text-gray-700 leading-relaxed">
+                Una raccolta di poesie che esplora emozioni profonde e sentimenti autentici.
+                Un viaggio attraverso parole e sensibilità.
+              </p>
+              <a
+                href="https://amzn.to/3XtiiNG"
+                target="_blank"
+                rel="noopener noreferrer"
+                className="inline-block mt-4"
+              >
+                <button className="px-6 py-3 bg-[#FF9900] text-white font-semibold rounded-lg shadow-md hover:bg-[#CC7A00] transition-colors duration-300">
+                  Acquista su Amazon
+                </button>
+              </a>
             </div>
           </div>
 
@@ -103,7 +157,6 @@ const Extras = () => {
           </div>
         </div>
       </section>
-
     </>
   );
 };
