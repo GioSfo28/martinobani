@@ -6,7 +6,7 @@ const Profile = () => {
     return (
         <div className="container mx-auto px-6 py-10">
             {/* Header */}
-            <div className="text-center mb-12">
+            <div id="ChiSono" className="text-center mb-12">
                 <img
                     src={profileImage}
                     alt="Dott. Giorgio Sforza"

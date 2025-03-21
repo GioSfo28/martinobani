@@ -34,7 +34,7 @@ const Hero = () => {
             "Prendersi cura è più di un lavoro, è una missione."
           </p>
           <a
-            href="#Servizi"
+            href="#ChiSono"
             className="mt-6 inline-block px-8 py-3 bg-[#4A6FA5] text-white font-semibold rounded-lg shadow-lg hover:bg-[#3B5D8A] transition-colors duration-300"
           >
             Scopri di più

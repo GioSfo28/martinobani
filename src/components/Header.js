@@ -6,7 +6,7 @@ const Header = () => {
 
   // Menu Items aggiornati
   const menuItems = [
-    { name: "Esperienze", link: "#Esperienze" },
+    { name: "Chi sono", link: "#ChiSono" },
     { name: "Servizi", link: "#Servizi" },
     { name: "Extra", link: "#Extra" }
   ];
