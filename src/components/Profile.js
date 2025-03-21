@@ -12,9 +12,12 @@ const Profile = () => {
                     alt="Dott. Giorgio Sforza"
                     className="w-48 h-48 rounded-full mx-auto shadow-lg border-4 border-gray-300 object-cover transition-transform duration-500 hover:scale-105"
                 />
-                <h1 className="text-3xl font-bold text-gray-800 mt-6">Dott. Giorgio Sforza</h1> {/* Nessuna sottolineatura */}
+                <h1 className="text-3xl font-bold text-gray-800 mt-6">Dott. Giorgio Sforza</h1>
                 <p className="text-lg text-gray-600 mt-2">
                     Infermiere | Studente di Medicina e Chirurgia | Appassionato di Informatica
+                </p>
+                <p className="text-sm text-gray-500 mt-2 italic">
+                    Attualmente opero a Varese e dintorni.
                 </p>
             </div>
 
