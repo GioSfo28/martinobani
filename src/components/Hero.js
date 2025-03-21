@@ -6,7 +6,6 @@ const Hero = () => {
     <>
       {/* Hero Section */}
       <section
-        id="ChiSono"
         className="relative h-[70vh] flex items-center justify-center text-center bg-gray-900 text-white px-6 pt-24"
       >
         {/* Video di Sfondo */}
