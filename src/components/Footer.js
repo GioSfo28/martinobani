@@ -75,7 +75,7 @@ const Footer = () => {
         {/* Copyright */}
         <div className="text-center">
           <p className="text-sm text-gray-400">
-            Powered and designed by <span className="font-semibold text-gray-200">Giorgio Sforza</span> © 2020 - 2024
+            Powered and designed by <span className="font-semibold text-gray-200">Giorgio Sforza</span> © 2020 - 2025
           </p>
         </div>
       </div>

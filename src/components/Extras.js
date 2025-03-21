@@ -10,16 +10,16 @@ const Extras = () => {
       <section id="Extra" className="py-16 bg-gradient-to-b from-transparent to-gray-100">
         <div className="container mx-auto px-6">
           {/* Titolo */}
-          <h2 className="text-4xl font-bold text-center text-[#3B5D8A] mb-12 tracking-wide">
+          <h2 className="text-4xl font-bold text-center text-[#3B5D8A] mb-12 tracking-wide animate-fade-in-up">
             Extra
           </h2>
 
           {/* Griglia Extra */}
           <div className="grid grid-cols-1 md:grid-cols-2 gap-12">
             {/* Siti Internet / Portfolio */}
-            <div className="bg-white p-6 rounded-lg shadow-md border border-gray-300 hover:shadow-lg transition-shadow duration-300">
+            <div className="bg-white p-6 rounded-lg shadow-md border border-gray-300 hover:shadow-lg transition-shadow duration-300 animate-fade-in-up">
               <div className="flex items-center mb-4">
-                <FaLaptopCode className="text-[#4A6FA5] text-4xl mr-4" />
+                <FaLaptopCode className="text-[#4A6FA5] text-4xl mr-4 transition duration-300 hover:scale-110" />
                 <h3 className="text-2xl font-bold text-gray-800">Siti Internet / Portfolio</h3>
               </div>
               <p className="text-gray-700 leading-relaxed">
@@ -30,9 +30,9 @@ const Extras = () => {
             </div>
 
             {/* Infermiere a P.IVA */}
-            <div className="bg-white p-6 rounded-lg shadow-md border border-gray-300 hover:shadow-lg transition-shadow duration-300">
+            <div className="bg-white p-6 rounded-lg shadow-md border border-gray-300 hover:shadow-lg transition-shadow duration-300 animate-fade-in-up">
               <div className="flex items-center mb-4">
-                <FaBriefcase className="text-yellow-500 text-4xl mr-4" />
+                <FaBriefcase className="text-yellow-500 text-4xl mr-4 transition duration-300 hover:scale-110" />
                 <h3 className="text-2xl font-bold text-gray-800">Infermiere a P.IVA</h3>
               </div>
               <p className="text-gray-700 leading-relaxed">
@@ -48,15 +48,15 @@ const Extras = () => {
           <div className="my-12 border-t border-gray-300"></div>
 
           {/* Sezione Libri */}
-          <h3 className="text-3xl font-bold text-center text-[#3B5D8A] mb-8">
-            Libri scritti da me
+          <h3 className="text-3xl font-bold text-center text-[#3B5D8A] mb-8 animate-fade-in-up">
+            Scopri i miei progetti letterari
           </h3>
 
           <div className="grid grid-cols-1 md:grid-cols-2 gap-12">
             {/* Casi Clinici Infermieristici */}
-            <div className="bg-white p-6 rounded-lg shadow-md border border-gray-300 hover:shadow-lg transition-shadow duration-300">
+            <div className="bg-white p-6 rounded-lg shadow-md border border-gray-300 hover:shadow-lg transition-shadow duration-300 animate-fade-in-up">
               <div className="flex items-center mb-4">
-                <FaBook className="text-[#4A6FA5] text-4xl mr-4" />
+                <FaBook className="text-[#4A6FA5] text-4xl mr-4 transition duration-300 hover:scale-110" />
                 <h3 className="text-2xl font-bold text-gray-800">Casi Clinici Infermieristici</h3>
               </div>
               <p className="text-gray-700 leading-relaxed">
@@ -76,9 +76,9 @@ const Extras = () => {
             </div>
 
             {/* Le espressioni del cuore */}
-            <div className="bg-white p-6 rounded-lg shadow-md border border-gray-300 hover:shadow-lg transition-shadow duration-300">
+            <div className="bg-white p-6 rounded-lg shadow-md border border-gray-300 hover:shadow-lg transition-shadow duration-300 animate-fade-in-up">
               <div className="flex items-center mb-4">
-                <FaBook className="text-[#E91E63] text-4xl mr-4" />
+                <FaBook className="text-[#E91E63] text-4xl mr-4 transition duration-300 hover:scale-110" />
                 <h3 className="text-2xl font-bold text-gray-800">Le espressioni del cuore</h3>
               </div>
               <p className="text-gray-700 leading-relaxed">
@@ -102,15 +102,15 @@ const Extras = () => {
           <div className="my-12 border-t border-gray-300"></div>
 
           {/* Siti Creati Personalmente */}
-          <h3 className="text-3xl font-bold text-center text-[#3B5D8A] mb-8">
-            Esempi di siti creati personalmente
+          <h3 className="text-3xl font-bold text-center text-[#3B5D8A] mb-8 animate-fade-in-up">
+            Esplora i miei progetti web
           </h3>
 
           <div className="grid grid-cols-1 md:grid-cols-2 gap-12">
             {/* Professioni Sanitarie Help */}
-            <div className="bg-white p-6 rounded-lg shadow-md border border-gray-300 hover:shadow-lg transition-shadow duration-300">
+            <div className="bg-white p-6 rounded-lg shadow-md border border-gray-300 hover:shadow-lg transition-shadow duration-300 animate-fade-in-up">
               <div className="flex items-center mb-4">
-                <FaLink className="text-green-600 text-4xl mr-4" />
+                <FaLink className="text-green-600 text-4xl mr-4 transition duration-300 hover:scale-110" />
                 <h3 className="text-2xl font-bold text-gray-800">Professioni Sanitarie Help</h3>
               </div>
               <p className="text-gray-700 leading-relaxed">
@@ -127,9 +127,9 @@ const Extras = () => {
             </div>
 
             {/* Legami di Luce */}
-            <div className="bg-white p-6 rounded-lg shadow-md border border-gray-300 hover:shadow-lg transition-shadow duration-300">
+            <div className="bg-white p-6 rounded-lg shadow-md border border-gray-300 hover:shadow-lg transition-shadow duration-300 animate-fade-in-up">
               <div className="flex items-center mb-4">
-                <FaLink className="text-[#E91E63] text-4xl mr-4" />
+                <FaLink className="text-[#E91E63] text-4xl mr-4 transition duration-300 hover:scale-110" />
                 <h3 className="text-2xl font-bold text-gray-800">Legami di Luce</h3>
               </div>
               <p className="text-gray-700 leading-relaxed">
@@ -146,8 +146,8 @@ const Extras = () => {
             </div>
           </div>
 
-          {/* Contattami Generale */}
-          <div className="text-center mt-12">
+          {/* Contattami Generale - Solo Mobile */}
+          <div className="text-center mt-12 md:hidden">
             <a
               href="#Contatti"
               className="inline-block px-8 py-4 bg-[#4A6FA5] text-white font-semibold rounded-lg shadow-lg hover:bg-[#3B5D8A] transition-colors duration-300"
