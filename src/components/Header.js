@@ -4,11 +4,10 @@ import { FaBars, FaTimes } from "react-icons/fa";
 const Header = () => {
   const [menuOpen, setMenuOpen] = useState(false);
 
-  // Menu Items aggiornati
+  // Menu Items aggiornati per Martino Bani
   const menuItems = [
     { name: "Chi sono", link: "#ChiSono" },
-    { name: "Servizi", link: "#Servizi" },
-    { name: "Extra", link: "#Extra" }
+    { name: "Servizi", link: "#Servizi" }
   ];
 
   return (
@@ -21,7 +20,7 @@ const Header = () => {
           className="text-2xl font-extrabold tracking-wide transition-colors duration-300"
           style={{ color: "#4A6FA5" }} // Blu professionale
         >
-          Dott. <span className="text-gray-800">Giorgio Sforza</span>
+          Martino <span className="text-gray-800">Bani</span>
         </a>
 
         {/* Navigazione Desktop */}

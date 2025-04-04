@@ -1,6 +1,6 @@
 import React from "react";
-import profileImage from "../assets/gio.jpg"; // Assicurati che il percorso dell'immagine sia corretto
-import { FaUser } from "react-icons/fa"; // Nuova icona per "Chi sono"
+import profileImage from "../assets/MB.jpeg"; // Assicurati di inserire l'immagine corretta
+import { FaUser } from "react-icons/fa"; // Icona per "Chi sono"
 
 const Profile = () => {
     return (
@@ -9,40 +9,37 @@ const Profile = () => {
             <div id="ChiSono" className="text-center mb-12">
                 <img
                     src={profileImage}
-                    alt="Dott. Giorgio Sforza"
+                    alt="Martino Bani"
                     className="w-48 h-48 rounded-full mx-auto shadow-lg border-4 border-gray-300 object-cover transition-transform duration-500 hover:scale-105"
                 />
-                <h1 className="text-3xl font-bold text-gray-800 mt-6">Dott. Giorgio Sforza</h1>
+                <h1 className="text-3xl font-bold text-gray-800 mt-6">Martino Bani</h1>
                 <p className="text-lg text-gray-600 mt-2">
-                    Infermiere | Studente di Medicina e Chirurgia | Appassionato di Informatica
+                    Consulente Energetico | Esperto in Gestione Utenze | Supporto Fotovoltaico
                 </p>
                 <p className="text-sm text-gray-500 mt-2 italic">
-                    Attualmente opero a Varese e dintorni.
+                    Opero a livello nazionale, offrendo consulenza energetica a privati, micro-imprese e aziende.
                 </p>
             </div>
 
             {/* Chi sono */}
             <div className="mb-12">
                 <h2 className="text-2xl font-bold text-[#4A6FA5] mb-4 flex items-center">
-                    <FaUser className="inline-block text-[#4A6FA5] mr-2" /> {/* Nuova icona */}
+                    <FaUser className="inline-block text-[#4A6FA5] mr-2" /> {/* Icona */}
                     Chi sono
                 </h2>
                 <p className="text-gray-700 leading-relaxed">
-                    Sono Giorgio Sforza, un infermiere e studente di Medicina con una forte passione per la tecnologia. Mi dedico a fornire assistenza sanitaria di qualità, garantendo sempre attenzione e professionalità. Parallelamente, coltivo la mia creatività creando siti web personalizzati per privati e piccole imprese.
+                    Sono Martino Bani, un consulente energetico specializzato nell'assistenza a privati, micro-imprese e aziende. Mi dedico a semplificare la gestione delle utenze, garantendo trasparenza e risparmio senza costi aggiuntivi.
                 </p>
                 <p className="text-gray-700 leading-relaxed mt-4">
-                    Il mio approccio si basa su <strong>precisione, empatia e innovazione</strong>. Mi dedico a fornire soluzioni complete, combinando competenze sanitarie e tecnologiche per rispondere alle esigenze dei miei pazienti e clienti.
+                    Il mio approccio si basa su <strong>competenza, affidabilità e innovazione</strong>. Offro servizi completi, tra cui:
+                    <ul className="list-disc list-inside mt-2 space-y-1">
+                        <li>Analisi e confronto delle migliori offerte sul mercato.</li>
+                        <li>Gestione volture, subentri e attivazioni contatori.</li>
+                        <li>Consulenza gratuita per il fotovoltaico e agevolazioni fiscali.</li>
+                    </ul>
                 </p>
                 <p className="text-gray-700 leading-relaxed mt-4">
-                    Da anni mi impegno attivamente nel mondo del volontariato, in particolare con il{" "}
-                    <a
-                        href="https://www.cisom.org/"
-                        target="_blank"
-                        rel="noopener noreferrer"
-                        className="text-blue-500 hover:underline font-semibold"
-                    >
-                        Corpo Italiano di Soccorso dell'Ordine di Malta (CISOM)
-                    </a>, dove offro supporto sanitario e organizzativo in contesti di emergenza e attività sociali. Questa esperienza mi ha permesso di sviluppare empatia, leadership e capacità di adattamento in situazioni complesse.
+                    Con anni di esperienza nel settore energetico, mi impegno a fornire soluzioni personalizzate per ogni cliente, garantendo sempre la massima professionalità e chiarezza.
                 </p>
             </div>
 
