@@ -50,6 +50,7 @@ const Footer = () => {
               rel="noopener noreferrer"
               className="font-semibold text-gray-200 hover:text-white transition-colors duration-300"
             >
+              
               Giorgio Sforza
             </a>{" "}
             © 2025
