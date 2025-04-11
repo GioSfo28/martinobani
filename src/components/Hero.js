@@ -60,7 +60,7 @@ const Hero = () => {
                         <div className="bg-white p-6 rounded-lg shadow-md flex flex-col items-center hover:shadow-lg transition duration-300">
                             <FaBriefcase className="text-4xl text-[#4A6FA5] mb-3 transition duration-300 hover:scale-110" />
                             <h3 className="text-xl font-bold text-[#4A6FA5]">Supporto Tecnico Energetico</h3>
-                            <p className="text-gray-700 mt-2">Assistenza completa per tutte le tue esigenze energetiche.</p>
+                            <p className="text-gray-700 mt-2">Assistenza completa per tutte le tue esigenze nel mondo dell'energia.</p>
                         </div>
                     </div>
                 </div>
