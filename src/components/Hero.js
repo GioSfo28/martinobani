@@ -6,7 +6,7 @@ const Hero = () => {
         <>
             {/* Hero Section */}
             <section
-                className="relative h-[70vh] flex items-center justify-center text-center bg-gray-900 text-white px-6 pt-24"
+                className="relative h-[70vh] flex items-center justify-center text-center bg-green-900 text-white px-6 pt-24"
                 style={{
                     backgroundImage: `url("https://images.unsplash.com/photo-1537486336219-a3dd8e2dc6b5?q=80&w=2664&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D")`,
                     backgroundSize: "cover",
@@ -14,19 +14,25 @@ const Hero = () => {
                     backgroundRepeat: "no-repeat",
                 }}
             >
-                {/* Overlay per migliorare contrasto */}
-                <div className="absolute inset-0 bg-black opacity-40"></div>
+                {/* Overlay più scuro per migliorare la leggibilità */}
+                <div className="absolute inset-0 bg-black opacity-60"></div>
 
                 {/* Contenuto del Hero */}
                 <div className="relative z-10 max-w-3xl mx-auto">
                     <h1 className="text-4xl md:text-5xl font-extrabold tracking-wide drop-shadow-lg">
-                        Martino Bani
+                        Martino Bani: Il tuo consulente energetico di fiducia
                     </h1>
-                    <p className="mt-4 text-base text-gray-300">
-                        Consulente Energetico & Esperto in Gestione Utenze
+                    <p className="mt-4 text-xl text-gray-300 font-semibold">
+                        Specializzato nella gestione delle utenze di luce e gas
                     </p>
-                    <p className="mt-4 text-xl italic">
-                        "Semplificare la tua vita energetica è la mia missione."
+                    <p className="mt-4 text-2xl font-bold uppercase text-yellow-400">
+                        Semplifico la tua vita energetica, facendoti risparmiare tempo e denaro!
+                    </p>
+                    <p className="mt-4 text-lg text-gray-300">
+                        Che tu sia un privato, un'azienda o un libero professionista
+                    </p>
+                    <p className="mt-4 text-xl italic font-semibold text-gray-300">
+                        Affida a me le tue utenze, goditi il risparmio!
                     </p>
                     <a
                         href="#ChiSono"

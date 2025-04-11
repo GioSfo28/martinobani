@@ -1,4 +1,8 @@
 import React from "react";
+import { FaHome, FaPhone, FaVideo, FaLightbulb, FaFire } from "react-icons/fa"; // Icone per domicilio, telefono e videocall
+
+import Italy from "../assets/italy.png"
+
 
 const Activities = () => {
     return (
@@ -6,104 +10,218 @@ const Activities = () => {
             {/* Divisore tra le sezioni */}
             <div className="h-16 bg-gradient-to-b from-transparent to-gray-100"></div>
 
+            {/* Sezione Servizi */}
             <section id="Servizi" className="py-20 bg-gray-100">
                 <div className="container mx-auto px-6">
                     {/* Titolo Principale */}
                     <h2 className="text-4xl font-bold text-center text-[#3B5D8A] mb-12 tracking-wider drop-shadow-md">
-                        Di cosa mi occupo
+                        Scopri tutti i miei servizi
                     </h2>
-
-                    {/* Servizi Energetici */}
-                    <div className="mb-16">
-                        <h3 className="text-3xl font-bold text-[#4A6FA5] text-center mb-8">Consulenza Energetica</h3>
-                        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-12">
-                            {/* Gestione Utenze */}
-                            <div className="bg-white p-6 rounded-lg shadow-md hover:shadow-2xl transition-shadow duration-300 relative overflow-hidden group">
-                                <h3 className="text-xl font-bold text-[#4A6FA5] mt-4">Gestione Utenze</h3>
-                                <p className="text-gray-700 mt-2 leading-relaxed">
-                                    Offro assistenza completa nella gestione delle utenze energetiche, garantendo trasparenza e risparmio.
-                                </p>
-                                <ul className="list-disc list-inside text-gray-600 mt-4 space-y-2">
-                                    <li>Volture, subentri e attivazioni contatori</li>
-                                    <li>Analisi delle bollette e riduzione dei costi</li>
-                                    <li>Gestione pratiche burocratiche</li>
-                                </ul>
-                                {/* Pulsante "Scopri di più" visibile solo su mobile */}
-                                <a
-                                    href="#Contatti"
-                                    className="inline-block mt-4 px-6 py-2 bg-[#4A6FA5] text-white font-semibold rounded-lg shadow-md hover:bg-[#3B5D8A] transition duration-300 md:hidden"
-                                >
-                                    Scopri di più
-                                </a>
+                    {/* Sottotitolo */}
+                    <p className="text-4xl font-bold text-center text-[#3B5D8A]  mb-12">
+                        Luce e Gas
+                    </p>
+                    {/* Lista dei Servizi */}
+                    <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
+                        {/* Nuove Attivazioni */}
+                        <div className="bg-white p-6 rounded-lg shadow-md hover:shadow-lg transition duration-300">
+                            <div className="flex items-center space-x-2">
+                                {/* Icone Luce e Gas */}
+                                <FaLightbulb className="text-2xl text-yellow-500" /> {/* Lampadina Gialla */}
+                                <FaFire className="text-2xl text-red-600" /> {/* Fiammetta Rossa */}
+                                {/* Titolo del Servizio */}
+                                <h3 className="text-xl font-bold text-[#4A6FA5]">Nuove Attivazioni</h3>
                             </div>
-
-                            {/* Consulenza Fotovoltaico */}
-                            <div className="bg-white p-6 rounded-lg shadow-md hover:shadow-2xl transition-shadow duration-300 relative overflow-hidden group">
-                                <h3 className="text-xl font-bold text-[#3B5D8A] mt-4">Consulenza Fotovoltaico</h3>
-                                <p className="text-gray-700 mt-2 leading-relaxed">
-                                    Analisi dettagliata e proposte ottimali per l'installazione di impianti fotovoltaici.
-                                </p>
-                                <ul className="list-disc list-inside text-gray-600 mt-4 space-y-2">
-                                    <li>Valutazione della convenienza economica</li>
-                                    <li>Agevolazioni fiscali e incentivi statali</li>
-                                    <li>Supporto nella scelta dell'impianto</li>
-                                </ul>
-                                {/* Pulsante "Scopri di più" visibile solo su mobile */}
-                                <a
-                                    href="#Contatti"
-                                    className="inline-block mt-4 px-6 py-2 bg-[#3B5D8A] text-white font-semibold rounded-lg shadow-md hover:bg-[#2C4A70] transition duration-300 md:hidden"
-                                >
-                                    Scopri di più
-                                </a>
+                            <p className="text-gray-700 mt-2 leading-relaxed">
+                                Offro assistenza completa nella gestione delle nuove attivazioni energetiche.
+                            </p>
+                        </div>
+                        {/* Cambi Fornitore */}
+                        <div className="bg-white p-6 rounded-lg shadow-md hover:shadow-lg transition duration-300">
+                            <div className="flex items-center space-x-2">
+                                {/* Icone Luce e Gas */}
+                                <FaLightbulb className="text-2xl text-yellow-500" />
+                                <FaFire className="text-2xl text-red-600" />
+                                {/* Titolo del Servizio */}
+                                <h3 className="text-xl font-bold text-[#4A6FA5]">Cambio fornitore</h3>
                             </div>
-
-                            {/* Efficientamento Energetico */}
-                            <div className="bg-white p-6 rounded-lg shadow-md hover:shadow-2xl transition-shadow duration-300 relative overflow-hidden group">
-                                <h3 className="text-xl font-bold text-orange-500 mt-4">Efficientamento Energetico</h3>
-                                <p className="text-gray-700 mt-2 leading-relaxed">
-                                    Soluzioni personalizzate per ridurre i consumi energetici e migliorare l'efficienza.
-                                </p>
-                                <ul className="list-disc list-inside text-gray-600 mt-4 space-y-2">
-                                    <li>Audit energetici completi</li>
-                                    <li>Ottimizzazione degli impianti esistenti</li>
-                                    <li>Installazione di tecnologie innovative</li>
-                                </ul>
-                                {/* Pulsante "Scopri di più" visibile solo su mobile */}
-                                <a
-                                    href="#Contatti"
-                                    className="inline-block mt-4 px-6 py-2 bg-orange-500 text-white font-semibold rounded-lg shadow-md hover:bg-orange-600 transition duration-300 md:hidden"
-                                >
-                                    Scopri di più
-                                </a>
+                            <p className="text-gray-700 mt-2 leading-relaxed">
+                                Analisi dettagliata e proposte ottimali per cambiare fornitore.
+                            </p>
+                        </div>
+                        {/* Volture */}
+                        <div className="bg-white p-6 rounded-lg shadow-md hover:shadow-lg transition duration-300">
+                            <div className="flex items-center space-x-2">
+                                {/* Icone Luce e Gas */}
+                                <FaLightbulb className="text-2xl text-yellow-500" />
+                                <FaFire className="text-2xl text-red-600" />
+                                {/* Titolo del Servizio */}
+                                <h3 className="text-xl font-bold text-[#4A6FA5]">Volture</h3>
                             </div>
+                            <p className="text-gray-700 mt-2 leading-relaxed">
+                                Gestione volture e subentri per utenze energetiche.
+                            </p>
+                        </div>
+                        {/* Subentri */}
+                        <div className="bg-white p-6 rounded-lg shadow-md hover:shadow-lg transition duration-300">
+                            <div className="flex items-center space-x-2">
+                                {/* Icone Luce e Gas */}
+                                <FaLightbulb className="text-2xl text-yellow-500" />
+                                <FaFire className="text-2xl text-red-600" />
+                                {/* Titolo del Servizio */}
+                                <h3 className="text-xl font-bold text-[#4A6FA5]">Subentri</h3>
+                            </div>
+                            <p className="text-gray-700 mt-2 leading-relaxed">
+                                Supporto completo per la gestione di subentri temporanei.
+                            </p>
+                        </div>
+                        {/* Disattivazioni */}
+                        <div className="bg-white p-6 rounded-lg shadow-md hover:shadow-lg transition duration-300">
+                            <div className="flex items-center space-x-2">
+                                {/* Icone Luce e Gas */}
+                                <FaLightbulb className="text-2xl text-yellow-500" />
+                                <FaFire className="text-2xl text-red-600" />
+                                {/* Titolo del Servizio */}
+                                <h3 className="text-xl font-bold text-[#4A6FA5]">Disattivazioni</h3>
+                            </div>
+                            <p className="text-gray-700 mt-2 leading-relaxed">
+                                Assistenza professionale per disattivazioni di utenze.
+                            </p>
+                        </div>
+                        {/* Spostamento Contatori */}
+                        <div className="bg-white p-6 rounded-lg shadow-md hover:shadow-lg transition duration-300">
+                            <div className="flex items-center space-x-2">
+                                {/* Icone Luce e Gas */}
+                                <FaLightbulb className="text-2xl text-yellow-500" />
+                                <FaFire className="text-2xl text-red-600" />
+                                {/* Titolo del Servizio */}
+                                <h3 className="text-xl font-bold text-[#4A6FA5]">Spostamento contatori</h3>
+                            </div>
+                            <p className="text-gray-700 mt-2 leading-relaxed">
+                                Gestione trasferimenti di contatori energetici.
+                            </p>
+                        </div>
+                        {/* Posa Contatori Definitivi e Temporanei */}
+                        <div className="bg-white p-6 rounded-lg shadow-md hover:shadow-lg transition duration-300">
+                            <div className="flex items-center space-x-2">
+                                {/* Icone Luce e Gas */}
+                                <FaLightbulb className="text-2xl text-yellow-500" />
+                                <FaFire className="text-2xl text-red-600" />
+                                {/* Titolo del Servizio */}
+                                <h3 className="text-xl font-bold text-[#4A6FA5]">Posa Contatori Definitivi e Temporanei</h3>
+                            </div>
+                            <p className="text-gray-600 mt-2 text-sm">
+                                (Contatori temporanei 12/24 mesi)
+                            </p>
+                        </div>
+                        {/* Aumento/Diminuzione Potenza (Luce) */}
+                        <div className="bg-white p-6 rounded-lg shadow-md hover:shadow-lg transition duration-300">
+                            <h3 className="text-xl font-bold text-[#4A6FA5] flex items-center space-x-2">
+                                <FaLightbulb className="text-2xl text-yellow-500" />
+                                <span>Aumento/Diminuzione Potenza (Luce)</span>
+                            </h3>
+                            <p className="text-gray-700 mt-2 leading-relaxed">
+                                Modifica della potenza elettrica in base alle tue esigenze.
+                            </p>
+                        </div>
+                        {/* Aumento/Diminuzione Portata Termica (Gas) */}
+                        <div className="bg-white p-6 rounded-lg shadow-md hover:shadow-lg transition duration-300">
+                            <h3 className="text-xl font-bold text-[#4A6FA5] flex items-center space-x-2">
+                                <FaFire className="text-2xl text-red-600" />
+                                <span>Aumento/Diminuzione Portata Termica (Gas)</span>
+                            </h3>
+                            <p className="text-gray-700 mt-2 leading-relaxed">
+                                Regolazione della portata termica del gas secondo le tue necessità.
+                            </p>
+                        </div>
+                        {/* Modifica Tensione (Luce) */}
+                        <div className="bg-white p-6 rounded-lg shadow-md hover:shadow-lg transition duration-300">
+                            <h3 className="text-xl font-bold text-[#4A6FA5] flex items-center space-x-2">
+                                <FaLightbulb className="text-2xl text-yellow-500" />
+                                <span>Modifica Tensione (Luce)</span>
+                            </h3>
+                            <p className="text-gray-700 mt-2 leading-relaxed">
+                                Adatta la tensione elettrica ai tuoi bisogni specifici.
+                            </p>
+                        </div>
+                        {/* Cambio Fornitore + Voltura Contestuale */}
+                        <div className="bg-white p-6 rounded-lg shadow-md hover:shadow-lg transition duration-300">
+                            <div className="flex items-center space-x-2">
+                                {/* Icone Luce e Gas */}
+                                <FaLightbulb className="text-2xl text-yellow-500" />
+                                <FaFire className="text-2xl text-red-600" />
+                                {/* Titolo del Servizio */}
+                                <h3 className="text-xl font-bold text-[#4A6FA5]">Cambio Fornitore + Voltura Contestuale</h3>
+                            </div>
+                            <p className="text-gray-700 mt-2 leading-relaxed">
+                                Gestione completa del cambio fornitore con adattamento alla tua situazione.
+                            </p>
+                        </div>
+                        {/* Agevolazione Accise Gas */}
+                        <div className="bg-white p-6 rounded-lg shadow-md hover:shadow-lg transition duration-300">
+                            <h3 className="text-xl font-bold text-[#4A6FA5] flex items-center space-x-2">
+                                <FaFire className="text-2xl text-red-600" />
+                                <span>Agevolazione Accise Gas</span>
+                            </h3>
+                            <p className="text-gray-700 mt-2 leading-relaxed">
+                                Ottimizza le agevolazioni fiscali sulle tue utenze di gas.
+                            </p>
+                        </div>
+                        {/* Agevolazione IVA Luce e Gas */}
+                        <div className="bg-white p-6 rounded-lg shadow-md hover:shadow-lg transition duration-300">
+                            <div className="flex items-center space-x-2">
+                                {/* Icone Luce e Gas */}
+                                <FaLightbulb className="text-2xl text-yellow-500" />
+                                <FaFire className="text-2xl text-red-600" />
+                                {/* Titolo del Servizio */}
+                                <h3 className="text-xl font-bold text-[#4A6FA5]">Agevolazione IVA Luce e Gas</h3>
+                            </div>
+                            <p className="text-gray-700 mt-2 leading-relaxed">
+                                Riduci i costi attraverso le agevolazioni fiscale per luce e gas.
+                            </p>
                         </div>
                     </div>
 
-                    {/* Supporto Tecnico Energetico */}
-                    <div>
-                        <h3 className="text-3xl font-bold text-green-600 text-center mb-8">Supporto Tecnico Energetico</h3>
-                        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-1 gap-12">
-                            {/* Assistenza Completa */}
-                            <div className="bg-white p-6 rounded-lg shadow-md hover:shadow-2xl transition-shadow duration-300 relative overflow-hidden group">
-                                <h3 className="text-xl font-bold text-green-600 mt-4">Assistenza Completa</h3>
-                                <p className="text-gray-700 mt-2 leading-relaxed">
-                                    Fornisco supporto continuativo per tutte le tue esigenze energetiche:
+                    {/* Sezione "Come lo facciamo" */}
+                    <div className="mb-16">
+                        <h3 className="text-3xl font-bold text-[#3B5D8A] text-center my-8">Come lo faccio</h3>
+                        <p className="text-lg text-gray-700 leading-relaxed mb-4">
+                            Offro una consulenza energetica gratuita e personalizzata, durante la quale ti farò alcune domande per capire esattamente come posso aiutarti.
+                        </p>
+                        <div className="flex flex-col md:flex-row justify-center space-y-6 md:space-y-0 md:space-x-6">
+                            {/* Mappa d'Italia */}
+                            <img
+                                src={Italy}
+                                alt="Mappa d'Italia"
+                                className="w-48 h-48 object-cover rounded-md"
+                            />
+                            <div>
+                                <p className="text-lg text-gray-700 leading-relaxed">
+                                    Mi trovo ad Ancona (Marche), ma offro i miei servizi in tutta Italia.
                                 </p>
-                                <ul className="list-disc list-inside text-gray-600 mt-4 space-y-2">
-                                    <li>Confronto delle migliori offerte sul mercato</li>
-                                    <li>Risoluzione problemi tecnici</li>
-                                    <li>Formazione sull'uso efficiente dell'energia</li>
+                                <p className="text-lg text-gray-700 leading-relaxed mt-4">
+                                    A seconda delle tue esigenze, la consulenza può essere svolta:
+                                </p>
+                                <ul className="flex flex-col space-y-2 mt-2">
+                                    <li className="flex items-center space-x-2">
+                                        <FaHome className="text-2xl text-[#4A6FA5]" />
+                                        <span className="text-gray-700"><strong>a domicilio</strong></span>
+                                    </li>
+                                    <li className="flex items-center space-x-2">
+                                        <FaPhone className="text-2xl text-[#4A6FA5]" />
+                                        <span className="text-gray-700"><strong>telefonicamente</strong></span>
+                                    </li>
+                                    <li className="flex items-center space-x-2">
+                                        <FaVideo className="text-2xl text-[#4A6FA5]" />
+                                        <span className="text-gray-700"><strong>in videocall</strong></span>
+                                    </li>
                                 </ul>
-                                <p className="text-gray-700 mt-4 leading-relaxed">
-                                    Il mio obiettivo è semplificare la tua vita energetica, garantendo professionalità e chiarezza.
+                                <p className="text-lg text-gray-700 leading-relaxed mt-4">
+                                    Grazie alla mia esperienza nei settori di luce e gas, conosco perfettamente tutti gli aspetti tecnici, le dinamiche e le procedure necessarie per muoversi con sicurezza nel mercato libero.
                                 </p>
-                                {/* Pulsante "Scopri di più" visibile solo su mobile */}
-                                <a
-                                    href="#Contatti"
-                                    className="inline-block mt-4 px-6 py-2 bg-green-600 text-white font-semibold rounded-lg shadow-md hover:bg-green-700 transition duration-300 md:hidden"
-                                >
-                                    Scopri di più
-                                </a>
+                                <p className="text-lg text-gray-700 leading-relaxed mt-4">
+                                    Mi aggiorno costantemente per garantire ai miei clienti un supporto professionale e affidabile, semplificando la gestione delle loro utenze.
+                                </p>
                             </div>
                         </div>
                     </div>
