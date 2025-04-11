@@ -18,7 +18,7 @@ const Hero = () => {
                 <div className="absolute inset-0 bg-black opacity-60"></div>
 
                 {/* Contenuto del Hero */}
-                <div className="relative z-10 max-w-3xl mx-auto">
+                <div className="mt-10 relative z-10 max-w-3xl mx-auto">
                     <h1 className="text-2xl md:text-4xl font-extrabold tracking-wide drop-shadow-lg leading-tight">
                         Martino Bani: Il tuo consulente energetico di fiducia
                     </h1>
