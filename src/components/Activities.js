@@ -46,7 +46,7 @@ const Activities = () => {
                                 <h3 className="text-xl font-bold text-[#4A6FA5]">Cambio fornitore</h3>
                             </div>
                             <p className="text-gray-700 mt-2 leading-relaxed">
-                                Analisi dettagliata e proposte ottimali per cambiare fornitore.
+                                Analisi approfondita e proposte convenienti verso compagnie più competitive.
                             </p>
                         </div>
                         {/* Volture */}
@@ -59,7 +59,7 @@ const Activities = () => {
                                 <h3 className="text-xl font-bold text-[#4A6FA5]">Volture</h3>
                             </div>
                             <p className="text-gray-700 mt-2 leading-relaxed">
-                                Gestione volture e subentri per utenze energetiche.
+                                Gestione e supporto per cambio intestatario utenze (voltura ordinaria/mortis causa).
                             </p>
                         </div>
                         {/* Subentri */}
@@ -72,7 +72,7 @@ const Activities = () => {
                                 <h3 className="text-xl font-bold text-[#4A6FA5]">Subentri</h3>
                             </div>
                             <p className="text-gray-700 mt-2 leading-relaxed">
-                                Supporto completo per la gestione di subentri temporanei.
+                                Assistenza e compilazione pratiche per attivazione forniture cessare o sospese per morosità.
                             </p>
                         </div>
                         {/* Disattivazioni */}
@@ -88,19 +88,6 @@ const Activities = () => {
                                 Assistenza professionale per disattivazioni di utenze.
                             </p>
                         </div>
-                        {/* Spostamento Contatori */}
-                        <div className="bg-white p-6 rounded-lg shadow-md hover:shadow-lg transition duration-300">
-                            <div className="flex items-center space-x-2">
-                                {/* Icone Luce e Gas */}
-                                <FaLightbulb className="text-2xl text-yellow-500" />
-                                <FaFire className="text-2xl text-red-600" />
-                                {/* Titolo del Servizio */}
-                                <h3 className="text-xl font-bold text-[#4A6FA5]">Spostamento contatori</h3>
-                            </div>
-                            <p className="text-gray-700 mt-2 leading-relaxed">
-                                Gestione trasferimenti di contatori energetici.
-                            </p>
-                        </div>
                         {/* Posa Contatori Definitivi e Temporanei */}
                         <div className="bg-white p-6 rounded-lg shadow-md hover:shadow-lg transition duration-300">
                             <div className="flex items-center space-x-2">
@@ -110,8 +97,8 @@ const Activities = () => {
                                 {/* Titolo del Servizio */}
                                 <h3 className="text-xl font-bold text-[#4A6FA5]">Posa Contatori Definitivi e Temporanei</h3>
                             </div>
-                            <p className="text-gray-600 mt-2 text-sm">
-                                (Contatori temporanei 12/24 mesi)
+                            <p className="text-gray-700 mt-2 leading-relaxed">
+                                Aiuto pratico nell'attività di contrattualistica ed iter per Posa Contatori.
                             </p>
                         </div>
                         {/* Aumento/Diminuzione Potenza (Luce) */}
@@ -121,7 +108,7 @@ const Activities = () => {
                                 <span>Aumento/Diminuzione Potenza (Luce)</span>
                             </h3>
                             <p className="text-gray-700 mt-2 leading-relaxed">
-                                Modifica della potenza elettrica in base alle tue esigenze.
+                                Supporto e valutazione per adeguamento potenza su contatori elettrici.
                             </p>
                         </div>
                         {/* Aumento/Diminuzione Portata Termica (Gas) */}
@@ -154,7 +141,7 @@ const Activities = () => {
                                 <h3 className="text-xl font-bold text-[#4A6FA5]">Cambio Fornitore + Voltura Contestuale</h3>
                             </div>
                             <p className="text-gray-700 mt-2 leading-relaxed">
-                                Gestione completa del cambio fornitore con adattamento alla tua situazione.
+                                Gestione switch con tariffa ottimale, assegnando contemporaneamente nuova intestazione.
                             </p>
                         </div>
                         {/* Agevolazione Accise Gas */}
@@ -164,7 +151,7 @@ const Activities = () => {
                                 <span>Agevolazione Accise Gas</span>
                             </h3>
                             <p className="text-gray-700 mt-2 leading-relaxed">
-                                Ottimizza le agevolazioni fiscali sulle tue utenze di gas.
+                                Per aziende: agevolazione imposte erariali in base al codice ateco dell'attività.
                             </p>
                         </div>
                         {/* Agevolazione IVA Luce e Gas */}
@@ -177,7 +164,7 @@ const Activities = () => {
                                 <h3 className="text-xl font-bold text-[#4A6FA5]">Agevolazione IVA Luce e Gas</h3>
                             </div>
                             <p className="text-gray-700 mt-2 leading-relaxed">
-                                Riduci i costi attraverso le agevolazioni fiscale per luce e gas.
+                                Per aziende: valutazione fattibilità per aventi diritto ad iva ridotta.
                             </p>
                         </div>
                     </div>
