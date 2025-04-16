@@ -59,7 +59,7 @@ const Activities = () => {
                                 <h3 className="text-xl font-bold text-[#4A6FA5]">Volture</h3>
                             </div>
                             <p className="text-gray-700 mt-2 leading-relaxed">
-                                Gestione e supporto per cambio intestatario utenze (voltura ordinaria/mortis causa).
+                                Supporto e genstione pratiche per cambio intestatario utenze (voltura ordinaria / mortis causa).
                             </p>
                         </div>
                         {/* Subentri */}
@@ -72,20 +72,7 @@ const Activities = () => {
                                 <h3 className="text-xl font-bold text-[#4A6FA5]">Subentri</h3>
                             </div>
                             <p className="text-gray-700 mt-2 leading-relaxed">
-                                Assistenza e compilazione pratiche per attivazione forniture cessare o sospese per morosità.
-                            </p>
-                        </div>
-                        {/* Disattivazioni */}
-                        <div className="bg-white p-6 rounded-lg shadow-md hover:shadow-lg transition duration-300">
-                            <div className="flex items-center space-x-2">
-                                {/* Icone Luce e Gas */}
-                                <FaLightbulb className="text-2xl text-yellow-500" />
-                                <FaFire className="text-2xl text-red-600" />
-                                {/* Titolo del Servizio */}
-                                <h3 className="text-xl font-bold text-[#4A6FA5]">Disattivazioni</h3>
-                            </div>
-                            <p className="text-gray-700 mt-2 leading-relaxed">
-                                Assistenza professionale per disattivazioni di utenze.
+                                Assistenza e compilazione pratiche per attivazione forniture cessate o sospese per morosità.
                             </p>
                         </div>
                         {/* Posa Contatori Definitivi e Temporanei */}
