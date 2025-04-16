@@ -1,7 +1,36 @@
-import React from "react";
+import React, { useEffect } from "react";
 import { FaLightbulb, FaBriefcase, FaSolarPanel } from "react-icons/fa"; // Nuove icone per i servizi
 
 const Hero = () => {
+
+    // Funzione per gestire lo scorrimento verso un elemento specifico
+    const scrollToElement = (id) => {
+        const element = document.getElementById(id);
+        if (element) {
+            const headerHeight = 80; // Altezza dell'header
+            const offset = element.offsetTop - headerHeight;
+            window.scrollTo({
+                top: offset,
+                behavior: "smooth", // Scorrimento fluido
+            });
+        }
+    };
+
+    // Gestione dell'evento hashchange
+    useEffect(() => {
+        const handleHashChange = () => {
+            const id = window.location.hash.substring(1); // Estrae l'id dall'hash
+            if (id) {
+                scrollToElement(id);
+            }
+        };
+
+        // Ascolta il cambio di hash
+        window.addEventListener("hashchange", handleHashChange);
+
+        // Pulisce l'event listener quando il componente si smonta
+        return () => window.removeEventListener("hashchange", handleHashChange);
+    }, []);
     return (
         <>
             {/* Hero Section */}
@@ -36,6 +65,10 @@ const Hero = () => {
                     </p>
                     <a
                         href="#ChiSono"
+                        onClick={(e) => {
+                            e.preventDefault(); // Previeni il comportamento predefinito del link
+                            scrollToElement("ChiSono"); // Scorri manualmente verso l'elemento
+                          }}
                         className="mt-6 inline-block px-6 py-3 bg-[#4A6FA5] text-white font-semibold rounded-lg shadow-lg hover:bg-[#3B5D8A] transition-colors duration-300"
                     >
                         Scopri di più

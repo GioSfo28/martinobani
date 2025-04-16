@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, { useState, useEffect } from "react";
 import { FaBars, FaTimes } from "react-icons/fa";
 
 const Header = () => {
@@ -9,6 +9,35 @@ const Header = () => {
     { name: "Chi sono", link: "#ChiSono" },
     { name: "Servizi", link: "#Servizi" }
   ];
+
+  // Funzione per gestire lo scorrimento verso un elemento specifico
+      const scrollToElement = (id) => {
+          const element = document.getElementById(id);
+          if (element) {
+              const headerHeight = 80; // Altezza dell'header
+              const offset = element.offsetTop - headerHeight;
+              window.scrollTo({
+                  top: offset,
+                  behavior: "smooth", // Scorrimento fluido
+              });
+          }
+      };
+  
+      // Gestione dell'evento hashchange
+      useEffect(() => {
+          const handleHashChange = () => {
+              const id = window.location.hash.substring(1); // Estrae l'id dall'hash
+              if (id) {
+                  scrollToElement(id);
+              }
+          };
+  
+          // Ascolta il cambio di hash
+          window.addEventListener("hashchange", handleHashChange);
+  
+          // Pulisce l'event listener quando il componente si smonta
+          return () => window.removeEventListener("hashchange", handleHashChange);
+      }, []);
 
   return (
     <header className="bg-white shadow-md fixed top-0 w-full z-50 transition-all duration-300">
@@ -37,6 +66,10 @@ const Header = () => {
           {/* Pulsante Contatti Desktop */}
           <a
             href="#Contatti"
+            onClick={(e) => {
+              e.preventDefault(); // Previeni il comportamento predefinito del link
+              scrollToElement("Contatti"); // Scorri manualmente verso l'elemento
+            }}
             className="px-5 py-2 bg-[#4A6FA5] text-white rounded-lg font-semibold hover:bg-[#3B5D8A] transition-colors duration-300 shadow-md"
           >
             Contatti
