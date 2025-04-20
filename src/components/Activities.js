@@ -30,7 +30,7 @@ const Activities = () => {
                                 <FaLightbulb className="text-2xl text-yellow-500" /> {/* Lampadina Gialla */}
                                 <FaFire className="text-2xl text-red-600" /> {/* Fiammetta Rossa */}
                                 {/* Titolo del Servizio */}
-                                <h3 className="text-xl font-bold text-[#4A6FA5]">Nuove Attivazioni</h3>
+                                <h3 className="text-xl font-bold text-[#4A6FA5]">Nuove attivazioni</h3>
                             </div>
                             <p className="text-gray-700 mt-2 leading-relaxed">
                                 Offro assistenza completa nella gestione delle nuove attivazioni energetiche.
@@ -82,7 +82,7 @@ const Activities = () => {
                                 <FaLightbulb className="text-2xl text-yellow-500" />
                                 <FaFire className="text-2xl text-red-600" />
                                 {/* Titolo del Servizio */}
-                                <h3 className="text-xl font-bold text-[#4A6FA5]">Posa Contatori Definitivi e Temporanei</h3>
+                                <h3 className="text-xl font-bold text-[#4A6FA5]">Posa contatori definitivi e temporanei</h3>
                             </div>
                             <p className="text-gray-700 mt-2 leading-relaxed">
                                 Aiuto pratico nell'attività di contrattualistica ed iter per Posa Contatori.
@@ -92,7 +92,7 @@ const Activities = () => {
                         <div className="bg-white p-6 rounded-lg shadow-md hover:shadow-lg transition duration-300">
                             <h3 className="text-xl font-bold text-[#4A6FA5] flex items-center space-x-2">
                                 <FaLightbulb className="text-2xl text-yellow-500" />
-                                <span>Aumento/Diminuzione Potenza (Luce)</span>
+                                <span>Aumento/Diminuzione potenza (Luce)</span>
                             </h3>
                             <p className="text-gray-700 mt-2 leading-relaxed">
                                 Supporto e valutazione per adeguamento potenza su contatori elettrici.
@@ -102,7 +102,7 @@ const Activities = () => {
                         <div className="bg-white p-6 rounded-lg shadow-md hover:shadow-lg transition duration-300">
                             <h3 className="text-xl font-bold text-[#4A6FA5] flex items-center space-x-2">
                                 <FaFire className="text-2xl text-red-600" />
-                                <span>Aumento/Diminuzione Portata Termica (Gas)</span>
+                                <span>Aumento/Diminuzione portata termica (Gas)</span>
                             </h3>
                             <p className="text-gray-700 mt-2 leading-relaxed">
                                 Regolazione della portata termica del gas secondo le tue necessità.
@@ -112,7 +112,7 @@ const Activities = () => {
                         <div className="bg-white p-6 rounded-lg shadow-md hover:shadow-lg transition duration-300">
                             <h3 className="text-xl font-bold text-[#4A6FA5] flex items-center space-x-2">
                                 <FaLightbulb className="text-2xl text-yellow-500" />
-                                <span>Modifica Tensione (Luce)</span>
+                                <span>Modifica tensione (Luce)</span>
                             </h3>
                             <p className="text-gray-700 mt-2 leading-relaxed">
                                 Adatta la tensione elettrica ai tuoi bisogni specifici.
@@ -125,7 +125,7 @@ const Activities = () => {
                                 <FaLightbulb className="text-2xl text-yellow-500" />
                                 <FaFire className="text-2xl text-red-600" />
                                 {/* Titolo del Servizio */}
-                                <h3 className="text-xl font-bold text-[#4A6FA5]">Cambio Fornitore + Voltura Contestuale</h3>
+                                <h3 className="text-xl font-bold text-[#4A6FA5]">Cambio fornitore + Voltura contestuale</h3>
                             </div>
                             <p className="text-gray-700 mt-2 leading-relaxed">
                                 Gestione switch con tariffa ottimale, assegnando contemporaneamente nuova intestazione.
@@ -135,7 +135,7 @@ const Activities = () => {
                         <div className="bg-white p-6 rounded-lg shadow-md hover:shadow-lg transition duration-300">
                             <h3 className="text-xl font-bold text-[#4A6FA5] flex items-center space-x-2">
                                 <FaFire className="text-2xl text-red-600" />
-                                <span>Agevolazione Accise Gas</span>
+                                <span>Agevolazione accise Gas</span>
                             </h3>
                             <p className="text-gray-700 mt-2 leading-relaxed">
                                 Per aziende: agevolazione imposte erariali in base al codice ateco dell'attività.

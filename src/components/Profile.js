@@ -27,8 +27,8 @@ const Profile = () => {
                     <FaUser className="inline-block text-[#4A6FA5] mr-2" /> {/* Icona */}
                     Chi sono
                 </h2>
-                <p className="text-gray-700 leading-relaxed">
-                    Sono Martino Bani, un consulente energetico specializzato nell'assistenza a privati, micro-imprese e aziende. Mi dedico a semplificare la gestione delle utenze, garantendo trasparenza e risparmio senza costi aggiuntivi.
+                <p className="text-gray-700 leading-relaxed text-justify">
+                    Sono Martino Bani, un consulente specializzato nell'ottimizzazione delle spese per energia elettrica e metano. Mi dedico a semplificare la gestione delle utenze, garantendo trasparenza e risparmio senza costi aggiuntivi.
                 </p>
                 <p className="text-gray-700 leading-relaxed mt-4">
                     Il mio approccio si basa su <strong>competenza, affidabilità e innovazione</strong>. Offro servizi completi, tra cui:

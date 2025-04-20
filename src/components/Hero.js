@@ -48,8 +48,9 @@ const Hero = () => {
 
                 {/* Contenuto del Hero */}
                 <div className="mt-10 relative z-10 max-w-3xl mx-auto">
-                    <h1 className="text-2xl md:text-4xl font-extrabold tracking-wide drop-shadow-lg leading-tight">
-                        Martino Bani: Il tuo consulente energetico di fiducia
+                    <h1 className="text-2xl md:text-4xl font-extrabold tracking-wide drop-shadow-lg leading-tight text-center">
+                        Martino Bani<br />
+                        Il tuo consulente energetico di fiducia
                     </h1>
                     <p className="mt-4 text-sm md:text-base text-gray-300 font-semibold leading-relaxed">
                         Specializzato nella gestione delle utenze di luce e gas
@@ -58,7 +59,7 @@ const Hero = () => {
                         Semplifico la tua vita energetica, facendoti risparmiare tempo e denaro!
                     </p>
                     <p className="mt-4 text-xs md:text-sm text-gray-300 leading-relaxed">
-                        Che tu sia un privato, un'azienda o un libero professionista
+                        Che tu sia un privato, un'azienda o un libero professionista.
                     </p>
                     <p className="mt-4 text-sm md:text-base italic font-semibold text-gray-300 leading-relaxed">
                         Affida a me le tue utenze, goditi il risparmio!
@@ -68,7 +69,7 @@ const Hero = () => {
                         onClick={(e) => {
                             e.preventDefault(); // Previeni il comportamento predefinito del link
                             scrollToElement("ChiSono"); // Scorri manualmente verso l'elemento
-                          }}
+                        }}
                         className="mt-6 inline-block px-6 py-3 bg-[#4A6FA5] text-white font-semibold rounded-lg shadow-lg hover:bg-[#3B5D8A] transition-colors duration-300"
                     >
                         Scopri di più
@@ -86,7 +87,7 @@ const Hero = () => {
                             <FaLightbulb className="text-4xl text-[#4A6FA5] mb-3 transition duration-300 hover:scale-110" />
                             <h3 className="text-base md:text-lg font-bold text-[#4A6FA5]">Gestione Utenze</h3>
                             <p className="text-gray-700 mt-2 text-xs md:text-sm">
-                                Consulenza energetica professionale per privati e aziende.
+                                Consulenza energetica professionale per contatori domestici e business.
                             </p>
                         </div>
 
@@ -95,7 +96,7 @@ const Hero = () => {
                             <FaSolarPanel className="text-4xl text-[#4A6FA5] mb-3 transition duration-300 hover:scale-110" />
                             <h3 className="text-base md:text-lg font-bold text-[#4A6FA5]">Consulenza Fotovoltaico</h3>
                             <p className="text-gray-700 mt-2 text-xs md:text-sm">
-                                Analisi dettagliata e proposte ottimali per fotovoltaico.
+                                Analisi dettagliata e valutazione ad hoc per installazione pannelli fotovoltaici.
                             </p>
                         </div>
 
