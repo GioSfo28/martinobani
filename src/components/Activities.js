@@ -128,7 +128,7 @@ const Activities = () => {
                                 <h3 className="text-xl font-bold text-[#4A6FA5]">Cambio fornitore + Voltura contestuale</h3>
                             </div>
                             <p className="text-gray-700 mt-2 leading-relaxed">
-                                Gestione switch con tariffa ottimale, assegnando contemporaneamente nuova intestazione.
+                                Gestione switch con tariffa ottimale e assegnazione contestuale nuovo intestatario.
                             </p>
                         </div>
                         {/* Agevolazione Accise Gas */}
