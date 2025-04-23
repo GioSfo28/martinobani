@@ -105,7 +105,7 @@ const Activities = () => {
                                 <span>Aumento/Diminuzione portata termica (Gas)</span>
                             </h3>
                             <p className="text-gray-700 mt-2 leading-relaxed">
-                                Regolazione della portata termica del gas secondo le tue necessità.
+                                Regolazione della portata termica del metano secondo le tue necessità.
                             </p>
                         </div>
                         {/* Modifica Tensione (Luce) */}
