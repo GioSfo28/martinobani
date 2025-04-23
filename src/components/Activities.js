@@ -33,7 +33,7 @@ const Activities = () => {
                                 <h3 className="text-xl font-bold text-[#4A6FA5]">Nuove attivazioni</h3>
                             </div>
                             <p className="text-gray-700 mt-2 leading-relaxed">
-                                Offro assistenza completa nella gestione delle nuove attivazioni energetiche.
+                                Offro assistenza completa per attivazione contatori preposati.
                             </p>
                         </div>
                         {/* Cambi Fornitore */}
