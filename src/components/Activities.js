@@ -59,7 +59,7 @@ const Activities = () => {
                                 <h3 className="text-xl font-bold text-[#4A6FA5]">Volture</h3>
                             </div>
                             <p className="text-gray-700 mt-2 leading-relaxed">
-                                Supporto e genstione pratiche per cambio intestatario utenze (voltura ordinaria / mortis causa).
+                                Supporto e gestione pratiche per cambio intestatario utenze (voltura ordinaria / mortis causa).
                             </p>
                         </div>
                         {/* Subentri */}
@@ -85,7 +85,7 @@ const Activities = () => {
                                 <h3 className="text-xl font-bold text-[#4A6FA5]">Posa contatori definitivi e temporanei</h3>
                             </div>
                             <p className="text-gray-700 mt-2 leading-relaxed">
-                                Aiuto pratico nell'attività di contrattualistica ed iter per Posa Contatori.
+                                Aiuto pratico nell'attività di contrattualistica e documentazione di conformità necessaria per impianto e posa di nuovi contatori.
                             </p>
                         </div>
                         {/* Aumento/Diminuzione Potenza (Luce) */}
