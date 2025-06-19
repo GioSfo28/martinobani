@@ -19,7 +19,7 @@ const Activities = () => {
                     <div className="mb-16">
                         <h3 className="text-3xl font-bold text-[#3B5D8A] text-center mb-8">Come lo faccio</h3>
                         <p className="text-lg text-gray-700 leading-relaxed mb-4">
-                            Offro una consulenza energetica gratuita e personalizzata, durante la quale ti farò alcune domande per capire esattamente come posso aiutarti.
+                            Offro una consulenza energetica gratuita e personalizzata, durante la quale ti farò alcune domande ed analizzerò le tue bollette per capire esattamente come posso aiutarti.
                         </p>
                         <div className="flex flex-col md:flex-row justify-center space-y-6 md:space-y-0 md:space-x-6">
                             {/* Mappa d'Italia */}
@@ -30,10 +30,10 @@ const Activities = () => {
                             />
                             <div>
                                 <p className="text-lg text-gray-700 leading-relaxed">
-                                    Mi trovo ad Ancona (Marche), ma offro i miei servizi in tutta Italia.
+                                    Mi trovo ad Ancona (Marche), ma posso operare su tutto il territorio nazionale.
                                 </p>
                                 <p className="text-lg text-gray-700 leading-relaxed mt-4">
-                                    A seconda delle tue esigenze, la consulenza può essere svolta:
+                                    In base alle tue esigenze, l'attività può essere svolta:
                                 </p>
                                 <ul className="flex flex-col space-y-2 mt-2">
                                     <li className="flex items-center space-x-2">
