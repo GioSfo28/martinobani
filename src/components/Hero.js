@@ -162,7 +162,7 @@ const Hero = () => {
               {
                 icon: <FaFire className="text-4xl text-[#4A6FA5] mx-auto mb-4" />,
                 count: "2000+",
-                label: "Contratti luce e gas stipulati",
+                label: "Contratti stipulati",
               },
               {
                 icon: <FaBolt className="text-4xl text-[#4A6FA5] mx-auto mb-4" />,
