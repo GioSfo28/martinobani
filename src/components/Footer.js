@@ -32,7 +32,7 @@ const Footer = () => {
             Invia le tue bollette
           </h2>
           <p className="text-base sm:text-lg text-gray-200 mb-6 max-w-xl mx-auto">
-            Allega le tue bollette per email o via WhatsApp e sarai ricontattato per una consulenza gratuita!
+            Allega qui le tue fatture di luce e gas e sarai ricontattato per una consulenza gratuita!
           </p>
           <div className="flex flex-col sm:flex-row justify-center gap-4">
             <motion.a
