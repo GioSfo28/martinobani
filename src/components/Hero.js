@@ -13,12 +13,12 @@ const Hero = () => {
     hidden: { opacity: 0, y: 20 },
     visible: { opacity: 1, y: 0, transition: { duration: 0.4 } },
   };
-
+  {/*
   // Counter animation
   const counterFadeIn = {
     hidden: { opacity: 0, scale: 0.8 },
     visible: { opacity: 1, scale: 1, transition: { duration: 0.5 } },
-  };
+  };*/}
 
   // Function to handle smooth scrolling to an element
   const scrollToElement = (id) => {
@@ -191,7 +191,7 @@ const Hero = () => {
               </motion.div>
             ))}
           </motion.div>
-            
+
           {/* Dicono di me Button 
           <motion.div
             className="text-center mt-16"
