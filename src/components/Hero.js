@@ -1,5 +1,5 @@
 import React, { useEffect } from "react";
-import { FaLightbulb, FaBriefcase, FaSolarPanel, FaBolt, FaUsers } from "react-icons/fa"; // Icons for services and counters
+import { FaLightbulb, FaBriefcase, FaFire, FaBolt, FaUsers, FaSolarPanel } from "react-icons/fa"; // Icons for services and counters
 import { motion } from "framer-motion"; // For animations
 
 const Hero = () => {
@@ -165,19 +165,19 @@ const Hero = () => {
           >
             {[
               {
+                icon: <FaFire className="text-4xl text-[#4A6FA5] mx-auto mb-4" />,
+                count: "2000+",
+                label: "Contratti luce e gas stipulati",
+              },
+              {
                 icon: <FaBolt className="text-4xl text-[#4A6FA5] mx-auto mb-4" />,
                 count: "1000+",
-                label: "Contratti luce e gas gestiti",
+                label: "Contatori gestiti",
               },
               {
                 icon: <FaUsers className="text-4xl text-[#4A6FA5] mx-auto mb-4" />,
                 count: "500+",
                 label: "Clienti soddisfatti",
-              },
-              {
-                icon: <FaSolarPanel className="text-4xl text-[#4A6FA5] mx-auto mb-4" />,
-                count: "10+",
-                label: "Progetti fotovoltaici supportati",
               },
             ].map((counter, index) => (
               <motion.div
