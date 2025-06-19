@@ -1,55 +1,78 @@
 import React, { useState, useEffect } from "react";
 import { FaBars, FaTimes } from "react-icons/fa";
+import { motion } from "framer-motion"; // For animations
 
 const Header = () => {
   const [menuOpen, setMenuOpen] = useState(false);
 
-  // Menu Items aggiornati per Martino Bani
+  // Menu Items
   const menuItems = [
     { name: "Chi sono", link: "#ChiSono" },
-    { name: "Servizi", link: "#Servizi" }
+    { name: "Servizi", link: "#Servizi" },
   ];
 
-  // Funzione per gestire lo scorrimento verso un elemento specifico
-      const scrollToElement = (id) => {
-          const element = document.getElementById(id);
-          if (element) {
-              const headerHeight = 80; // Altezza dell'header
-              const offset = element.offsetTop - headerHeight;
-              window.scrollTo({
-                  top: offset,
-                  behavior: "smooth", // Scorrimento fluido
-              });
-          }
-      };
-  
-      // Gestione dell'evento hashchange
-      useEffect(() => {
-          const handleHashChange = () => {
-              const id = window.location.hash.substring(1); // Estrae l'id dall'hash
-              if (id) {
-                  scrollToElement(id);
-              }
-          };
-  
-          // Ascolta il cambio di hash
-          window.addEventListener("hashchange", handleHashChange);
-  
-          // Pulisce l'event listener quando il componente si smonta
-          return () => window.removeEventListener("hashchange", handleHashChange);
-      }, []);
+  // Animation variants for smooth transitions
+  const menuFadeIn = {
+    hidden: { opacity: 0, y: -20 },
+    visible: {
+      opacity: 1,
+      y: 0,
+      transition: { duration: 0.4, staggerChildren: 0.1 },
+    },
+  };
+
+  const menuItemFade = {
+    hidden: { opacity: 0, y: -10 },
+    visible: { opacity: 1, y: 0, transition: { duration: 0.3 } },
+  };
+
+  // Function to handle smooth scrolling to an element
+  const scrollToElement = (id) => {
+    const element = document.getElementById(id);
+    if (element) {
+      const headerHeight = 80; // Header height
+      const offset = element.offsetTop - headerHeight;
+      window.scrollTo({
+        top: offset,
+        behavior: "smooth",
+      });
+    }
+    setMenuOpen(false); // Close mobile menu after clicking
+  };
+
+  // Handle hashchange event
+  useEffect(() => {
+    const handleHashChange = () => {
+      const id = window.location.hash.substring(1);
+      if (id) {
+        scrollToElement(id);
+      }
+    };
+
+    window.addEventListener("hashchange", handleHashChange);
+    return () => window.removeEventListener("hashchange", handleHashChange);
+  }, []);
 
   return (
-    <header className="bg-white shadow-md fixed top-0 w-full z-50 transition-all duration-300">
+    <motion.header
+      className="bg-white shadow-lg fixed top-0 w-full z-50 transition-all duration-300"
+      initial={{ y: -100 }}
+      animate={{ y: 0 }}
+      transition={{ duration: 0.5 }}
+    >
       {/* Contenitore Header */}
-      <div className="container mx-auto flex justify-between items-center py-4 px-6">
+      <div className="flex justify-between items-center py-4 px-4 sm:px-6 lg:px-8">
         {/* Logo - Nome professionale */}
         <a
           href="#top"
-          className="text-2xl font-extrabold tracking-wide transition-colors duration-300"
-          style={{ color: "#4A6FA5" }} // Blu professionale
+          onClick={(e) => {
+            e.preventDefault();
+            scrollToElement("top");
+          }}
+          className="text-2xl sm:text-3xl font-extrabold tracking-tight transition-colors duration-300"
+          style={{ color: "#4A6FA5" }}
         >
-          Martino <span className="text-gray-800">Bani</span>
+          Martino <span className="text-gray-900">Bani</span>
         </a>
 
         {/* Navigazione Desktop */}
@@ -58,19 +81,24 @@ const Header = () => {
             <a
               key={index}
               href={item.link}
-              className="text-gray-800 hover:text-[#4A6FA5] text-lg font-medium transition-colors duration-300"
+              onClick={(e) => {
+                e.preventDefault();
+                scrollToElement(item.link.substring(1));
+              }}
+              className="text-gray-900 hover:text-[#4A6FA5] text-lg font-semibold transition-colors duration-300 relative group"
             >
               {item.name}
+              <span className="absolute bottom-0 left-0 w-0 h-0.5 bg-[#4A6FA5] transition-all duration-300 group-hover:w-full"></span>
             </a>
           ))}
           {/* Pulsante Contatti Desktop */}
           <a
             href="#Contatti"
             onClick={(e) => {
-              e.preventDefault(); // Previeni il comportamento predefinito del link
-              scrollToElement("Contatti"); // Scorri manualmente verso l'elemento
+              e.preventDefault();
+              scrollToElement("Contatti");
             }}
-            className="px-5 py-2 bg-[#4A6FA5] text-white rounded-lg font-semibold hover:bg-[#3B5D8A] transition-colors duration-300 shadow-md"
+            className="px-6 py-2 bg-[#4A6FA5] text-white rounded-full font-semibold hover:bg-[#3B5D8A] transition-all duration-300 shadow-md hover:shadow-xl focus:outline-none focus:ring-4 focus:ring-[#4A6FA5]/50"
           >
             Contatti
           </a>
@@ -79,44 +107,55 @@ const Header = () => {
         {/* Menu Hamburger Mobile */}
         <button
           onClick={() => setMenuOpen(!menuOpen)}
-          className="md:hidden text-gray-800 focus:outline-none"
-          aria-label="Menu"
+          className="md:hidden text-gray-900 focus:outline-none"
+          aria-label="Toggle Menu"
         >
           {menuOpen ? (
-            <FaTimes className="text-2xl hover:text-[#4A6FA5] transition-colors duration-300" />
+            <FaTimes className="text-3xl hover:text-[#4A6FA5] transition-colors duration-300" />
           ) : (
-            <FaBars className="text-2xl hover:text-[#4A6FA5] transition-colors duration-300" />
+            <FaBars className="text-3xl hover:text-[#4A6FA5] transition-colors duration-300" />
           )}
         </button>
       </div>
 
       {/* Navigazione Mobile */}
-      <div
-        className={`md:hidden bg-white shadow-lg fixed top-0 left-0 w-full h-screen flex flex-col items-center justify-center space-y-8 transition-transform duration-500 ${
+      <motion.div
+        className={`md:hidden fixed top-0 left-0 w-full h-screen bg-white/95 backdrop-blur-md flex flex-col items-center justify-center space-y-8 transition-transform duration-500 ${
           menuOpen ? "translate-y-0 opacity-100" : "-translate-y-full opacity-0"
         }`}
-        style={{ visibility: menuOpen ? "visible" : "hidden" }} // Fix visibilità
+        style={{ visibility: menuOpen ? "visible" : "hidden" }}
+        initial="hidden"
+        animate={menuOpen ? "visible" : "hidden"}
+        variants={menuFadeIn}
       >
         {menuItems.map((item, index) => (
-          <a
+          <motion.a
             key={index}
             href={item.link}
-            onClick={() => setMenuOpen(false)}
-            className="text-gray-800 hover:text-[#4A6FA5] text-xl font-semibold transition-colors duration-300"
+            onClick={(e) => {
+              e.preventDefault();
+              scrollToElement(item.link.substring(1));
+            }}
+            className="text-gray-900 hover:text-[#4A6FA5] text-2xl font-semibold transition-colors duration-300"
+            variants={menuItemFade}
           >
             {item.name}
-          </a>
+          </motion.a>
         ))}
         {/* Pulsante Contatti Mobile */}
-        <a
+        <motion.a
           href="#Contatti"
-          onClick={() => setMenuOpen(false)}
-          className="px-6 py-3 bg-[#4A6FA5] text-white rounded-lg font-semibold hover:bg-[#3B5D8A] transition-colors duration-300 text-xl shadow-md"
+          onClick={(e) => {
+            e.preventDefault();
+            scrollToElement("Contatti");
+          }}
+          className="px-8 py-3 bg-[#4A6FA5] text-white rounded-full font-semibold hover:bg-[#3B5D8A] transition-all duration-300 text-xl shadow-md hover:shadow-xl focus:outline-none focus:ring-4 focus:ring-[#4A6FA5]/50"
+          variants={menuItemFade}
         >
           Contatti
-        </a>
-      </div>
-    </header>
+        </motion.a>
+      </motion.div>
+    </motion.header>
   );
 };
 
