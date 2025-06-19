@@ -20,10 +20,9 @@ const Activities = () => {
       {/* Divisore tra le sezioni */}
       <div className="h-16 bg-gradient-to-b from-transparent to-gray-100"></div>
 
-      {/* Sezione Servizi */}
-      <section id="Servizi" className="w-full py-20 bg-gradient-to-b from-gray-100 to-gray-50">
+      {/* Sezione "Come lo faccio" */}
+      <section className="w-full py-20 bg-gradient-to-b from-gray-100 to-gray-50">
         <div className="px-4 sm:px-6 lg:px-8">
-          {/* Sezione "Come lo faccio" */}
           <motion.div
             className="max-w-4xl mx-auto mb-20"
             initial="hidden"
@@ -74,7 +73,12 @@ const Activities = () => {
               </div>
             </div>
           </motion.div>
+        </div>
+      </section>
 
+      {/* Sezione Servizi */}
+      <section id="Servizi" className="w-full py-20 bg-gradient-to-b from-gray-50 to-gray-100">
+        <div className="px-4 sm:px-6 lg:px-8">
           {/* Titolo Principale */}
           <motion.div
             className="text-center mb-16"

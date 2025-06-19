@@ -1,5 +1,5 @@
 import React, { useEffect } from "react";
-import { FaLightbulb, FaBriefcase, FaSolarPanel } from "react-icons/fa"; // Icons for services
+import { FaLightbulb, FaBriefcase, FaSolarPanel, FaBolt, FaUsers } from "react-icons/fa"; // Icons for services and counters
 import { motion } from "framer-motion"; // For animations
 
 const Hero = () => {
@@ -12,6 +12,12 @@ const Hero = () => {
   const cardFadeIn = {
     hidden: { opacity: 0, y: 20 },
     visible: { opacity: 1, y: 0, transition: { duration: 0.4 } },
+  };
+
+  // Counter animation
+  const counterFadeIn = {
+    hidden: { opacity: 0, scale: 0.8 },
+    visible: { opacity: 1, scale: 1, transition: { duration: 0.5 } },
   };
 
   // Function to handle smooth scrolling to an element
@@ -149,6 +155,62 @@ const Hero = () => {
               </motion.div>
             ))}
           </div>
+
+          {/* Counters Section */}
+          <motion.div
+            className="max-w-7xl mx-auto mt-16 grid grid-cols-1 sm:grid-cols-3 gap-6 text-center"
+            initial="hidden"
+            animate="visible"
+            variants={fadeIn}
+          >
+            {[
+              {
+                icon: <FaBolt className="text-4xl text-[#4A6FA5] mx-auto mb-4" />,
+                count: "1000+",
+                label: "Contratti luce e gas gestiti",
+              },
+              {
+                icon: <FaUsers className="text-4xl text-[#4A6FA5] mx-auto mb-4" />,
+                count: "500+",
+                label: "Clienti soddisfatti",
+              },
+              {
+                icon: <FaSolarPanel className="text-4xl text-[#4A6FA5] mx-auto mb-4" />,
+                count: "10+",
+                label: "Progetti fotovoltaici supportati",
+              },
+            ].map((counter, index) => (
+              <motion.div
+                key={index}
+                className="bg-white p-6 rounded-xl shadow-md hover:shadow-xl transition-all duration-300 transform hover:-translate-y-2"
+                variants={cardFadeIn}
+              >
+                {counter.icon}
+                <h3 className="text-3xl font-bold text-[#4A6FA5]">{counter.count}</h3>
+                <p className="text-gray-700 text-sm sm:text-base mt-2">{counter.label}</p>
+              </motion.div>
+            ))}
+          </motion.div>
+            
+          {/* Dicono di me Button 
+          <motion.div
+            className="text-center mt-16"
+            initial="hidden"
+            animate="visible"
+            variants={fadeIn}
+          >
+            <a
+              href="#Recensioni"
+              onClick={(e) => {
+                e.preventDefault();
+                scrollToElement("Recensioni");
+              }}
+              className="inline-block px-10 py-4 bg-[#4A6FA5] text-white font-semibold rounded-full shadow-xl hover:bg-[#3B5D8A] transition-all duration-300 transform hover:scale-105 focus:outline-none focus:ring-4 focus:ring-[#4A6FA5]/50"
+            >
+              Dicono di me
+            </a>
+          </motion.div>
+          */}
         </div>
       </section>
     </>
