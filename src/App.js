@@ -4,7 +4,7 @@ import Hero from "./components/Hero";
 import Profile from "./components/Profile";
 import Activities from "./components/Activities";
 import Footer from "./components/Footer";
-import Reviews from "./components/Reviews";
+
 
 function App() {
   return (
@@ -13,8 +13,6 @@ function App() {
       <Hero />
       <Profile />
       <Activities />
-      {/*<Reviews />*/}
-      <Footer />
     </div>
   );
 }
