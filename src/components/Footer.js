@@ -29,7 +29,7 @@ const Footer = () => {
           variants={itemFadeIn}
         >
           <h2 className="text-2xl sm:text-3xl font-extrabold text-[#10B981] mb-3 tracking-tight">
-            Invia le Tue Bollette
+            Invia le tue bollette
           </h2>
           <p className="text-base sm:text-lg text-gray-200 mb-6 max-w-xl mx-auto">
             Allega le tue bollette per email o via WhatsApp e sarai ricontattato per una consulenza gratuita!
