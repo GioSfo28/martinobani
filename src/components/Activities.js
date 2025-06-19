@@ -12,7 +12,52 @@ const Activities = () => {
 
             {/* Sezione Servizi */}
             <section id="Servizi" className="py-20 bg-gray-100">
+
                 <div className="container mx-auto px-6">
+
+                    {/* Sezione "Come lo facciamo" */}
+                    <div className="mb-16">
+                        <h3 className="text-3xl font-bold text-[#3B5D8A] text-center mb-8">Come lo faccio</h3>
+                        <p className="text-lg text-gray-700 leading-relaxed mb-4">
+                            Offro una consulenza energetica gratuita e personalizzata, durante la quale ti farò alcune domande per capire esattamente come posso aiutarti.
+                        </p>
+                        <div className="flex flex-col md:flex-row justify-center space-y-6 md:space-y-0 md:space-x-6">
+                            {/* Mappa d'Italia */}
+                            <img
+                                src={Italy}
+                                alt="Mappa d'Italia"
+                                className="w-48 h-48 object-cover rounded-md"
+                            />
+                            <div>
+                                <p className="text-lg text-gray-700 leading-relaxed">
+                                    Mi trovo ad Ancona (Marche), ma offro i miei servizi in tutta Italia.
+                                </p>
+                                <p className="text-lg text-gray-700 leading-relaxed mt-4">
+                                    A seconda delle tue esigenze, la consulenza può essere svolta:
+                                </p>
+                                <ul className="flex flex-col space-y-2 mt-2">
+                                    <li className="flex items-center space-x-2">
+                                        <FaHome className="text-2xl text-[#4A6FA5]" />
+                                        <span className="text-gray-700"><strong>a domicilio</strong></span>
+                                    </li>
+                                    <li className="flex items-center space-x-2">
+                                        <FaPhone className="text-2xl text-[#4A6FA5]" />
+                                        <span className="text-gray-700"><strong>telefonicamente</strong></span>
+                                    </li>
+                                    <li className="flex items-center space-x-2">
+                                        <FaVideo className="text-2xl text-[#4A6FA5]" />
+                                        <span className="text-gray-700"><strong>in videocall</strong></span>
+                                    </li>
+                                </ul>
+                                <p className="text-lg text-gray-700 leading-relaxed mt-4">
+                                    Grazie alla mia esperienza nei settori di luce e gas, conosco perfettamente tutti gli aspetti tecnici, le dinamiche e le procedure necessarie per muoversi con sicurezza nel mercato libero.
+                                </p>
+                                <p className="text-lg text-gray-700 leading-relaxed mt-4">
+                                    Mi aggiorno costantemente per garantire ai miei clienti un supporto professionale e affidabile, semplificando la gestione delle loro utenze.
+                                </p>
+                            </div>
+                        </div>
+                    </div>
                     {/* Titolo Principale */}
                     <h2 className="text-4xl font-bold text-center text-[#3B5D8A] mb-12 tracking-wider drop-shadow-md">
                         Scopri tutti i miei servizi
@@ -156,49 +201,7 @@ const Activities = () => {
                         </div>
                     </div>
 
-                    {/* Sezione "Come lo facciamo" */}
-                    <div className="mb-16">
-                        <h3 className="text-3xl font-bold text-[#3B5D8A] text-center my-8">Come lo faccio</h3>
-                        <p className="text-lg text-gray-700 leading-relaxed mb-4">
-                            Offro una consulenza energetica gratuita e personalizzata, durante la quale ti farò alcune domande per capire esattamente come posso aiutarti.
-                        </p>
-                        <div className="flex flex-col md:flex-row justify-center space-y-6 md:space-y-0 md:space-x-6">
-                            {/* Mappa d'Italia */}
-                            <img
-                                src={Italy}
-                                alt="Mappa d'Italia"
-                                className="w-48 h-48 object-cover rounded-md"
-                            />
-                            <div>
-                                <p className="text-lg text-gray-700 leading-relaxed">
-                                    Mi trovo ad Ancona (Marche), ma offro i miei servizi in tutta Italia.
-                                </p>
-                                <p className="text-lg text-gray-700 leading-relaxed mt-4">
-                                    A seconda delle tue esigenze, la consulenza può essere svolta:
-                                </p>
-                                <ul className="flex flex-col space-y-2 mt-2">
-                                    <li className="flex items-center space-x-2">
-                                        <FaHome className="text-2xl text-[#4A6FA5]" />
-                                        <span className="text-gray-700"><strong>a domicilio</strong></span>
-                                    </li>
-                                    <li className="flex items-center space-x-2">
-                                        <FaPhone className="text-2xl text-[#4A6FA5]" />
-                                        <span className="text-gray-700"><strong>telefonicamente</strong></span>
-                                    </li>
-                                    <li className="flex items-center space-x-2">
-                                        <FaVideo className="text-2xl text-[#4A6FA5]" />
-                                        <span className="text-gray-700"><strong>in videocall</strong></span>
-                                    </li>
-                                </ul>
-                                <p className="text-lg text-gray-700 leading-relaxed mt-4">
-                                    Grazie alla mia esperienza nei settori di luce e gas, conosco perfettamente tutti gli aspetti tecnici, le dinamiche e le procedure necessarie per muoversi con sicurezza nel mercato libero.
-                                </p>
-                                <p className="text-lg text-gray-700 leading-relaxed mt-4">
-                                    Mi aggiorno costantemente per garantire ai miei clienti un supporto professionale e affidabile, semplificando la gestione delle loro utenze.
-                                </p>
-                            </div>
-                        </div>
-                    </div>
+
 
                     {/* Pulsante Contatti - Visibile solo su desktop */}
                     <div className="text-center mt-12 hidden md:block">
