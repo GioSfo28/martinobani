@@ -12,9 +12,9 @@ function App() {
     <div>
       <Header />
       <Hero />
+      <Partners />
       <Profile />
       <Activities />
-      <Partners/>
       <Footer />
     </div>
   );
