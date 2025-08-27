@@ -28,49 +28,28 @@ const Partners = () => {
     slidesToScroll: 1,
     autoplay: true,
     autoplaySpeed: 3000,
-    centerMode: false,
-    centerPadding: "0px",
     arrows: true,
     responsive: [
       {
-        breakpoint: 1024,
+        breakpoint: 1024, // tablet grande
         settings: {
           slidesToShow: 2,
           slidesToScroll: 1,
-          infinite: true,
-          dots: true,
-          centerMode: false,
-          centerPadding: "0px",
-        },
-      },
-      {
-        breakpoint: 768,
-        settings: {
-          slidesToShow: 1,
-          slidesToScroll: 1,
-          infinite: true,
-          dots: true,
-          centerMode: false,
-          centerPadding: "0px",
           arrows: false,
         },
       },
       {
-        breakpoint: 480,
+        breakpoint: 768, // tablet e mobile
         settings: {
           slidesToShow: 1,
           slidesToScroll: 1,
-          infinite: true,
-          dots: true,
-          centerMode: false,
-          centerPadding: "0px",
           arrows: false,
         },
       },
     ],
   };
 
-  // Array dei partner con loghi e nomi (aggiunto A2A)
+  // Array dei partner con loghi e nomi
   const partners = [
     { name: "Bluenergy", logo: BluenergyLogo },
     { name: "Vivigas", logo: VivigasLogo },
@@ -105,23 +84,19 @@ const Partners = () => {
           variants={fadeIn}
           className="max-w-5xl mx-auto overflow-hidden"
         >
-          <div className="slick-container">
-            <Slider {...settings}>
-              {partners.map((partner, index) => (
-                <div key={index} className="outline-none focus:outline-none">
-                  <div className="px-2 sm:px-4">
-                    <div className="bg-white p-4 sm:p-6 rounded-xl shadow-md hover:shadow-xl transition-all duration-300 flex justify-center items-center h-32 sm:h-36">
-                      <img
-                        src={partner.logo}
-                        alt={`${partner.name} logo`}
-                        className="h-20 sm:h-24 w-auto max-w-[200px] object-contain"
-                      />
-                    </div>
-                  </div>
+          <Slider {...settings}>
+            {partners.map((partner, index) => (
+              <div key={index} className="flex justify-center items-center px-4">
+                <div className="bg-white p-6 rounded-xl shadow-md hover:shadow-xl transition-all duration-300 flex justify-center items-center w-full h-40">
+                  <img
+                    src={partner.logo}
+                    alt={`${partner.name} logo`}
+                    className="max-h-20 w-full max-w-[180px] object-contain mx-auto"
+                  />
                 </div>
-              ))}
-            </Slider>
-          </div>
+              </div>
+            ))}
+          </Slider>
         </motion.div>
       </div>
     </section>
