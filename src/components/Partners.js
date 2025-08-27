@@ -1,10 +1,10 @@
 import React from "react";
 import Slider from "react-slick";
 import { motion } from "framer-motion";
-import "slick-carousel/slick/slick.css"; 
+import "slick-carousel/slick/slick.css";
 import "slick-carousel/slick/slick-theme.css";
 
-// Importa i loghi (assumi che siano nella cartella assets)
+// Importa i loghi
 import BluenergyLogo from "../assets/bluenergy.jpg";
 import VivigasLogo from "../assets/vivigas.jpg";
 import EnergiaCorrenteLogo from "../assets/energia-corrente.jpg";
@@ -23,23 +23,28 @@ const Partners = () => {
     dots: true, // Mostra i puntini di navigazione
     infinite: true, // Loop infinito
     speed: 500, // Velocità di transizione
-    slidesToShow: 3, // Mostra 3 loghi alla volta
+    slidesToShow: 3, // Mostra 3 loghi alla volta su desktop
     slidesToScroll: 1, // Scorri di 1 logo alla volta
     autoplay: true, // Autoplay del carosello
     autoplaySpeed: 3000, // Tempo tra uno scorrimento e l'altro
+    centerMode: true, // Centra il logo attivo (utile su mobile)
+    centerPadding: "10px", // Riduce il padding laterale su mobile
     responsive: [
       {
-        breakpoint: 1024, // Per schermi medi
+        breakpoint: 1024, // Per schermi medi (tablet)
         settings: {
           slidesToShow: 2,
           slidesToScroll: 1,
+          centerMode: false, // Disattiva centerMode su tablet
         },
       },
       {
-        breakpoint: 640, // Per schermi piccoli
+        breakpoint: 640, // Per schermi piccoli (mobile)
         settings: {
           slidesToShow: 1,
           slidesToScroll: 1,
+          centerMode: true, // Centra il logo su mobile
+          centerPadding: "20px", // Padding laterale per mobile
         },
       },
     ],
@@ -81,12 +86,12 @@ const Partners = () => {
         >
           <Slider {...settings}>
             {partners.map((partner, index) => (
-              <div key={index} className="p-4">
-                <div className="bg-white p-6 rounded-xl shadow-md hover:shadow-xl transition-all duration-300 flex justify-center items-center">
+              <div key={index} className="p-2 sm:p-4">
+                <div className="bg-white p-4 sm:p-6 rounded-xl shadow-md hover:shadow-xl transition-all duration-300 flex justify-center items-center">
                   <img
                     src={partner.logo}
                     alt={`${partner.name} logo`}
-                    className="h-24 w-auto object-contain"
+                    className="h-20 sm:h-24 w-auto max-w-[200px] object-contain"
                   />
                 </div>
               </div>
