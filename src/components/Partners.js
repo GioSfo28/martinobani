@@ -21,33 +21,50 @@ const Partners = () => {
 
   // Configurazione del carosello
   const settings = {
-    dots: true, // Mostra i puntini di navigazione
-    infinite: true, // Loop infinito
-    speed: 500, // Velocità di transizione
-    slidesToShow: 3, // Mostra 3 loghi alla volta su desktop
-    slidesToScroll: 1, // Scorri di 1 logo alla volta
-    autoplay: true, // Autoplay del carosello
-    autoplaySpeed: 3000, // Tempo tra uno scorrimento e l'altro
-    centerMode: false, // Disattiva centerMode per evitare sovrapposizioni
-    centerPadding: "0px", // Nessun padding extra
+    dots: true,
+    infinite: true,
+    speed: 500,
+    slidesToShow: 3,
+    slidesToScroll: 1,
+    autoplay: true,
+    autoplaySpeed: 3000,
+    centerMode: false,
+    centerPadding: "0px",
+    arrows: true,
     responsive: [
       {
-        breakpoint: 1024, // Per schermi medi (tablet)
+        breakpoint: 1024,
         settings: {
           slidesToShow: 2,
           slidesToScroll: 1,
+          infinite: true,
+          dots: true,
           centerMode: false,
           centerPadding: "0px",
         },
       },
       {
-        breakpoint: 640, // Per schermi piccoli (mobile)
+        breakpoint: 768,
         settings: {
           slidesToShow: 1,
           slidesToScroll: 1,
-          centerMode: false, // Disattiva centerMode su mobile
-          centerPadding: "0px", // Nessun padding per evitare sovrapposizioni
-          variableWidth: false, // Assicura larghezza uniforme
+          infinite: true,
+          dots: true,
+          centerMode: false,
+          centerPadding: "0px",
+          arrows: false,
+        },
+      },
+      {
+        breakpoint: 480,
+        settings: {
+          slidesToShow: 1,
+          slidesToScroll: 1,
+          infinite: true,
+          dots: true,
+          centerMode: false,
+          centerPadding: "0px",
+          arrows: false,
         },
       },
     ],
@@ -86,21 +103,25 @@ const Partners = () => {
           initial="hidden"
           animate="visible"
           variants={fadeIn}
-          className="max-w-5xl mx-auto"
+          className="max-w-5xl mx-auto overflow-hidden"
         >
-          <Slider {...settings}>
-            {partners.map((partner, index) => (
-              <div key={index} className="px-2 sm:px-4">
-                <div className="bg-white p-4 sm:p-6 rounded-xl shadow-md hover:shadow-xl transition-all duration-300 flex justify-center items-center mx-2">
-                  <img
-                    src={partner.logo}
-                    alt={`${partner.name} logo`}
-                    className="h-20 sm:h-24 w-auto max-w-[200px] object-contain"
-                  />
+          <div className="slick-container">
+            <Slider {...settings}>
+              {partners.map((partner, index) => (
+                <div key={index} className="outline-none focus:outline-none">
+                  <div className="px-2 sm:px-4">
+                    <div className="bg-white p-4 sm:p-6 rounded-xl shadow-md hover:shadow-xl transition-all duration-300 flex justify-center items-center h-32 sm:h-36">
+                      <img
+                        src={partner.logo}
+                        alt={`${partner.name} logo`}
+                        className="h-20 sm:h-24 w-auto max-w-[200px] object-contain"
+                      />
+                    </div>
+                  </div>
                 </div>
-              </div>
-            ))}
-          </Slider>
+              ))}
+            </Slider>
+          </div>
         </motion.div>
       </div>
     </section>
