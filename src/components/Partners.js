@@ -10,6 +10,7 @@ import VivigasLogo from "../assets/vivigas.jpg";
 import EnergiaCorrenteLogo from "../assets/energia-corrente.jpg";
 import AlperiaLogo from "../assets/alperia.png";
 import EniPlenitudeLogo from "../assets/eni-plenitude.png";
+import A2ALogo from "../assets/a2a.png";
 
 const Partners = () => {
   // Animazione per il fade-in
@@ -27,15 +28,16 @@ const Partners = () => {
     slidesToScroll: 1, // Scorri di 1 logo alla volta
     autoplay: true, // Autoplay del carosello
     autoplaySpeed: 3000, // Tempo tra uno scorrimento e l'altro
-    centerMode: true, // Centra il logo attivo (utile su mobile)
-    centerPadding: "10px", // Riduce il padding laterale su mobile
+    centerMode: false, // Disattiva centerMode per evitare sovrapposizioni
+    centerPadding: "0px", // Nessun padding extra
     responsive: [
       {
         breakpoint: 1024, // Per schermi medi (tablet)
         settings: {
           slidesToShow: 2,
           slidesToScroll: 1,
-          centerMode: false, // Disattiva centerMode su tablet
+          centerMode: false,
+          centerPadding: "0px",
         },
       },
       {
@@ -43,20 +45,22 @@ const Partners = () => {
         settings: {
           slidesToShow: 1,
           slidesToScroll: 1,
-          centerMode: true, // Centra il logo su mobile
-          centerPadding: "20px", // Padding laterale per mobile
+          centerMode: false, // Disattiva centerMode su mobile
+          centerPadding: "0px", // Nessun padding per evitare sovrapposizioni
+          variableWidth: false, // Assicura larghezza uniforme
         },
       },
     ],
   };
 
-  // Array dei partner con loghi e nomi
+  // Array dei partner con loghi e nomi (aggiunto A2A)
   const partners = [
     { name: "Bluenergy", logo: BluenergyLogo },
     { name: "Vivigas", logo: VivigasLogo },
     { name: "Energia Corrente", logo: EnergiaCorrenteLogo },
     { name: "Alperia", logo: AlperiaLogo },
     { name: "Eni Plenitude", logo: EniPlenitudeLogo },
+    { name: "A2A", logo: A2ALogo },
   ];
 
   return (
@@ -86,8 +90,8 @@ const Partners = () => {
         >
           <Slider {...settings}>
             {partners.map((partner, index) => (
-              <div key={index} className="p-2 sm:p-4">
-                <div className="bg-white p-4 sm:p-6 rounded-xl shadow-md hover:shadow-xl transition-all duration-300 flex justify-center items-center">
+              <div key={index} className="px-2 sm:px-4">
+                <div className="bg-white p-4 sm:p-6 rounded-xl shadow-md hover:shadow-xl transition-all duration-300 flex justify-center items-center mx-2">
                   <img
                     src={partner.logo}
                     alt={`${partner.name} logo`}
