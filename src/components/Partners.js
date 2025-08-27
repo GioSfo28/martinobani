@@ -94,7 +94,7 @@ const Partners = () => {
             I miei partners
           </h2>
           <p className="text-lg text-gray-700 leading-relaxed mt-4">
-            Collaboro con le migliori compagnie energetiche per offrirti soluzioni affidabili e convenienti.
+            Collaboro con le migliori compagnie per offrirti soluzioni affidabili e convenienti.
           </p>
         </motion.div>
 
