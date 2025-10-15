@@ -10,7 +10,8 @@ import VivigasLogo from "../assets/vivigas.jpg";
 import EnergiaCorrenteLogo from "../assets/energia-corrente.jpg";
 import AlperiaLogo from "../assets/alperia.png";
 import EniPlenitudeLogo from "../assets/eni-plenitude.png";
-import A2ALogo from "../assets/a2a.png";
+import Iren from "../assets/Iren.png";
+import Esmart from "../assets/e.smart.jpg";
 
 const Partners = () => {
   // Animazione per il fade-in
@@ -56,7 +57,8 @@ const Partners = () => {
     { name: "Energia Corrente", logo: EnergiaCorrenteLogo },
     { name: "Alperia", logo: AlperiaLogo },
     { name: "Eni Plenitude", logo: EniPlenitudeLogo },
-    { name: "A2A", logo: A2ALogo },
+    { name: "ESmart", logo: Esmart },
+    { name: "Iren", logo: Iren },
   ];
 
   return (

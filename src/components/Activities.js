@@ -150,6 +150,11 @@ const Activities = () => {
                 description: "Per aziende: valutazione fattibilità per aventi diritto ad iva ridotta.",
                 icons: [<FaLightbulb className="text-2xl text-yellow-500" />, <FaFire className="text-2xl text-red-600" />],
               },
+              {
+                title: "Offerte dedicate",
+                description: "Per condomini, associazioni, enti locali ed ecclesiastici.",
+                icons: [<FaLightbulb className="text-2xl text-yellow-500" />, <FaFire className="text-2xl text-red-600" />],
+              },
             ].map((service, index) => (
               <motion.div
                 key={index}
