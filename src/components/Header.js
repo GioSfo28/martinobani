@@ -1,132 +1,125 @@
 import React, { useState, useEffect } from "react";
 import { FaBars, FaTimes } from "react-icons/fa";
-import { motion } from "framer-motion"; // For animations
+import { motion } from "framer-motion";
 
 const Header = () => {
   const [menuOpen, setMenuOpen] = useState(false);
+  const [scrolled, setScrolled] = useState(false);
 
-  // Menu Items
+  // Detect scroll for header effect
+  useEffect(() => {
+    const handleScroll = () => setScrolled(window.scrollY > 20);
+    window.addEventListener("scroll", handleScroll);
+    return () => window.removeEventListener("scroll", handleScroll);
+  }, []);
+
   const menuItems = [
-    { name: "Chi sono", link: "#ChiSono" },
+    { name: "Chi sono", link: "#Profile" },
     { name: "Servizi", link: "#Servizi" },
   ];
 
-  // Animation variants for smooth transitions
-  const menuFadeIn = {
-    hidden: { opacity: 0, y: -20 },
-    visible: {
-      opacity: 1,
-      y: 0,
-      transition: { duration: 0.4, staggerChildren: 0.1 },
-    },
-  };
 
-  const menuItemFade = {
-    hidden: { opacity: 0, y: -10 },
-    visible: { opacity: 1, y: 0, transition: { duration: 0.3 } },
-  };
 
-  // Function to handle smooth scrolling to an element
   const scrollToElement = (id) => {
     const element = document.getElementById(id);
     if (element) {
-      const headerHeight = 80; // Header height
+      const headerHeight = 80;
       const offset = element.offsetTop - headerHeight;
-      window.scrollTo({
-        top: offset,
-        behavior: "smooth",
-      });
+      window.scrollTo({ top: offset, behavior: "smooth" });
     }
-    setMenuOpen(false); // Close mobile menu after clicking
+    setMenuOpen(false);
   };
 
-  // Handle hashchange event
   useEffect(() => {
     const handleHashChange = () => {
       const id = window.location.hash.substring(1);
-      if (id) {
-        scrollToElement(id);
-      }
+      if (id) scrollToElement(id);
     };
-
     window.addEventListener("hashchange", handleHashChange);
     return () => window.removeEventListener("hashchange", handleHashChange);
   }, []);
 
   return (
     <motion.header
-      className="bg-white shadow-lg fixed top-0 w-full z-50 transition-all duration-300"
+      className={`fixed top-0 w-full z-50 transition-all duration-300 ${
+        scrolled
+          ? "bg-white shadow-lg"
+          : "bg-white/80 backdrop-blur-md shadow-sm"
+      }`}
       initial={{ y: -100 }}
       animate={{ y: 0 }}
       transition={{ duration: 0.5 }}
     >
-      {/* Contenitore Header */}
-      <div className="flex justify-between items-center py-4 px-4 sm:px-6 lg:px-8">
-        {/* Logo - Nome professionale */}
+      <div className="flex justify-between items-center py-4 px-4 sm:px-6 lg:px-8 max-w-7xl mx-auto">
         <a
           href="#top"
           onClick={(e) => {
             e.preventDefault();
             scrollToElement("top");
           }}
-          className="text-2xl sm:text-3xl font-extrabold tracking-tight transition-colors duration-300"
-          style={{ color: "#4A6FA5" }}
+          className="text-2xl sm:text-3xl font-extrabold tracking-tight"
         >
-          Martino <span className="text-gray-900">Bani</span>
+          <span className="bg-gradient-to-r from-[#4A6FA5] to-[#357ABD] bg-clip-text text-transparent">
+            Martino
+          </span>
+          <span className="text-gray-900"> Bani</span>
         </a>
 
-        {/* Navigazione Desktop */}
+        {/* Desktop Navigation */}
         <nav className="hidden md:flex space-x-8 items-center">
           {menuItems.map((item, index) => (
-            <a
+            <motion.a
               key={index}
               href={item.link}
               onClick={(e) => {
                 e.preventDefault();
                 scrollToElement(item.link.substring(1));
               }}
-              className="text-gray-900 hover:text-[#4A6FA5] text-lg font-semibold transition-colors duration-300 relative group"
+              className="text-gray-700 hover:text-[#4A6FA5] text-base font-semibold transition-colors duration-300 relative group"
+              whileHover={{ scale: 1.05 }}
+              whileTap={{ scale: 0.95 }}
             >
               {item.name}
-              <span className="absolute bottom-0 left-0 w-0 h-0.5 bg-[#4A6FA5] transition-all duration-300 group-hover:w-full"></span>
-            </a>
+              <span className="absolute bottom-0 left-0 w-0 h-0.5 bg-gradient-to-r from-[#4A6FA5] to-[#357ABD] transition-all duration-300 group-hover:w-full"></span>
+            </motion.a>
           ))}
-          {/* Pulsante Contatti Desktop */}
-          <a
+          <motion.a
             href="#Contatti"
             onClick={(e) => {
               e.preventDefault();
               scrollToElement("Contatti");
             }}
-            className="px-6 py-2 bg-[#4A6FA5] text-white rounded-full font-semibold hover:bg-[#3B5D8A] transition-all duration-300 shadow-md hover:shadow-xl focus:outline-none focus:ring-4 focus:ring-[#4A6FA5]/50"
+            className="px-6 py-2.5 bg-gradient-to-r from-[#4A6FA5] to-[#357ABD] text-white rounded-full font-semibold shadow-lg hover:shadow-xl transition-all duration-300 focus:outline-none focus:ring-4 focus:ring-[#4A6FA5]/30"
+            whileHover={{ scale: 1.05 }}
+            whileTap={{ scale: 0.95 }}
           >
             Contatti
-          </a>
+          </motion.a>
         </nav>
 
-        {/* Menu Hamburger Mobile */}
-        <button
+        {/* Mobile Menu Button */}
+        <motion.button
           onClick={() => setMenuOpen(!menuOpen)}
           className="md:hidden text-gray-900 focus:outline-none"
           aria-label="Toggle Menu"
+          whileTap={{ scale: 0.9 }}
         >
           {menuOpen ? (
-            <FaTimes className="text-3xl hover:text-[#4A6FA5] transition-colors duration-300" />
+            <FaTimes className="text-3xl text-[#4A6FA5]" />
           ) : (
-            <FaBars className="text-3xl hover:text-[#4A6FA5] transition-colors duration-300" />
+            <FaBars className="text-3xl text-gray-900 hover:text-[#4A6FA5] transition-colors" />
           )}
-        </button>
+        </motion.button>
       </div>
 
-      {/* Navigazione Mobile */}
+      {/* Mobile Navigation */}
       <motion.div
-        className={`md:hidden fixed top-0 left-0 w-full h-screen bg-white/95 backdrop-blur-md flex flex-col items-center justify-center space-y-8 transition-transform duration-500 ${
-          menuOpen ? "translate-y-0 opacity-100" : "-translate-y-full opacity-0"
+        className={`md:hidden fixed inset-0 top-20 bg-white/95 backdrop-blur-lg flex flex-col items-center justify-center space-y-8 ${
+          menuOpen ? "pointer-events-auto" : "pointer-events-none"
         }`}
-        style={{ visibility: menuOpen ? "visible" : "hidden" }}
-        initial="hidden"
-        animate={menuOpen ? "visible" : "hidden"}
-        variants={menuFadeIn}
+        initial={{ opacity: 0, y: -20 }}
+        animate={menuOpen ? { opacity: 1, y: 0 } : { opacity: 0, y: -20 }}
+        transition={{ duration: 0.3 }}
       >
         {menuItems.map((item, index) => (
           <motion.a
@@ -136,21 +129,20 @@ const Header = () => {
               e.preventDefault();
               scrollToElement(item.link.substring(1));
             }}
-            className="text-gray-900 hover:text-[#4A6FA5] text-2xl font-semibold transition-colors duration-300"
-            variants={menuItemFade}
+            className="text-2xl font-semibold text-gray-900 hover:text-[#4A6FA5] transition-colors"
+            whileTap={{ scale: 0.95 }}
           >
             {item.name}
           </motion.a>
         ))}
-        {/* Pulsante Contatti Mobile */}
         <motion.a
           href="#Contatti"
           onClick={(e) => {
             e.preventDefault();
             scrollToElement("Contatti");
           }}
-          className="px-8 py-3 bg-[#4A6FA5] text-white rounded-full font-semibold hover:bg-[#3B5D8A] transition-all duration-300 text-xl shadow-md hover:shadow-xl focus:outline-none focus:ring-4 focus:ring-[#4A6FA5]/50"
-          variants={menuItemFade}
+          className="px-8 py-3 bg-gradient-to-r from-[#4A6FA5] to-[#357ABD] text-white rounded-full font-semibold text-xl shadow-lg hover:shadow-xl transition-all duration-300"
+          whileTap={{ scale: 0.95 }}
         >
           Contatti
         </motion.a>

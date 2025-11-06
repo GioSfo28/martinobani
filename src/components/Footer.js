@@ -1,12 +1,24 @@
 import React, { useState, useEffect } from "react";
-import { FaEnvelope, FaWhatsapp } from "react-icons/fa";
+import { FaEnvelope, FaWhatsapp, FaMapPin, FaClock } from "react-icons/fa";
 import { motion } from "framer-motion";
 import { Link } from "react-router-dom";
 
 const Footer = () => {
   const fadeIn = {
     hidden: { opacity: 0, y: 20 },
-    visible: { opacity: 1, y: 0, transition: { duration: 0.6, staggerChildren: 0.2 } },
+    visible: {
+      opacity: 1,
+      y: 0,
+      transition: { duration: 0.6, ease: "easeOut" },
+    },
+  };
+
+  const staggerContainer = {
+    hidden: { opacity: 0 },
+    visible: {
+      opacity: 1,
+      transition: { staggerChildren: 0.1, delayChildren: 0.2 },
+    },
   };
 
   const itemFadeIn = {
@@ -32,27 +44,28 @@ const Footer = () => {
     <>
       {showCookieBanner && (
         <motion.div
-          className="fixed bottom-0 left-0 right-0 bg-[#111827] text-white p-4 sm:p-6 z-50 shadow-lg"
+          className="fixed bottom-0 left-0 right-0 bg-gradient-to-r from-gray-900 to-gray-800 text-white p-4 sm:p-6 z-50 shadow-2xl border-t border-[#4A6FA5]/20 backdrop-blur-md"
           initial={{ opacity: 0, y: 100 }}
           animate={{ opacity: 1, y: 0 }}
           transition={{ duration: 0.5 }}
         >
           <div className="max-w-7xl mx-auto flex flex-col sm:flex-row justify-between items-center gap-4">
-            <p className="text-sm sm:text-base text-gray-200">
+            <p className="text-sm sm:text-base text-gray-300 leading-relaxed">
               Questo sito utilizza cookie tecnici e analitici (Google Analytics) per migliorare
               l'esperienza di navigazione. Per maggiori informazioni, consulta la nostra{" "}
-              <Link to="/privacy" className="text-[#4A6FA5] hover:text-[#3B5D8A] underline">
+              <Link to="/privacy" className="text-[#4A6FA5] hover:text-[#357ABD] underline font-semibold transition-colors">
                 Informativa sulla Privacy
               </Link>{" "}
               e la nostra{" "}
-              <Link to="/cookie" className="text-[#4A6FA5] hover:text-[#3B5D8A] underline">
+              <Link to="/cookie" className="text-[#4A6FA5] hover:text-[#357ABD] underline font-semibold transition-colors">
                 Informativa sui Cookie
               </Link>.
             </p>
             <motion.button
               onClick={handleAcceptCookies}
-              className="px-4 py-2 bg-[#10B981] text-white font-semibold rounded-lg shadow-md hover:bg-[#16A34A] transition-all duration-300"
+              className="px-6 py-3 bg-gradient-to-r from-[#10B981] to-[#059669] text-white font-bold rounded-full shadow-lg hover:shadow-xl transition-all duration-300 whitespace-nowrap"
               whileHover={{ scale: 1.05 }}
+              whileTap={{ scale: 0.95 }}
             >
               Accetta
             </motion.button>
@@ -62,99 +75,195 @@ const Footer = () => {
 
       <motion.footer
         id="Contatti"
-        className="w-full bg-gradient-to-t from-[#1F2937] to-[#111827] text-white py-12"
+        className="w-full bg-gradient-to-b from-gray-900 via-gray-800 to-gray-900 text-white py-16 relative overflow-hidden"
         initial="hidden"
-        animate="visible"
+        whileInView="visible"
+        viewport={{ once: true, margin: "-100px" }}
         variants={fadeIn}
       >
-        <div className="px-4 sm:px-6 lg:px-8 max-w-7xl mx-auto">
-          <motion.div
-            className="text-center bg-[#10B981]/10 rounded-2xl p-6 sm:p-8 mb-10 border border-[#10B981]/20 shadow-lg"
-            variants={itemFadeIn}
-          >
-            <h2 className="text-2xl sm:text-3xl font-extrabold text-[#10B981] mb-3 tracking-tight">
-              Invia le tue bollette
-            </h2>
-            <p className="text-base sm:text-lg text-gray-200 mb-6 max-w-xl mx-auto">
-              Allega qui le tue fatture di luce e gas e sarai ricontattato per una consulenza gratuita!
-            </p>
-            <div className="flex flex-col sm:flex-row justify-center gap-4">
-              <motion.a
-                href="mailto:martinobani@gmail.com?subject=Consulenza Bollette"
-                target="_blank"
-                rel="noopener noreferrer"
-                className="inline-flex items-center px-6 py-3 bg-[#EF4444] text-white font-semibold rounded-lg shadow-md hover:bg-[#DC2626] transition-all duration-300"
-                whileHover={{ scale: 1.05 }}
-                variants={itemFadeIn}
-              >
-                <FaEnvelope className="mr-2 text-lg" />
-                Invia per Email
-              </motion.a>
-              <motion.a
-                href="https://wa.me/393338401484?text=Salve, vorrei inviare le mie bollette per una consulenza."
-                target="_blank"
-                rel="noopener noreferrer"
-                className="inline-flex items-center px-6 py-3 bg-[#22C55E] text-white font-semibold rounded-lg shadow-md hover:bg-[#16A34A] transition-all duration-300"
-                whileHover={{ scale: 1.05 }}
-                variants={itemFadeIn}
-              >
-                <FaWhatsapp className="mr-2 text-lg" />
-                Invia via WhatsApp
-              </motion.a>
-            </div>
-          </motion.div>
+        {/* Animated background elements */}
+        <motion.div
+          className="absolute top-10 right-0 w-96 h-96 bg-[#4A6FA5]/10 rounded-full blur-3xl"
+          animate={{ x: [0, 50, 0], y: [0, 30, 0] }}
+          transition={{ duration: 10, repeat: Infinity }}
+          style={{ zIndex: 0 }}
+        />
+        <motion.div
+          className="absolute bottom-10 left-0 w-96 h-96 bg-[#10B981]/10 rounded-full blur-3xl"
+          animate={{ x: [0, -50, 0], y: [0, -30, 0] }}
+          transition={{ duration: 12, repeat: Infinity }}
+          style={{ zIndex: 0 }}
+        />
 
+        <div className="relative z-10 px-4 sm:px-6 lg:px-8 max-w-7xl mx-auto">
+          {/* CTA Section */}
           <motion.div
-            className="flex flex-col sm:flex-row justify-between items-center gap-8 text-center sm:text-left"
-            variants={fadeIn}
+            className="mb-12"
+            initial="hidden"
+            whileInView="visible"
+            viewport={{ once: true }}
+            variants={staggerContainer}
           >
-            <motion.div variants={itemFadeIn}>
-              <h3 className="text-lg font-semibold text-[#4A6FA5] mb-3">Contatti</h3>
-              <a
-                href="mailto:unioservizi@gmail.com"
-                target="_blank"
-                rel="noopener noreferrer"
-                className="flex items-center justify-center sm:justify-start space-x-2 text-gray-300 hover:text-[#EF4444] transition-all duration-300"
+            <motion.div
+              className="bg-gradient-to-br from-[#10B981]/20 to-[#059669]/20 rounded-2xl p-8 sm:p-10 border border-[#10B981]/30 backdrop-blur-sm hover:border-[#10B981]/50 transition-all duration-300"
+              variants={itemFadeIn}
+              whileHover={{ y: -4 }}
+            >
+              <motion.h2
+                className="text-3xl sm:text-4xl font-extrabold mb-3 text-center"
+                variants={fadeIn}
               >
-                <FaEnvelope className="text-lg" />
-                <span>unioservizi@gmail.com</span>
-              </a>
-              <a
-                href="https://wa.me/393338401484"
-                target="_blank"
-                rel="noopener noreferrer"
-                className="flex items-center justify-center sm:justify-start space-x-2 text-gray-300 hover:text-[#22C55E] mt-2"
+                <span className="bg-gradient-to-r from-[#10B981] to-[#059669] bg-clip-text text-transparent">
+                  Invia le tue bollette
+                </span>
+              </motion.h2>
+              <motion.p
+                className="text-base sm:text-lg text-gray-300 mb-6 max-w-2xl mx-auto text-center leading-relaxed"
+                variants={fadeIn}
               >
-                <FaWhatsapp className="text-lg" />
-                <span>+39 333 8401484</span>
-              </a>
-              <Link
-                to="/privacy"
-                className="flex items-center justify-center sm:justify-start space-x-2 text-gray-300 hover:text-[#4A6FA5] mt-2 transition-all duration-300"
+                Allega qui le tue fatture di luce e gas per ricevere una <span className="font-semibold">consulenza gratuita e personalizzata</span>!
+              </motion.p>
+
+              <motion.div
+                className="flex flex-col sm:flex-row justify-center gap-4"
+                variants={staggerContainer}
+                initial="hidden"
+                whileInView="visible"
+                viewport={{ once: true }}
               >
-                <span>Informativa sulla Privacy</span>
-              </Link>
-              <Link
-                to="/cookie"
-                className="flex items-center justify-center sm:justify-start space-x-2 text-gray-300 hover:text-[#4A6FA5] mt-2 transition-all duration-300"
-              >
-                <span>Informativa sui Cookie</span>
-              </Link>
-            </motion.div>
-            <motion.div variants={itemFadeIn}>
-              <p className="text-sm text-gray-400">
-                Powered by{" "}
-                <a
-                  href="https://www.giorgiosforza.it"
+                <motion.a
+                  href="mailto:martinobani@gmail.com?subject=Consulenza Bollette"
                   target="_blank"
                   rel="noopener noreferrer"
-                  className="font-semibold text-[#4A6FA5] hover:text-[#3B5D8A] transition-colors duration-300"
+                  className="inline-flex items-center justify-center px-8 py-4 bg-gradient-to-r from-[#EF4444] to-[#DC2626] text-white font-bold rounded-full shadow-lg hover:shadow-xl transition-all duration-300"
+                  variants={itemFadeIn}
+                  whileHover={{ scale: 1.08, y: -3 }}
+                  whileTap={{ scale: 0.95 }}
                 >
-                  Giorgio Sforza
-                </a>{" "}
-                © 2025
-              </p>
+                  <FaEnvelope className="mr-2 text-lg" />
+                  Invia per Email
+                </motion.a>
+                <motion.a
+                  href="https://wa.me/393338401484?text=Salve, vorrei inviare le mie bollette per una consulenza."
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className="inline-flex items-center justify-center px-8 py-4 bg-gradient-to-r from-[#22C55E] to-[#16A34A] text-white font-bold rounded-full shadow-lg hover:shadow-xl transition-all duration-300"
+                  variants={itemFadeIn}
+                  whileHover={{ scale: 1.08, y: -3 }}
+                  whileTap={{ scale: 0.95 }}
+                >
+                  <FaWhatsapp className="mr-2 text-lg" />
+                  Invia via WhatsApp
+                </motion.a>
+              </motion.div>
             </motion.div>
+          </motion.div>
+
+          {/* Main Footer Content */}
+          <motion.div
+            className="grid grid-cols-1 md:grid-cols-3 gap-8 mb-8"
+            initial="hidden"
+            whileInView="visible"
+            viewport={{ once: true }}
+            variants={staggerContainer}
+          >
+            {/* Contact Info */}
+            <motion.div
+              className="bg-gradient-to-br from-gray-700/30 to-gray-800/30 rounded-xl p-6 border border-gray-700/50 hover:border-[#4A6FA5]/50 transition-all duration-300"
+              variants={itemFadeIn}
+              whileHover={{ y: -4 }}
+            >
+              <h3 className="text-xl font-bold text-[#10B981] mb-4 flex items-center gap-2">
+                <FaEnvelope className="text-lg" />
+                Contatti
+              </h3>
+              <div className="space-y-3">
+                <a
+                  href="mailto:unioservizi@gmail.com"
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className="flex items-center gap-2 text-gray-300 hover:text-[#4A6FA5] transition-colors duration-300 group"
+                >
+                  <FaEnvelope className="text-[#4A6FA5] group-hover:scale-110 transition-transform" />
+                  <span className="font-medium">unioservizi@gmail.com</span>
+                </a>
+                <a
+                  href="https://wa.me/393338401484"
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className="flex items-center gap-2 text-gray-300 hover:text-[#22C55E] transition-colors duration-300 group"
+                >
+                  <FaWhatsapp className="text-[#22C55E] group-hover:scale-110 transition-transform" />
+                  <span className="font-medium">+39 333 8401484</span>
+                </a>
+              </div>
+            </motion.div>
+
+            {/* Location & Hours */}
+            <motion.div
+              className="bg-gradient-to-br from-gray-700/30 to-gray-800/30 rounded-xl p-6 border border-gray-700/50 hover:border-[#4A6FA5]/50 transition-all duration-300"
+              variants={itemFadeIn}
+              whileHover={{ y: -4 }}
+            >
+              <h3 className="text-xl font-bold text-[#4A6FA5] mb-4 flex items-center gap-2">
+                <FaMapPin className="text-lg" />
+                Ubicazione
+              </h3>
+              <p className="text-gray-300 leading-relaxed">
+                Ancona (Marche), Italia
+              </p>
+              <p className="text-gray-400 text-sm mt-2">
+                Consulenza disponibile a livello nazionale
+              </p>
+              <div className="flex items-center gap-2 text-gray-300 mt-3">
+                <FaClock className="text-[#10B981]" />
+                <span className="text-sm">Disponibile 7 giorni su 7</span>
+              </div>
+            </motion.div>
+
+            {/* Legal */}
+            <motion.div
+              className="bg-gradient-to-br from-gray-700/30 to-gray-800/30 rounded-xl p-6 border border-gray-700/50 hover:border-[#4A6FA5]/50 transition-all duration-300"
+              variants={itemFadeIn}
+              whileHover={{ y: -4 }}
+            >
+              <h3 className="text-xl font-bold text-[#4A6FA5] mb-4">Informazioni</h3>
+              <div className="space-y-2">
+                <Link
+                  to="/privacy"
+                  className="block text-gray-300 hover:text-[#4A6FA5] transition-colors duration-300 font-medium"
+                >
+                  Informativa sulla Privacy
+                </Link>
+                <Link
+                  to="/cookie"
+                  className="block text-gray-300 hover:text-[#4A6FA5] transition-colors duration-300 font-medium"
+                >
+                  Informativa sui Cookie
+                </Link>
+              </div>
+            </motion.div>
+          </motion.div>
+
+          {/* Divider */}
+          <div className="h-px bg-gradient-to-r from-transparent via-gray-700 to-transparent mb-6" />
+
+          {/* Copyright */}
+          <motion.div
+            className="text-center py-4"
+            variants={itemFadeIn}
+          >
+            <p className="text-sm text-gray-400">
+              © 2025 Martino Bani - Consulente Energetico Indipendente - Powered by{" "}
+              <a
+                href="https://www.giorgiosforza.it"
+                target="_blank"
+                rel="noopener noreferrer"
+                className="font-semibold text-[#4A6FA5] hover:text-[#357ABD] transition-colors duration-300"
+              >
+                Giorgio Sforza
+              </a>
+            </p>
           </motion.div>
         </div>
       </motion.footer>
