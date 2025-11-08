@@ -116,7 +116,7 @@ const Hero = () => {
             variants={fadeIn}
           >
             Che tu sia un privato, un'azienda o un libero professionista, affida
-            a me le tue utenze e goditi il risparmio garantito.
+            a me le tue utenze e goditi il risparmio!
           </motion.p>
 
           <motion.div

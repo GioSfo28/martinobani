@@ -213,11 +213,11 @@ const Footer = () => {
                 Ancona (Marche), Italia
               </p>
               <p className="text-gray-400 text-sm mt-2">
-                Consulenza disponibile a livello nazionale
+                Copertura totale sul territorio nazionale con la maggior parte dei fornitori
               </p>
               <div className="flex items-center gap-2 text-gray-300 mt-3">
                 <FaClock className="text-[#10B981]" />
-                <span className="text-sm">Disponibile 7 giorni su 7</span>
+                <span className="text-sm">Disponibile 6 giorni su 7</span>
               </div>
             </motion.div>
 
