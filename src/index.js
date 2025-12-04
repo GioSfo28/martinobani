@@ -14,9 +14,9 @@ ReactDOM.createRoot(document.getElementById("root")).render(
     <BrowserRouter>
       <Routes>
         <Route path="/" element={<App />} />
-        <Route path="/Login" element={<LoginPage/>} />
-        <Route path="/Dashboard" element={<Dashboard/>} />
-         <Route path="/Agenda-compleanni" element={<AgendaCompleanni/>} />
+        <Route path="/Login" element={<LoginPage />} />
+        <Route path="/Dashboard" element={<Dashboard />} />
+        <Route path="/Agenda-compleanni" element={<AgendaCompleanni />} />
         <Route path="/privacy" element={<Privacy />} />
         <Route path="/cookie" element={<Cookie />} />
       </Routes>
