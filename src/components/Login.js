@@ -213,7 +213,7 @@ const LoginPage = () => {
                             </>
                         ) : (
                             <>
-                                <FaGoogle className="text-lg" /> {/* Ridotto a text-lg */}
+                                <FaGoogle className="text-sm" /> {/* Ridotto a text-sm */}
                                 <span>
                                     {isLoadingPermissions ? "Caricamento..." : "Accedi con Google"}
                                 </span>
