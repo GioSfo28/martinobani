@@ -161,7 +161,7 @@ const LoginPage = () => {
                         </div>
                         
                         <h1 className="text-3xl font-bold text-gray-800 mb-2">
-                            Accesso area riservata
+                            Accesso Area Riservata
                         </h1>
                         
                         <p className="text-gray-500 text-md">
@@ -203,16 +203,17 @@ const LoginPage = () => {
                         ref={loginButtonRef}
                         onClick={handleGoogleSignIn}
                         disabled={isLoadingPermissions || isLoggingIn}
-                        className="w-full flex items-center justify-center gap-3 px-6 py-3 border border-transparent text-lg font-semibold rounded-lg shadow-md text-white bg-blue-600 hover:bg-blue-700 transition duration-150 ease-in-out disabled:opacity-50 disabled:cursor-not-allowed focus:outline-none focus:ring-4 focus:ring-blue-500/50"
+                        // RIDOTTO text-lg A text-base QUI
+                        className="w-full flex items-center justify-center gap-3 px-6 py-3 border border-transparent text-base font-semibold rounded-lg shadow-md text-white bg-blue-600 hover:bg-blue-700 transition duration-150 ease-in-out disabled:opacity-50 disabled:cursor-not-allowed focus:outline-none focus:ring-4 focus:ring-blue-500/50"
                     >
                         {isLoggingIn ? (
                             <>
-                                <FaSpinner className="text-xl animate-spin" />
+                                <FaSpinner className="text-lg animate-spin" /> {/* Ridotto a text-lg */}
                                 <span>Accesso in corso...</span>
                             </>
                         ) : (
                             <>
-                                <FaGoogle className="text-xl" />
+                                <FaGoogle className="text-lg" /> {/* Ridotto a text-lg */}
                                 <span>
                                     {isLoadingPermissions ? "Caricamento..." : "Accedi con Google"}
                                 </span>
@@ -226,7 +227,7 @@ const LoginPage = () => {
                             <FaUserShield className="text-blue-600 text-xl flex-shrink-0 mt-0.5" />
                             <div>
                                 <h3 className="font-bold text-gray-800 mb-1 text-sm">
-                                    Protocollo di sicurezza
+                                    Protocollo di Sicurezza
                                 </h3>
                                 <p className="text-gray-500 text-xs leading-relaxed">
                                     L'accesso è consentito esclusivamente tramite account Google precedentemente autorizzati.
