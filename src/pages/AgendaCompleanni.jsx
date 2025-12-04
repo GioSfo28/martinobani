@@ -467,7 +467,7 @@ const AgendaCompleanni = () => {
                                 >
                                     <FaBirthdayCake className="inline-block text-3xl text-gray-300 mb-2" />
                                     <br />
-                                    Nessun compleanno in {currentMonthName}... ma arriveranno! 🎈
+                                    Nessun compleanno a {currentMonthName}... ma arriveranno! 🎈
                                 </motion.p>
                             )}
                         </div>
