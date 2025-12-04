@@ -14,13 +14,10 @@ const LoginPage = () => {
     const [isLoggingIn, setIsLoggingIn] = useState(false);
     const navigate = useNavigate();
     
-    // Otteniamo l'istanza DB
     const db = getDatabase();
     
-    // Ref per il focus automatico
     const loginButtonRef = useRef(null);
 
-    // Auto-focus e Scroll to top
     useEffect(() => {
         window.scrollTo({ top: 0, behavior: "smooth" });
         
@@ -33,7 +30,6 @@ const LoginPage = () => {
         return () => clearTimeout(timer);
     }, []);
 
-    // Caricamento dei permessi (Assicura che isLoadingPermissions sia FALSE prima dell'accesso)
     useEffect(() => {
         const loadPermissions = () => {
             setIsLoadingPermissions(true);
@@ -61,12 +57,11 @@ const LoginPage = () => {
         loadPermissions();
     }, [db]); 
 
-    // Funzione helper per leggere lo status Admin dal DB (Utente di default)
     const getRoleStatus = async (uid) => {
         const statusRef = ref(db, `Utenti/${uid}/Role`);
         try {
             const snapshot = await get(statusRef);
-            return snapshot.val() || "User"; // Se non esiste, è "User"
+            return snapshot.val() || "User";
         } catch (error) {
             console.error("Errore lettura ruolo:", error);
             return "User"; 
@@ -74,7 +69,6 @@ const LoginPage = () => {
     };
 
     const handleGoogleSignIn = async () => {
-        // Blocco di sicurezza per evitare la race condition iniziale
         if (isLoadingPermissions) {
             setError("Attendi il caricamento delle autorizzazioni.");
             return;
@@ -88,7 +82,6 @@ const LoginPage = () => {
             const user = result.user;
 
             if (!user.email || !authorizedEmails.includes(user.email)) {
-                // Logout immediato per utente non autorizzato
                 await auth.signOut(); 
                 setError("Utente non autorizzato. Contattare l'amministratore per l'accesso.");
                 console.warn("Tentativo di accesso non autorizzato:", user.email);
@@ -99,7 +92,6 @@ const LoginPage = () => {
             const userRef = ref(db, `Utenti/${user.uid}`);
             const snapshot = await get(userRef);
             
-            // Ottieni il ruolo (Admin/User)
             const userRole = await getRoleStatus(user.uid);
 
             if (!snapshot.exists()) {
@@ -111,7 +103,6 @@ const LoginPage = () => {
                 };
                 await set(userRef, userData);
                 
-                // Imposta il ruolo di default se è la prima volta (se non c'è Status)
                 if (userRole === "User") {
                    await set(ref(db, `Utenti/${user.uid}/Role`), "User");
                 }
@@ -119,7 +110,6 @@ const LoginPage = () => {
                 console.log("Utente già esistente nel DB.");
             }
             
-            // Salva UID e Ruolo per l'uso immediato nella Dashboard
             localStorage.setItem("uidData", user.uid);
             localStorage.setItem("statusData", userRole);
             
@@ -203,18 +193,19 @@ const LoginPage = () => {
                         ref={loginButtonRef}
                         onClick={handleGoogleSignIn}
                         disabled={isLoadingPermissions || isLoggingIn}
-                        // RIDOTTO text-lg A text-base QUI
+                        // Mantieni text-base
                         className="w-full flex items-center justify-center gap-3 px-6 py-3 border border-transparent text-base font-semibold rounded-lg shadow-md text-white bg-blue-600 hover:bg-blue-700 transition duration-150 ease-in-out disabled:opacity-50 disabled:cursor-not-allowed focus:outline-none focus:ring-4 focus:ring-blue-500/50"
                     >
                         {isLoggingIn ? (
                             <>
-                                <FaSpinner className="text-lg animate-spin" /> {/* Ridotto a text-lg */}
+                                <FaSpinner className="text-lg animate-spin" />
                                 <span>Accesso in corso...</span>
                             </>
                         ) : (
                             <>
-                                <FaGoogle className="text-sm" /> {/* Ridotto a text-sm */}
-                                <span>
+                                {/* AUMENTO LA DIMENSIONE DELL'ICONA A text-base PER BILANCIARLA */}
+                                <FaGoogle className="text-base" /> 
+                                <span className="truncate"> {/* Aggiungo truncate per forzare il rendering su una riga */}
                                     {isLoadingPermissions ? "Caricamento..." : "Accedi con Google"}
                                 </span>
                             </>
