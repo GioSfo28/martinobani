@@ -246,14 +246,14 @@ const Footer = () => {
           </motion.div>
 
           {/* Divider */}
-          <div className="h-px bg-gradient-to-r from-transparent via-gray-700 to-transparent mb-6" />
+          <div className="h-px bg-gradient-to-r from-transparent via-gray-700 to-transparent mb-4" />
 
-          {/* Copyright */}
+          {/* Copyright e Area Privata */}
           <motion.div
-            className="text-center py-4"
+            className="flex flex-col sm:flex-row justify-between items-center py-2" // Aggiungo flex-row per allineare gli elementi
             variants={itemFadeIn}
           >
-            <p className="text-sm text-gray-400">
+            <p className="text-sm text-gray-400 order-2 sm:order-1 mt-2 sm:mt-0">
               © 2025 Martino Bani - Consulente Energetico Indipendente - Powered by{" "}
               <a
                 href="https://www.giorgiosforza.it"
@@ -264,6 +264,17 @@ const Footer = () => {
                 Giorgio Sforza
               </a>
             </p>
+            
+            {/* LINK NASCOSTO PER AREA PRIVATA (Nuova Aggiunta) */}
+            <div className="order-1 sm:order-2">
+                <Link
+                  to="/Login"
+                  className="text-xs text-gray-600 hover:text-gray-400 transition-colors duration-300"
+                >
+                  Area privata
+                </Link>
+            </div>
+            
           </motion.div>
         </div>
       </motion.footer>
