@@ -161,7 +161,7 @@ const LoginPage = () => {
                         </div>
                         
                         <h1 className="text-3xl font-bold text-gray-800 mb-2">
-                            Accesso Area Riservata
+                            Accesso area riservata
                         </h1>
                         
                         <p className="text-gray-500 text-md">
@@ -226,7 +226,7 @@ const LoginPage = () => {
                             <FaUserShield className="text-blue-600 text-xl flex-shrink-0 mt-0.5" />
                             <div>
                                 <h3 className="font-bold text-gray-800 mb-1 text-sm">
-                                    Protocollo di Sicurezza
+                                    Protocollo di sicurezza
                                 </h3>
                                 <p className="text-gray-500 text-xs leading-relaxed">
                                     L'accesso è consentito esclusivamente tramite account Google precedentemente autorizzati.

@@ -208,7 +208,6 @@ const Dashboard = () => {
       </section>
       <Footer />
       
-      {/* Rimosse tutte le animazioni complesse (animate-float, animate-gradient-x, etc.) */}
     </>
   );
 };
