@@ -84,8 +84,9 @@ const DashboardNavbar = ({ handleLogout, navigate }) => (
     </nav>
 );
 
-// Modale
-const ManageBirthdayModal = ({ isOpen, onClose, userId, initialData = {} }) => {
+// *** MODALE MODIFICATO ***
+// Abbiamo aggiunto la prop `existingBirthdays`
+const ManageBirthdayModal = ({ isOpen, onClose, userId, initialData = {}, existingBirthdays = [] }) => {
     const [nome, setNome] = useState("");
     const [cognome, setCognome] = useState("");
     const [dataNascita, setDataNascita] = useState("");
@@ -107,17 +108,48 @@ const ManageBirthdayModal = ({ isOpen, onClose, userId, initialData = {} }) => {
     const handleSubmit = async (e) => {
         e.preventDefault();
         setError("");
-        if (!nome.trim() || !cognome.trim() || !dataNascita || !userId) {
+
+        // Pulizia input
+        const cleanNome = nome.trim();
+        const cleanCognome = cognome.trim();
+        const cleanTelefono = telefono.trim();
+
+        if (!cleanNome || !cleanCognome || !dataNascita || !userId) {
             setError("Compila tutti i campi obbligatori.");
             return;
         }
+
+        // *** NUOVO: CONTROLLO DUPLICATI ***
+        // Verifichiamo se esiste già un contatto con nome, cognome e telefono identici
+        const isDuplicate = existingBirthdays.some(item => {
+            // Se stiamo modificando, ignoriamo l'elemento che stiamo modificando (altrimenti si paragonerebbe a se stesso)
+            if (isEditing && item.id === initialData.id) {
+                return false;
+            }
+
+            // Confronto case-insensitive per nome e cognome
+            const sameNome = item.nome.toLowerCase() === cleanNome.toLowerCase();
+            const sameCognome = item.cognome.toLowerCase() === cleanCognome.toLowerCase();
+            // Confronto esatto per il telefono (se il telefono è stato inserito)
+            const sameTelefono = cleanTelefono !== "" && item.telefono === cleanTelefono;
+
+            // Se tutte e 3 le condizioni sono vere, è un duplicato
+            return sameNome && sameCognome && sameTelefono;
+        });
+
+        if (isDuplicate) {
+            setError("Attenzione: esiste già un contatto con questo Nome, Cognome e Numero di telefono.");
+            return;
+        }
+        // *** FINE CONTROLLO DUPLICATI ***
+
         setIsSubmitting(true);
         try {
             const newData = {
-                nome: nome.trim(),
-                cognome: cognome.trim(),
+                nome: cleanNome,
+                cognome: cleanCognome,
                 dataNascita,
-                telefono: telefono.trim(),
+                telefono: cleanTelefono,
                 aggiuntoDa: userId,
                 timestamp: new Date().toISOString(),
             };
@@ -151,7 +183,7 @@ const ManageBirthdayModal = ({ isOpen, onClose, userId, initialData = {} }) => {
                         <FaTimes className="text-xl" />
                     </button>
                 </div>
-                {error && <div className="mb-4 p-3 bg-red-100 border border-red-400 text-red-700 rounded-lg text-sm">{error}</div>}
+                {error && <div className="mb-4 p-3 bg-red-100 border border-red-400 text-red-700 rounded-lg text-sm font-medium">{error}</div>}
                 <form onSubmit={handleSubmit} className="space-y-4">
                     <input type="text" value={nome} onChange={e => setNome(e.target.value)} placeholder="Nome" required disabled={isSubmitting} className="w-full p-2 border rounded-md" />
                     <input type="text" value={cognome} onChange={e => setCognome(e.target.value)} placeholder="Cognome" required disabled={isSubmitting} className="w-full p-2 border rounded-md" />
@@ -263,7 +295,6 @@ const AgendaCompleanni = () => {
     return (
         <>
             <Header />
-
 
             <section className="min-h-screen bg-gray-50 py-16 sm:py-20">
                 <div className="container mx-auto px-4 sm:px-6 lg:px-8 max-w-4xl">
@@ -438,7 +469,14 @@ const AgendaCompleanni = () => {
             </section>
 
             <Footer />
-            <ManageBirthdayModal isOpen={isModalOpen} onClose={closeModal} userId={user?.uid} initialData={editingBirthday || {}} />
+            {/* *** NUOVO ***: Passiamo existingBirthdays al modale */}
+            <ManageBirthdayModal
+                isOpen={isModalOpen}
+                onClose={closeModal}
+                userId={user?.uid}
+                initialData={editingBirthday || {}}
+                existingBirthdays={birthdays}
+            />
         </>
     );
 };
