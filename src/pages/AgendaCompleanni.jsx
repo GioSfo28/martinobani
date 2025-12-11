@@ -2,7 +2,7 @@
 import React, { useState, useEffect, useCallback, useMemo } from "react";
 import { auth } from "../firebase/config.js";
 import { signOut } from "firebase/auth";
-import { getDatabase, ref, onValue, push, set, remove } from "firebase/database";
+import { getDatabase, ref, onValue, push, set, remove, update } from "firebase/database"; // Importiamo 'update'
 import { useNavigate } from "react-router-dom";
 import {
     FaBirthdayCake, FaUserPlus, FaCalendarAlt, FaSpinner, FaSignOutAlt, FaTimes,
@@ -84,8 +84,7 @@ const DashboardNavbar = ({ handleLogout, navigate }) => (
     </nav>
 );
 
-// *** MODALE MODIFICATO ***
-// Abbiamo aggiunto la prop `existingBirthdays`
+// *** MODALE LOGICA AVANZATA ***
 const ManageBirthdayModal = ({ isOpen, onClose, userId, initialData = {}, existingBirthdays = [] }) => {
     const [nome, setNome] = useState("");
     const [cognome, setCognome] = useState("");
@@ -119,30 +118,61 @@ const ManageBirthdayModal = ({ isOpen, onClose, userId, initialData = {}, existi
             return;
         }
 
-        // *** NUOVO: CONTROLLO DUPLICATI ***
-        // Verifichiamo se esiste già un contatto con nome, cognome e telefono identici
-        const isDuplicate = existingBirthdays.some(item => {
-            // Se stiamo modificando, ignoriamo l'elemento che stiamo modificando (altrimenti si paragonerebbe a se stesso)
-            if (isEditing && item.id === initialData.id) {
-                return false;
-            }
+        // *** LOGICA DI CONTROLLO AVANZATA ***
+        // Cerchiamo un contatto con stesso nome e cognome
+        const duplicateNameMatch = existingBirthdays.find(item => {
+            // Ignoriamo l'elemento che stiamo modificando
+            if (isEditing && item.id === initialData.id) return false;
 
-            // Confronto case-insensitive per nome e cognome
-            const sameNome = item.nome.toLowerCase() === cleanNome.toLowerCase();
-            const sameCognome = item.cognome.toLowerCase() === cleanCognome.toLowerCase();
-            // Confronto esatto per il telefono (se il telefono è stato inserito)
-            const sameTelefono = cleanTelefono !== "" && item.telefono === cleanTelefono;
-
-            // Se tutte e 3 le condizioni sono vere, è un duplicato
-            return sameNome && sameCognome && sameTelefono;
+            return (
+                item.nome.toLowerCase() === cleanNome.toLowerCase() &&
+                item.cognome.toLowerCase() === cleanCognome.toLowerCase()
+            );
         });
 
-        if (isDuplicate) {
-            setError("Attenzione: esiste già un contatto con questo Nome, Cognome e Numero di telefono.");
-            return;
-        }
-        // *** FINE CONTROLLO DUPLICATI ***
+        if (duplicateNameMatch) {
+            // CASO 1: Nome, Cognome e Telefono sono identici -> ERRORE
+            if (duplicateNameMatch.telefono === cleanTelefono) {
+                setError("Attenzione: esiste già un contatto identico (Nome, Cognome e Telefono).");
+                return;
+            }
 
+            // CASO 2: Nome e Cognome identici, ma Telefono diverso -> PROPOSTA AGGIORNAMENTO
+            if (window.confirm(`Esiste già un contatto "${cleanNome} ${cleanCognome}" ma con un numero diverso (o nessun numero).\nVuoi aggiornare il numero di telefono di quel contatto?`)) {
+                
+                setIsSubmitting(true);
+                try {
+                    // Aggiorniamo solo il contatto esistente trovato
+                    const updateRef = ref(db, `Utenti/${userId}/Compleanni/${duplicateNameMatch.id}`);
+                    
+                    // Prepariamo i dati aggiornati (manteniamo ID originale)
+                    const updatedData = {
+                        ...duplicateNameMatch, // Manteniamo gli altri dati vecchi se servono
+                        nome: cleanNome,
+                        cognome: cleanCognome,
+                        dataNascita: dataNascita, // Aggiorniamo anche la data se l'ha cambiata
+                        telefono: cleanTelefono,  // Il nuovo numero
+                        timestamp: new Date().toISOString()
+                    };
+
+                    // Usiamo 'update' o 'set' sull'ID esistente
+                    await set(updateRef, updatedData);
+                    onClose();
+                } catch (err) {
+                    console.error(err);
+                    setError("Errore durante l'aggiornamento del contatto esistente.");
+                } finally {
+                    setIsSubmitting(false);
+                }
+                return; // Usciamo dalla funzione, abbiamo gestito l'aggiornamento
+            } else {
+                // Se l'utente dice "Annulla" al confirm, fermiamo tutto (non crea duplicato)
+                return;
+            }
+        }
+        // *** FINE LOGICA AVANZATA ***
+
+        // CASO 3: Nessun duplicato trovato, procediamo con creazione/modifica standard
         setIsSubmitting(true);
         try {
             const newData = {
@@ -469,7 +499,6 @@ const AgendaCompleanni = () => {
             </section>
 
             <Footer />
-            {/* *** NUOVO ***: Passiamo existingBirthdays al modale */}
             <ManageBirthdayModal
                 isOpen={isModalOpen}
                 onClose={closeModal}
