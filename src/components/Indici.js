@@ -12,11 +12,23 @@ const Indici = () => {
   useEffect(() => {
     const fetchData = async (endpoint, key) => {
       try {
-        const res = await fetch(`http://localhost:3001/${endpoint}`);
+        // Su Netlify, le funzioni sono esposte sotto /.netlify/functions/
+        // Questo URL funziona sia in locale (con netlify dev) che online
+        const res = await fetch(`/.netlify/functions/${endpoint}`);
+        
+        if (!res.ok) throw new Error("Errore di rete");
+        
         const json = await res.json();
-        setData(prev => ({ ...prev, [key]: { val: json.value, date: json.date || json.period } }));
+        setData(prev => ({ 
+          ...prev, 
+          [key]: { val: json.value, date: json.date || json.period } 
+        }));
       } catch (e) {
-        setData(prev => ({ ...prev, [key]: { val: "N/D", date: "Errore" } }));
+        console.error(`Errore caricamento ${key}:`, e);
+        setData(prev => ({ 
+          ...prev, 
+          [key]: { val: "N/D", date: "Dato non disponibile" } 
+        }));
       }
     };
 
