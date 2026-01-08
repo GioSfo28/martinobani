@@ -2,7 +2,7 @@
 import React, { useState, useEffect, useCallback, useMemo } from "react";
 import { auth } from "../firebase/config.js";
 import { signOut } from "firebase/auth";
-import { getDatabase, ref, onValue, push, set, remove, update } from "firebase/database"; // Importiamo 'update'
+import { getDatabase, ref, onValue, push, set, remove} from "firebase/database"; // Importiamo 'update'
 import { useNavigate } from "react-router-dom";
 import {
     FaBirthdayCake, FaUserPlus, FaCalendarAlt, FaSpinner, FaSignOutAlt, FaTimes,

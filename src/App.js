@@ -5,6 +5,7 @@ import Profile from "./components/Profile";
 import Activities from "./components/Activities";
 import Footer from "./components/Footer";
 import Partners from "./components/Partners";
+import Indici from "./components/Indici";
 
 
 function App() {
@@ -15,6 +16,7 @@ function App() {
       <Partners />
       <Profile />
       <Activities />
+      <Indici/>
       <Footer />
     </div>
   );
