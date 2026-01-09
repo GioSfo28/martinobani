@@ -54,7 +54,7 @@ const Indici = () => {
             transition={{ delay: 0.3 }}
             className="text-lg text-gray-600 mt-6 max-w-2xl mx-auto"
           >
-            Comprendere le voci principali della tua bolletta è il primo passo per ottimizzare i tuoi consumi e scegliere l'offerta migliore.
+            Comprendere le voci principali della tua bolletta è il primo passo per ottimizzare i tuoi consumi e scegliere l'offerta più adatta a te.
           </motion.p>
         </div>
 
@@ -91,7 +91,7 @@ const Indici = () => {
           className="mt-16 p-6 bg-blue-50 rounded-2xl border border-blue-100 text-center"
         >
           <p className="text-blue-800 text-sm font-medium">
-            💡 Ricorda: Questi indici sono regolati dal mercato e dalle autorità competenti (GME, ARERA, SNAM).
+            💡 Ricorda: questi indici sono regolati dal mercato e dalle autorità competenti (GME, ARERA, SNAM).
           </p>
         </motion.div>
       </div>
