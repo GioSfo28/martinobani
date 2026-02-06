@@ -106,7 +106,7 @@ const DashboardNavbar = ({ handleLogout, navigate }) => (
     </nav>
 );
 
-// Modale Gestione (Aggiungi/Modifica)
+// *** MODALE LOGICA AVANZATA ***
 const ManageBirthdayModal = ({ isOpen, onClose, userId, initialData = {}, existingBirthdays = [] }) => {
     const [nome, setNome] = useState("");
     const [cognome, setCognome] = useState("");
@@ -130,6 +130,7 @@ const ManageBirthdayModal = ({ isOpen, onClose, userId, initialData = {}, existi
         e.preventDefault();
         setError("");
 
+        // Pulizia input
         const cleanNome = nome.trim();
         const cleanCognome = cognome.trim();
         const cleanTelefono = telefono.trim();
@@ -139,6 +140,7 @@ const ManageBirthdayModal = ({ isOpen, onClose, userId, initialData = {}, existi
             return;
         }
 
+        // *** LOGICA DI CONTROLLO AVANZATA ***
         const duplicateNameMatch = existingBirthdays.find(item => {
             if (isEditing && item.id === initialData.id) return false;
             return (
@@ -152,7 +154,8 @@ const ManageBirthdayModal = ({ isOpen, onClose, userId, initialData = {}, existi
                 setError("Attenzione: esiste già un contatto identico (Nome, Cognome e Telefono).");
                 return;
             }
-            if (window.confirm(`Esiste già un contatto "${cleanNome} ${cleanCognome}" ma con un numero diverso.\nVuoi aggiornare il numero di telefono di quel contatto?`)) {
+
+            if (window.confirm(`Esiste già un contatto "${cleanNome} ${cleanCognome}" ma con un numero diverso (o nessun numero).\nVuoi aggiornare il numero di telefono di quel contatto?`)) {
                 setIsSubmitting(true);
                 try {
                     const updateRef = ref(db, `Utenti/${userId}/Compleanni/${duplicateNameMatch.id}`);
@@ -168,7 +171,7 @@ const ManageBirthdayModal = ({ isOpen, onClose, userId, initialData = {}, existi
                     onClose();
                 } catch (err) {
                     console.error(err);
-                    setError("Errore durante l'aggiornamento.");
+                    setError("Errore durante l'aggiornamento del contatto esistente.");
                 } finally {
                     setIsSubmitting(false);
                 }
@@ -244,6 +247,8 @@ const AgendaCompleanni = () => {
     const db = getDatabase();
 
     const currentMonth = new Date().getMonth() + 1;
+    // --- FIX: Aggiunto currentYear per calcolo corretto del giorno della settimana ---
+    const currentYear = new Date().getFullYear(); 
     const italianMonths = ["Gennaio", "Febbraio", "Marzo", "Aprile", "Maggio", "Giugno", "Luglio", "Agosto", "Settembre", "Ottobre", "Novembre", "Dicembre"];
     const currentMonthName = italianMonths[currentMonth - 1];
 
@@ -266,9 +271,8 @@ const AgendaCompleanni = () => {
 
         return birthdays
             .filter(b => {
-                // Rimosso _ sostituendolo con spazio vuoto nella destrutturazione
-                const [, m, d] = b.dataNascita.split('-');
-                // Mese corrente AND Giorno >= Oggi
+                const [, m, d] = b.dataNascita.split('-'); // Destrutturazione senza variabile inutilizzata
+                // Mese corrente AND Giorno >= Oggi (nascondi i passati)
                 return parseInt(m) === currentMonth && parseInt(d) >= todayDay;
             })
             .sort((a, b) => parseInt(a.dataNascita.split('-')[2]) - parseInt(b.dataNascita.split('-')[2]));
@@ -332,7 +336,7 @@ const AgendaCompleanni = () => {
         if (!tel) return alert("Numero non salvato");
         const num = tel.replace(/\D/g, '');
         const msg = encodeURIComponent(
-            `Ciao ${nome}! 🎉\nTi mando i miei più sinceri auguri di buon compleanno!\nSpero che questa giornata ti porti sorrisi, belle sorprese e tutto ciò che desideri.\nUn abbraccio,\nMartino Bani`
+            `Ciao ${nome}! 🎉\nTi mando i miei più sinceri auguri di buon compleanno!\nSpero che questa giornata ti porti sorrisi, belle sorprese e tutto ciò che desideri.\nUn abbraccio,\nGiorgio`
         );
         window.open(`https://wa.me/${num}?text=${msg}`, '_blank');
     };
@@ -393,16 +397,16 @@ const AgendaCompleanni = () => {
                                                 animate={{ opacity: 1, x: 0 }}
                                                 transition={{ delay: i * 0.1 }}
                                                 whileHover={{ scale: 1.03, x: 5 }}
+                                                // Rimosso overflow-hidden per far vedere il bollino PARTY intero
                                                 className={`relative rounded-lg p-4 shadow-md bg-gradient-to-r from-yellow-50 to-amber-50 border-l-4 ${isToday ? 'border-pink-500' : 'border-amber-500'} flex justify-between items-center transition-all duration-300`}
                                             >
-
                                                 <div className="flex flex-col">
                                                     <span className="font-bold text-lg text-gray-800">
                                                         {bday.cognome} {bday.nome}
                                                         {isToday && <span className="ml-2 text-pink-600 font-bold"> OGGI!</span>}
                                                     </span>
                                                     <span className="text-sm text-amber-700 font-medium">
-                                                        {/* QUI USIAMO turningAge PER L'ETA' CORRETTA */}
+                                                        {/* USIAMO turningAge */}
                                                         Compie <span className="text-pink-600 font-bold">{info.turningAge}</span> anni
                                                     </span>
                                                 </div>
@@ -411,7 +415,8 @@ const AgendaCompleanni = () => {
                                                         {info.nextBirthday.split('-')[0]}
                                                     </div>
                                                     <div className="text-xs text-gray-500 uppercase tracking-wider">
-                                                        {new Date(0, currentMonth - 1, info.nextBirthday.split('-')[0]).toLocaleString('it-IT', { weekday: 'short' })}
+                                                        {/* --- FIX: Usato currentYear al posto di 0 --- */}
+                                                        {new Date(currentYear, currentMonth - 1, info.nextBirthday.split('-')[0]).toLocaleString('it-IT', { weekday: 'short' })}
                                                     </div>
                                                 </div>
                                             </motion.li>
@@ -476,7 +481,7 @@ const AgendaCompleanni = () => {
                                             </p>
                                             <p className="text-sm text-gray-500">
                                                 Nato il: <span className="font-medium">{formatDate(b.dataNascita)}</span>
-                                                {/* Mostriamo anche qui l'età che compie se è oggi */}
+                                                {/* Mostriamo età che compie se è oggi */}
                                                 {info.isToday && <span className="ml-2 text-pink-600 font-bold">(Compie {info.turningAge} anni!)</span>}
                                             </p>
                                         </div>
