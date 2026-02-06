@@ -2,7 +2,7 @@
 import React, { useState, useEffect, useCallback, useMemo } from "react";
 import { auth } from "../firebase/config.js";
 import { signOut } from "firebase/auth";
-import { getDatabase, ref, onValue, push, set, remove} from "firebase/database"; // Importiamo 'update'
+import { getDatabase, ref, onValue, push, set, remove } from "firebase/database";
 import { useNavigate } from "react-router-dom";
 import {
     FaBirthdayCake, FaUserPlus, FaCalendarAlt, FaSpinner, FaSignOutAlt, FaTimes,
@@ -20,25 +20,46 @@ const formatDate = (dateString) => {
     return `${d}-${m}-${y}`;
 };
 
-// Utility: calcola età, prossimo compleanno, giorni mancanti
+// *** LOGICA CENTRALE AGGIORNATA ***
+// Calcola età che si compie (turningAge), gestisce "Oggi" correttamente
 const getBirthdayInfo = (dateString) => {
-    if (!dateString) return { age: 0, nextBirthday: "", daysRemaining: "", daysRemainingNumber: 366, isToday: false, isSoon: false };
+    if (!dateString) return { age: 0, nextBirthday: "", daysRemaining: "", daysRemainingNumber: 366, isToday: false, isSoon: false, turningAge: 0 };
 
     const [year, month, day] = dateString.split('-').map(Number);
-    const birthDate = new Date(year, month - 1, day);
+
+    // Data di oggi (reset ore per confronto pulito)
     const today = new Date();
     today.setHours(0, 0, 0, 0);
 
-    // Età
-    let age = today.getFullYear() - birthDate.getFullYear();
-    const thisYearBirthday = new Date(today.getFullYear(), month - 1, day);
-    if (thisYearBirthday > today) age--;
+    const currentYear = today.getFullYear();
+    const thisYearBirthday = new Date(currentYear, month - 1, day);
 
-    // Prossimo compleanno
-    const nextBirthday = thisYearBirthday > today ? thisYearBirthday : new Date(today.getFullYear() + 1, month - 1, day);
-    const isToday = nextBirthday.toDateString() === today.toDateString();
-    const diffMs = nextBirthday - today;
+    // Se il compleanno di quest'anno è oggi o nel futuro, prendiamo questo.
+    // Altrimenti (è passato ieri o prima), prendiamo quello dell'anno prossimo.
+    let nextBirthdayDate;
+    if (thisYearBirthday >= today) {
+        nextBirthdayDate = thisYearBirthday;
+    } else {
+        nextBirthdayDate = new Date(currentYear + 1, month - 1, day);
+    }
+
+    const isToday = nextBirthdayDate.getTime() === today.getTime();
+
+    // Calcolo giorni mancanti
+    const diffMs = nextBirthdayDate - today;
     const daysRemainingNumber = Math.ceil(diffMs / (1000 * 60 * 60 * 24));
+
+    // Calcolo gli anni che si compiono (turningAge)
+    // turningAge = Anno del prossimo compleanno - Anno di nascita
+    const turningAge = nextBirthdayDate.getFullYear() - year;
+
+    // Età attuale (anagrafica oggi)
+    let currentAge = currentYear - year;
+    // Se non ho ancora compiuto gli anni quest'anno (e non è oggi), ne ho uno in meno
+    if (today < thisYearBirthday) {
+        currentAge--;
+    }
+
     const isSoon = daysRemainingNumber > 0 && daysRemainingNumber <= 10;
 
     const daysRemaining = isToday
@@ -46,7 +67,8 @@ const getBirthdayInfo = (dateString) => {
         : `Tra ${daysRemainingNumber} ${daysRemainingNumber === 1 ? 'giorno' : 'giorni'}`;
 
     return {
-        age,
+        age: currentAge,
+        turningAge: turningAge, // Usiamo questo per dire "Compie X anni"
         nextBirthday: `${String(day).padStart(2, '0')}-${String(month).padStart(2, '0')}`,
         daysRemaining,
         daysRemainingNumber,
@@ -84,7 +106,7 @@ const DashboardNavbar = ({ handleLogout, navigate }) => (
     </nav>
 );
 
-// *** MODALE LOGICA AVANZATA ***
+// Modale Gestione (Aggiungi/Modifica)
 const ManageBirthdayModal = ({ isOpen, onClose, userId, initialData = {}, existingBirthdays = [] }) => {
     const [nome, setNome] = useState("");
     const [cognome, setCognome] = useState("");
@@ -108,7 +130,6 @@ const ManageBirthdayModal = ({ isOpen, onClose, userId, initialData = {}, existi
         e.preventDefault();
         setError("");
 
-        // Pulizia input
         const cleanNome = nome.trim();
         const cleanCognome = cognome.trim();
         const cleanTelefono = telefono.trim();
@@ -118,12 +139,8 @@ const ManageBirthdayModal = ({ isOpen, onClose, userId, initialData = {}, existi
             return;
         }
 
-        // *** LOGICA DI CONTROLLO AVANZATA ***
-        // Cerchiamo un contatto con stesso nome e cognome
         const duplicateNameMatch = existingBirthdays.find(item => {
-            // Ignoriamo l'elemento che stiamo modificando
             if (isEditing && item.id === initialData.id) return false;
-
             return (
                 item.nome.toLowerCase() === cleanNome.toLowerCase() &&
                 item.cognome.toLowerCase() === cleanCognome.toLowerCase()
@@ -131,48 +148,36 @@ const ManageBirthdayModal = ({ isOpen, onClose, userId, initialData = {}, existi
         });
 
         if (duplicateNameMatch) {
-            // CASO 1: Nome, Cognome e Telefono sono identici -> ERRORE
             if (duplicateNameMatch.telefono === cleanTelefono) {
                 setError("Attenzione: esiste già un contatto identico (Nome, Cognome e Telefono).");
                 return;
             }
-
-            // CASO 2: Nome e Cognome identici, ma Telefono diverso -> PROPOSTA AGGIORNAMENTO
-            if (window.confirm(`Esiste già un contatto "${cleanNome} ${cleanCognome}" ma con un numero diverso (o nessun numero).\nVuoi aggiornare il numero di telefono di quel contatto?`)) {
-                
+            if (window.confirm(`Esiste già un contatto "${cleanNome} ${cleanCognome}" ma con un numero diverso.\nVuoi aggiornare il numero di telefono di quel contatto?`)) {
                 setIsSubmitting(true);
                 try {
-                    // Aggiorniamo solo il contatto esistente trovato
                     const updateRef = ref(db, `Utenti/${userId}/Compleanni/${duplicateNameMatch.id}`);
-                    
-                    // Prepariamo i dati aggiornati (manteniamo ID originale)
                     const updatedData = {
-                        ...duplicateNameMatch, // Manteniamo gli altri dati vecchi se servono
+                        ...duplicateNameMatch,
                         nome: cleanNome,
                         cognome: cleanCognome,
-                        dataNascita: dataNascita, // Aggiorniamo anche la data se l'ha cambiata
-                        telefono: cleanTelefono,  // Il nuovo numero
+                        dataNascita: dataNascita,
+                        telefono: cleanTelefono,
                         timestamp: new Date().toISOString()
                     };
-
-                    // Usiamo 'update' o 'set' sull'ID esistente
                     await set(updateRef, updatedData);
                     onClose();
                 } catch (err) {
                     console.error(err);
-                    setError("Errore durante l'aggiornamento del contatto esistente.");
+                    setError("Errore durante l'aggiornamento.");
                 } finally {
                     setIsSubmitting(false);
                 }
-                return; // Usciamo dalla funzione, abbiamo gestito l'aggiornamento
+                return;
             } else {
-                // Se l'utente dice "Annulla" al confirm, fermiamo tutto (non crea duplicato)
                 return;
             }
         }
-        // *** FINE LOGICA AVANZATA ***
 
-        // CASO 3: Nessun duplicato trovato, procediamo con creazione/modifica standard
         setIsSubmitting(true);
         try {
             const newData = {
@@ -255,13 +260,21 @@ const AgendaCompleanni = () => {
         setSortMode(prev => prev === 'days' ? 'surname' : 'days');
     };
 
+    // *** FILTRO MESE CORRENTE AGGIORNATO (Fix ESLint: rimosso _) ***
     const birthdaysThisMonth = useMemo(() => {
+        const todayDay = new Date().getDate(); // Giorno del mese (es. 6)
+
         return birthdays
-            .filter(b => parseInt(b.dataNascita.split('-')[1]) === currentMonth)
+            .filter(b => {
+                // Rimosso _ sostituendolo con spazio vuoto nella destrutturazione
+                const [, m, d] = b.dataNascita.split('-');
+                // Mese corrente AND Giorno >= Oggi
+                return parseInt(m) === currentMonth && parseInt(d) >= todayDay;
+            })
             .sort((a, b) => parseInt(a.dataNascita.split('-')[2]) - parseInt(b.dataNascita.split('-')[2]));
     }, [birthdays, currentMonth]);
 
-    // ORDINAMENTO DINAMICO
+    // *** ORDINAMENTO LISTA AGGIORNATO ***
     const sortedBirthdays = useMemo(() => {
         if (sortMode === 'surname') {
             return [...birthdays].sort((a, b) =>
@@ -273,11 +286,15 @@ const AgendaCompleanni = () => {
             const infoA = getBirthdayInfo(a.dataNascita);
             const infoB = getBirthdayInfo(b.dataNascita);
 
+            // 1. Priorità assoluta a OGGI
             if (infoA.isToday && !infoB.isToday) return -1;
             if (!infoA.isToday && infoB.isToday) return 1;
+
+            // 2. Poi priorità a quelli "A Breve" (entro 10gg)
             if (infoA.isSoon && !infoB.isSoon) return -1;
             if (!infoA.isSoon && infoB.isSoon) return 1;
 
+            // 3. Infine ordina per giorni mancanti
             return infoA.daysRemainingNumber - infoB.daysRemainingNumber;
         });
     }, [birthdays, sortMode]);
@@ -358,7 +375,7 @@ const AgendaCompleanni = () => {
                                     <FaGift className="text-3xl text-red-600 drop-shadow-md" />
                                 </motion.div>
                                 <span className="bg-gradient-to-r from-amber-600 to-pink-600 bg-clip-text text-transparent">
-                                    Compleanni di {currentMonthName}
+                                    Prossimi di {currentMonthName}
                                 </span>
                                 <FaRegCalendarAlt className="ml-auto text-amber-500" />
                             </h2>
@@ -376,20 +393,17 @@ const AgendaCompleanni = () => {
                                                 animate={{ opacity: 1, x: 0 }}
                                                 transition={{ delay: i * 0.1 }}
                                                 whileHover={{ scale: 1.03, x: 5 }}
-                                                className={`relative overflow-hidden rounded-lg p-4 shadow-md bg-gradient-to-r from-yellow-50 to-amber-50 border-l-4 ${isToday ? 'border-pink-500' : 'border-amber-500'} flex justify-between items-center transition-all duration-300`}
+                                                className={`relative rounded-lg p-4 shadow-md bg-gradient-to-r from-yellow-50 to-amber-50 border-l-4 ${isToday ? 'border-pink-500' : 'border-amber-500'} flex justify-between items-center transition-all duration-300`}
                                             >
-                                                {isToday && (
-                                                    <motion.div animate={{ y: [0, -10, 0] }} transition={{ duration: 1, repeat: Infinity }} className="absolute -top-3 -left-3">
-                                                        <div className="bg-red-500 rounded-full w-8 h-8 flex items-center justify-center text-white text-xs font-bold shadow-lg">PARTY</div>
-                                                    </motion.div>
-                                                )}
+
                                                 <div className="flex flex-col">
                                                     <span className="font-bold text-lg text-gray-800">
                                                         {bday.cognome} {bday.nome}
                                                         {isToday && <span className="ml-2 text-pink-600 font-bold"> OGGI!</span>}
                                                     </span>
                                                     <span className="text-sm text-amber-700 font-medium">
-                                                        Compie <span className="text-pink-600 font-bold">{info.age + 1}</span> anni
+                                                        {/* QUI USIAMO turningAge PER L'ETA' CORRETTA */}
+                                                        Compie <span className="text-pink-600 font-bold">{info.turningAge}</span> anni
                                                     </span>
                                                 </div>
                                                 <div className="text-right">
@@ -408,7 +422,7 @@ const AgendaCompleanni = () => {
                                 <motion.p initial={{ opacity: 0 }} animate={{ opacity: 1 }} className="text-center text-gray-500 italic py-8 bg-gray-50 rounded-lg">
                                     <FaBirthdayCake className="inline-block text-3xl text-gray-300 mb-2" />
                                     <br />
-                                    Nessun compleanno a {currentMonthName}... ma arriveranno!
+                                    Nessun altro compleanno a {currentMonthName}.
                                 </motion.p>
                             )}
                         </div>
@@ -462,6 +476,8 @@ const AgendaCompleanni = () => {
                                             </p>
                                             <p className="text-sm text-gray-500">
                                                 Nato il: <span className="font-medium">{formatDate(b.dataNascita)}</span>
+                                                {/* Mostriamo anche qui l'età che compie se è oggi */}
+                                                {info.isToday && <span className="ml-2 text-pink-600 font-bold">(Compie {info.turningAge} anni!)</span>}
                                             </p>
                                         </div>
 
