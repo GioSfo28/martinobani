@@ -40,6 +40,10 @@ const Footer = () => {
     setShowCookieBanner(false);
   };
 
+  // Anno dinamico: parte da 2025 fino all'anno corrente
+  const currentYear = new Date().getFullYear();
+  const copyrightYear = currentYear > 2025 ? `2025 - ${currentYear}` : "2025";
+
   return (
     <>
       {showCookieBanner && (
@@ -250,11 +254,11 @@ const Footer = () => {
 
           {/* Copyright e Area Privata */}
           <motion.div
-            className="flex flex-col sm:flex-row justify-between items-center py-2" // Aggiungo flex-row per allineare gli elementi
+            className="flex flex-col sm:flex-row justify-between items-center py-2"
             variants={itemFadeIn}
           >
             <p className="text-sm text-gray-400 order-2 sm:order-1 mt-2 sm:mt-0">
-              © 2025 Martino Bani - Consulente Energetico Indipendente - Powered by{" "}
+              © {copyrightYear} Martino Bani - Consulente Energetico Indipendente - Powered by{" "}
               <a
                 href="https://www.giorgiosforza.it"
                 target="_blank"
@@ -265,16 +269,15 @@ const Footer = () => {
               </a>
             </p>
             
-            {/* LINK NASCOSTO PER AREA PRIVATA (Nuova Aggiunta) */}
+            {/* LINK NASCOSTO PER AREA PRIVATA */}
             <div className="order-1 sm:order-2">
-                <Link
-                  to="/Login"
-                  className="text-xs text-gray-600 hover:text-gray-400 transition-colors duration-300"
-                >
-                  Area privata
-                </Link>
+              <Link
+                to="/Login"
+                className="text-xs text-gray-600 hover:text-gray-400 transition-colors duration-300"
+              >
+                Area privata
+              </Link>
             </div>
-            
           </motion.div>
         </div>
       </motion.footer>

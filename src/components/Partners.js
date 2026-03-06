@@ -32,7 +32,7 @@ const Partners = () => {
     },
   };
 
-  // Configurazione avanzata del carosello
+  // Configurazione avanzata del carosello - con fix responsive mobile
   const settings = {
     dots: true,
     infinite: true,
@@ -43,6 +43,7 @@ const Partners = () => {
     autoplaySpeed: 4000,
     arrows: false,
     pauseOnHover: true,
+    mobileFirst: true,           // ← AGGIUNTO: aiuta con mobile-first logic
     customPaging: (i) => (
       <button className="w-2 h-2 rounded-full bg-[#4A6FA5]/30 hover:bg-[#4A6FA5] transition-all duration-300" />
     ),
@@ -57,6 +58,14 @@ const Partners = () => {
       },
       {
         breakpoint: 768,
+        settings: {
+          slidesToShow: 1,
+          slidesToScroll: 1,
+          dots: true,
+        },
+      },
+      {
+        breakpoint: 480,           // ← AGGIUNTO: breakpoint mobile extra
         settings: {
           slidesToShow: 1,
           slidesToScroll: 1,
