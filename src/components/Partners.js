@@ -1,8 +1,10 @@
 import React from "react";
-import Slider from "react-slick";
+import { Swiper, SwiperSlide } from "swiper/react";
+import { Autoplay, Pagination } from "swiper/modules";
 import { motion } from "framer-motion";
-import "slick-carousel/slick/slick.css";
-import "slick-carousel/slick/slick-theme.css";
+
+import "swiper/css";
+import "swiper/css/pagination";
 
 // Import loghi
 import BluenergyLogo from "../assets/bluenergy.jpg";
@@ -20,45 +22,8 @@ const Partners = () => {
     visible: {
       opacity: 1,
       y: 0,
-      transition: { duration: 0.6, ease: "easeOut" }
+      transition: { duration: 0.6 }
     }
-  };
-
-  const cardFadeIn = {
-    hidden: { opacity: 0, scale: 0.95 },
-    visible: {
-      opacity: 1,
-      scale: 1,
-      transition: { duration: 0.4 }
-    }
-  };
-
-  // CONFIGURAZIONE CAROUSEL (FIX MOBILE)
-  const settings = {
-    dots: true,
-    infinite: true,
-    speed: 600,
-    slidesToShow: 3,
-    slidesToScroll: 1,
-    autoplay: true,
-    autoplaySpeed: 4000,
-    arrows: false,
-    pauseOnHover: true,
-
-    responsive: [
-      {
-        breakpoint: 1024,
-        settings: {
-          slidesToShow: 2
-        }
-      },
-      {
-        breakpoint: 768,
-        settings: {
-          slidesToShow: 1
-        }
-      }
-    ]
   };
 
   const partners = [
@@ -87,9 +52,9 @@ const Partners = () => {
         transition={{ duration: 12, repeat: Infinity }}
       />
 
-      <div className="relative z-10 px-4 sm:px-6 lg:px-8 max-w-7xl mx-auto">
+      <div className="relative z-10 max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
 
-        {/* titolo */}
+        {/* Titolo */}
         <motion.div
           className="text-center mb-16"
           initial="hidden"
@@ -97,6 +62,7 @@ const Partners = () => {
           viewport={{ once: true }}
           variants={fadeIn}
         >
+
           <h2 className="text-4xl sm:text-5xl font-extrabold mb-4 tracking-tight">
             <span className="bg-gradient-to-r from-[#4A6FA5] to-[#357ABD] bg-clip-text text-transparent">
               I miei partner
@@ -107,41 +73,48 @@ const Partners = () => {
             Collaboro con le migliori compagnie del settore energetico per offrirti
             <span className="font-semibold"> soluzioni affidabili, convenienti e innovative</span>.
           </p>
+
         </motion.div>
 
 
-        {/* CAROUSEL */}
+        {/* SWIPER */}
         <motion.div
           initial="hidden"
           whileInView="visible"
           viewport={{ once: true }}
           variants={fadeIn}
-          className="w-full max-w-6xl mx-auto"
+          className="max-w-6xl mx-auto"
         >
 
-          <style>
-            {`
-            .slick-dots {
-              bottom: -35px;
-            }
+          <Swiper
+            modules={[Autoplay, Pagination]}
+            spaceBetween={30}
+            loop={true}
+            autoplay={{
+              delay: 3500,
+              disableOnInteraction: false
+            }}
+            pagination={{ clickable: true }}
 
-            .slick-dots li button:before {
-              color: transparent;
-            }
+            breakpoints={{
+              0: {
+                slidesPerView: 1
+              },
+              640: {
+                slidesPerView: 1
+              },
+              768: {
+                slidesPerView: 2
+              },
+              1024: {
+                slidesPerView: 3
+              }
+            }}
+          >
 
-            .slick-slide {
-              padding: 10px;
-            }
-          `}
-          </style>
-
-          <Slider {...settings}>
             {partners.map((partner, index) => (
 
-              <motion.div
-                key={index}
-                variants={cardFadeIn}
-              >
+              <SwiperSlide key={index}>
 
                 <motion.div
                   whileHover={{ y: -8 }}
@@ -154,21 +127,22 @@ const Partners = () => {
                     className="max-h-24 max-w-[160px] object-contain transition-transform duration-300 group-hover:scale-110"
                   />
 
-                  <p className="mt-4 text-sm font-semibold text-gray-700 group-hover:text-[#4A6FA5]">
+                  <p className="mt-4 text-sm font-semibold text-gray-700 group-hover:text-[#4A6FA5] transition-colors">
                     {partner.name}
                   </p>
 
                 </motion.div>
 
-              </motion.div>
+              </SwiperSlide>
 
             ))}
-          </Slider>
+
+          </Swiper>
 
         </motion.div>
 
 
-        {/* trust section */}
+        {/* Trust section */}
         <motion.div
           className="mt-20 text-center"
           initial="hidden"
@@ -178,18 +152,20 @@ const Partners = () => {
         >
 
           <p className="text-gray-600 text-lg">
-            Trusted by <span className="font-bold text-[#4A6FA5]">7+ energy partners</span> in Italia
+            Trusted by <span className="font-bold text-[#4A6FA5]">7+ energy partners</span> across Italy
           </p>
 
           <div className="mt-4 flex items-center justify-center gap-2">
 
             <div className="flex -space-x-1">
+
               {[...Array(5)].map((_, i) => (
                 <div
                   key={i}
                   className="w-8 h-8 bg-gradient-to-br from-[#4A6FA5] to-[#357ABD] rounded-full border-2 border-white shadow"
                 />
               ))}
+
             </div>
 
             <span className="text-sm font-semibold text-gray-700">
@@ -201,6 +177,7 @@ const Partners = () => {
         </motion.div>
 
       </div>
+
     </section>
   );
 };

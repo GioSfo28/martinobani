@@ -18,7 +18,8 @@
     "react-router-dom": "^7.9.4",
     "react-scripts": "5.0.1",
     "react-slick": "^0.31.0",
-    "slick-carousel": "^1.8.1"
+    "slick-carousel": "^1.8.1",
+    "swiper": "^12.1.2"
   },
   "scripts": {
     "start": "react-scripts start",
