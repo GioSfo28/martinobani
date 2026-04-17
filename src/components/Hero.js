@@ -101,14 +101,19 @@ const Hero = () => {
             className="mt-6 text-xl sm:text-2xl text-gray-100 font-semibold leading-relaxed"
             variants={fadeIn}
           >
-            Specializzato nella gestione ottimale delle utenze di luce e gas
+            Specializzato nel trovare soluzioni migliori e più trasparenti, nel settore di luce e gas.
           </motion.p>
 
           <motion.p
             className="mt-4 text-lg sm:text-xl text-yellow-300 font-bold uppercase tracking-wider"
             variants={fadeIn}
           >
-            ⚡ Semplifico la tua vita energetica, facendoti risparmiare tempo e denaro!
+            <span className="block">
+              ⚡ Ti semplifico la vita, facendoti risparmiare tempo e denaro
+            </span>
+            <span className="block mt-2"> 
+              NON DOVRAI PIÙ PERDERE ENERGIE A CONTROLLARE SCADENZE E COMPILARE CONTRATTI
+            </span>
           </motion.p>
 
           <motion.p
