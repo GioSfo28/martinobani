@@ -57,7 +57,8 @@ const Hero = () => {
   return (
     <>
       {/* Hero Section */}
-      <section className="relative w-full min-h-[75vh] flex flex-col justify-center items-center text-center overflow-hidden pt-20">
+      {/* Modificato: min-h-screen per far prendere tutto lo schermo, py-32 per padding top e bottom in modo che nulla tocchi i bordi */}
+      <section className="relative w-full min-h-screen flex flex-col justify-center items-center text-center overflow-hidden py-32">
         {/* Background with gradient overlay */}
         <div
           className="absolute inset-0 z-0"
@@ -82,7 +83,7 @@ const Hero = () => {
 
         {/* Hero Content */}
         <motion.div
-          className="relative z-20 max-w-4xl mx-auto px-4 sm:px-6 lg:px-8"
+          className="relative z-20 max-w-4xl mx-auto px-4 sm:px-6 lg:px-8 mt-10" // Aggiunto mt-10 per spingerlo leggermente giù dal menu
           initial="hidden"
           animate="visible"
           variants={staggerContainer}
@@ -104,37 +105,39 @@ const Hero = () => {
             Specializzato nel trovare soluzioni migliori e più trasparenti, nel settore di luce e gas.
           </motion.p>
 
+          {/* Testo in evidenza sistemato con span block per un "a capo" pulito e distanziato */}
           <motion.p
-            className="mt-4 text-lg sm:text-xl text-yellow-300 font-bold uppercase tracking-wider"
+            className="mt-8 text-base sm:text-lg lg:text-xl text-yellow-300 font-bold uppercase tracking-wider"
             variants={fadeIn}
           >
             <span className="block">
               ⚡ Ti semplifico la vita, facendoti risparmiare tempo e denaro
             </span>
-            <span className="block mt-2"> 
+            <span className="block mt-3"> 
               NON DOVRAI PIÙ PERDERE ENERGIE A CONTROLLARE SCADENZE E COMPILARE CONTRATTI
             </span>
           </motion.p>
 
           <motion.p
-            className="mt-4 text-base sm:text-lg text-gray-200 leading-relaxed max-w-2xl mx-auto"
+            className="mt-6 text-base sm:text-lg text-gray-200 leading-relaxed max-w-2xl mx-auto"
             variants={fadeIn}
           >
             Che tu sia un privato, un'azienda o un libero professionista, affida
             a me le tue utenze e goditi il risparmio!
           </motion.p>
 
+          {/* Pulsanti - Aumentato il mt-12 per distanziarli bene dal testo */}
           <motion.div
-            className="mt-10 flex flex-col sm:flex-row gap-4 justify-center"
+            className="mt-12 flex flex-col sm:flex-row gap-4 justify-center"
             variants={fadeIn}
           >
             <motion.a
               onClick={(e) => {
                 e.preventDefault();
                 console.log("🖱️ Cliccato: Scopri di più");
-                scrollToElement("Profile");  // ← CAMBIA DA "ChiSono" A "Profile"
+                scrollToElement("Profile");
               }}
-              className="px-10 py-4 bg-gradient-to-r from-[#4A6FA5] to-[#357ABD] text-white font-bold rounded-full shadow-xl hover:shadow-2xl transition-all duration-300 focus:outline-none focus:ring-4 focus:ring-[#4A6FA5]/50 text-lg"
+              className="cursor-pointer px-10 py-4 bg-gradient-to-r from-[#4A6FA5] to-[#357ABD] text-white font-bold rounded-full shadow-xl hover:shadow-2xl transition-all duration-300 focus:outline-none focus:ring-4 focus:ring-[#4A6FA5]/50 text-lg"
               whileHover={{ scale: 1.08, y: -3 }}
               whileTap={{ scale: 0.95 }}
             >
