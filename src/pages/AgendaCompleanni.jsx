@@ -279,7 +279,6 @@ const AgendaCompleanni = () => {
     const db = getDatabase();
 
     const currentMonth = new Date().getMonth() + 1;
-    const currentYear = new Date().getFullYear();
     const italianMonths = ["Gennaio", "Febbraio", "Marzo", "Aprile", "Maggio", "Giugno", "Luglio", "Agosto", "Settembre", "Ottobre", "Novembre", "Dicembre"];
     const currentMonthName = italianMonths[currentMonth - 1];
 
