@@ -357,16 +357,16 @@ const AgendaCompleanni = () => {
         if (!tel) return alert("Numero non salvato");
         const num = tel.replace(/\D/g, '');
         const msg = encodeURIComponent(
-            `Ciao ${nome}! 🎉\nTi mando i miei più sinceri auguri di buon compleanno!\nSpero che questa giornata ti porti sorrisi, belle sorprese e tutto ciò che desideri.\nUn abbraccio,\nMartino`
+            `Ciao ${nome}!\n\nTi mando i miei più sinceri auguri 🎂🥂!\nSpero che questa giornata ti porti sorrisi e belle sorprese!\n\nUn saluto,\nMartino`
         );
         window.open(`https://wa.me/${num}?text=${msg}`, '_blank');
     };
 
     const openEmail = (nome, email) => {
         if (!email) return alert("Email non salvata");
-        const subject = encodeURIComponent("Buon Compleanno! 🎉");
+        const subject = encodeURIComponent("BUON COMPLEANNO! 🎉");
         const body = encodeURIComponent(
-            `Ciao ${nome}!\n\nTi mando i miei più sinceri auguri di buon compleanno!\nSpero che questa giornata ti porti sorrisi, belle sorprese e tutto ciò che desideri.\n\nUn abbraccio,\nMartino`
+            `Ciao ${nome}!\n\nTi mando i miei più sinceri auguri 🎂🥂!\nSpero che questa giornata ti porti sorrisi e belle sorprese!\n\nUn saluto,\nMartino`
         );
         const gmailUrl = `https://mail.google.com/mail/?view=cm&fs=1&to=${email}&su=${subject}&body=${body}`;
         window.open(gmailUrl, '_blank');
