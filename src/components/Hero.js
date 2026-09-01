@@ -108,7 +108,7 @@ const Hero = () => {
               ⚡ Ti semplifico la vita facendoti risparmiare tempo e denaro
             </span>
             <span className="block mt-3">
-              🔥 NON DOVRAI PIÙ PERDERE ENERGIE A CONTROLLARE SCADENZE E COMPILARE CONTRATTI
+              🔥 NON DOVRAI PIÙ CONTROLLARE SCADENZE E COMPILARE CONTRATTI
             </span>
           </motion.p>
 
