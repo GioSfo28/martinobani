@@ -57,9 +57,8 @@ const Hero = () => {
   return (
     <>
       {/* Hero Section */}
-      {/* Modificato: min-h-screen per far prendere tutto lo schermo, py-32 per padding top e bottom in modo che nulla tocchi i bordi */}
       <section className="relative w-full min-h-screen flex flex-col justify-center items-center text-center overflow-hidden py-32">
-        {/* Background with gradient overlay */}
+        {/* Background ... */}
         <div
           className="absolute inset-0 z-0"
           style={{
@@ -69,11 +68,8 @@ const Hero = () => {
             backgroundAttachment: "fixed",
           }}
         />
-
-        {/* Multi-layer overlay for better text contrast */}
         <div className="absolute inset-0 bg-gradient-to-b from-black/60 via-black/50 to-black/60 z-10" />
 
-        {/* Animated background elements */}
         <motion.div
           className="absolute top-0 left-0 w-96 h-96 bg-blue-500/20 rounded-full blur-3xl"
           animate={{ x: [0, 50, 0], y: [0, 30, 0] }}
@@ -81,9 +77,8 @@ const Hero = () => {
           style={{ zIndex: 5 }}
         />
 
-        {/* Hero Content */}
         <motion.div
-          className="relative z-20 max-w-4xl mx-auto px-4 sm:px-6 lg:px-8 mt-10" // Aggiunto mt-10 per spingerlo leggermente giù dal menu
+          className="relative z-20 max-w-4xl mx-auto px-4 sm:px-6 lg:px-8 mt-10"
           initial="hidden"
           animate="visible"
           variants={staggerContainer}
@@ -105,7 +100,6 @@ const Hero = () => {
             Specializzato nel trovare soluzioni migliori e più trasparenti, nel settore di luce e gas.
           </motion.p>
 
-          {/* Testo in evidenza sistemato con span block per un "a capo" pulito e distanziato */}
           <motion.p
             className="mt-8 text-base sm:text-lg lg:text-xl text-yellow-300 font-bold uppercase tracking-wider"
             variants={fadeIn}
@@ -113,7 +107,7 @@ const Hero = () => {
             <span className="block">
               ⚡ Ti semplifico la vita facendoti risparmiare tempo e denaro
             </span>
-            <span className="block mt-3"> 
+            <span className="block mt-3">
               🔥 NON DOVRAI PIÙ PERDERE ENERGIE A CONTROLLARE SCADENZE E COMPILARE CONTRATTI
             </span>
           </motion.p>
@@ -126,7 +120,6 @@ const Hero = () => {
             a me le tue utenze e goditi il risparmio!
           </motion.p>
 
-          {/* Pulsanti - Aumentato il mt-12 per distanziarli bene dal testo */}
           <motion.div
             className="mt-12 flex flex-col sm:flex-row gap-4 justify-center"
             variants={fadeIn}
@@ -134,7 +127,6 @@ const Hero = () => {
             <motion.a
               onClick={(e) => {
                 e.preventDefault();
-                console.log("🖱️ Cliccato: Scopri di più");
                 scrollToElement("Profile");
               }}
               className="cursor-pointer px-10 py-4 bg-gradient-to-r from-[#4A6FA5] to-[#357ABD] text-white font-bold rounded-full shadow-xl hover:shadow-2xl transition-all duration-300 focus:outline-none focus:ring-4 focus:ring-[#4A6FA5]/50 text-lg"
@@ -158,6 +150,85 @@ const Hero = () => {
           </motion.div>
         </motion.div>
       </section>
+
+      {/* Banner Slogan Premium - Versione Elegante e Pulita */}
+      <motion.div
+        initial="hidden"
+        whileInView="visible"
+        viewport={{ once: true, margin: "-50px" }}
+        variants={fadeIn}
+        /* Usa rounded-3xl se vuoi un effetto "scheda" staccata, altrimenti rimuovilo per full-width */
+        className="relative w-full overflow-hidden py-20 px-6 bg-slate-900 rounded-3xl shadow-2xl my-8"
+      >
+        {/* Sfondo Premium: Gradiente neutro e luce radiale per dare profondità */}
+        <div className="absolute inset-0 z-0">
+          <div className="absolute inset-0 bg-gradient-to-b from-slate-900 via-slate-800 to-slate-900"></div>
+          {/* Luce soffusa centrale, non invadente */}
+          <div className="absolute top-0 left-1/2 -translate-x-1/2 w-full max-w-3xl h-full bg-amber-500/5 rounded-full blur-[120px]"></div>
+        </div>
+
+        {/* Contenuto */}
+        <div className="relative z-10 max-w-4xl mx-auto flex flex-col items-center text-center">
+
+          {/* Badge Minimalista */}
+          <motion.div
+            variants={fadeIn}
+            className="mb-8"
+          >
+            <span className="inline-flex items-center gap-2 px-5 py-1.5 bg-slate-800/50 backdrop-blur-md border border-slate-700 rounded-full text-amber-400 text-xs font-bold uppercase tracking-widest shadow-sm">
+              {/* Semplice punto luce al posto di icone ingombranti */}
+              <span className="w-1.5 h-1.5 rounded-full bg-amber-400 animate-pulse"></span>
+              Servizio Esclusivo
+            </span>
+          </motion.div>
+
+          <motion.div
+            variants={staggerContainer}
+            className="space-y-6 w-full"
+          >
+            {/* Prima riga - Sobria ed elegante */}
+            <motion.h3
+              variants={fadeIn}
+              className="text-xl md:text-2xl font-light text-slate-300"
+            >
+              Non si tratta solo di trovare il prezzo più basso.
+            </motion.h3>
+
+            {/* Seconda riga - Il vero gancio (Hook) */}
+            <motion.h2
+              variants={fadeIn}
+              className="text-3xl md:text-5xl font-extrabold text-transparent bg-clip-text bg-gradient-to-r from-white via-slate-100 to-slate-400 leading-tight"
+            >
+              Offerte sempre aggiornate, trasparenti <br className="hidden md:block" />
+              e senza costi nascosti.
+            </motion.h2>
+
+            {/* Separatore elegante */}
+            <motion.div
+              variants={fadeIn}
+              className="flex justify-center py-6"
+            >
+              <div className="w-24 h-[2px] bg-gradient-to-r from-transparent via-amber-400/50 to-transparent"></div>
+            </motion.div>
+
+            {/* Promessa Finale - Box in Glassmorphism per massimizzare l'attenzione */}
+            <motion.div
+              variants={fadeIn}
+              className="relative p-[1px] rounded-2xl bg-gradient-to-b from-slate-600 to-slate-800/50 max-w-2xl mx-auto transform hover:scale-[1.02] transition-transform duration-300"
+            >
+              <div className="px-8 py-6 bg-slate-900/80 backdrop-blur-xl rounded-[15px] border border-slate-700/50 shadow-inner">
+                <p className="text-lg md:text-2xl font-medium text-slate-200 leading-relaxed">
+                  Delegando a me il 100% delle pratiche,<br />
+                  <span className="text-amber-400 font-bold block mt-3 text-2xl md:text-4xl tracking-tight">
+                    senza spendere un euro.
+                  </span>
+                </p>
+              </div>
+            </motion.div>
+
+          </motion.div>
+        </div>
+      </motion.div>
 
       {/* Servizi Section */}
       <section className="w-full py-24 bg-gradient-to-b from-gray-50 via-white to-gray-50">
