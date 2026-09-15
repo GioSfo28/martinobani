@@ -14,7 +14,7 @@ const Indici = () => {
     {
       title: "Dispacciamento",
       description:
-        "È una di quelle voci presenti nella nostra bolletta della luce ed è stabilita dalle autorità. Uguale per tutti sul territorio nazionale e non dipesa dal fornitore. È una quota che viene pagata per riconoscere a Terna il lavoro estremamente complesso, che in ogni momento della giornata svolge per mantenere costante la quantità di energia prodotta e quella consumata da famiglie imprese. Viene accorpata nel totale al kWh nella voce 'spesa per la vendita materia energia'.",
+        "È una di quelle voci presenti nella nostra bolletta della luce ed è stabilita dalle autorità. Uguale per tutti sul territorio nazionale e non dipesa dal fornitore. È una quota che viene pagata per riconoscere a Terna il lavoro estremamente complesso, che in ogni momento della giornata svolge per mantenere costante la quantità di energia prodotta e quella consumata da famiglie imprese. Viene accorpata nel totale al kWh nella voce 'spesa per la vendita materia energia' che varia ogni mese in base ai picchi e ai carichi della rete.",
       icon: <FaExchangeAlt className="text-blue-600" />,
       color: "border-blue-600/20",
     },
