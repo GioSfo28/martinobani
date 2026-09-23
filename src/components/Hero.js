@@ -116,6 +116,23 @@ const Hero = () => {
     return () => clearTimeout(t);
   }, [scrollToElement]);
 
+  /* ---------- Click handlers ---------- */
+  const handleProfileClick = useCallback(
+    (e) => {
+      e.preventDefault();
+      scrollToElement("Profile");
+    },
+    [scrollToElement]
+  );
+
+  const handleContactClick = useCallback(
+    (e) => {
+      e.preventDefault();
+      scrollToElement("Contatti");
+    },
+    [scrollToElement]
+  );
+
   return (
     <>
       {/* =========================================================
@@ -125,7 +142,7 @@ const Hero = () => {
         id="top"
         className="relative w-full min-h-screen flex flex-col justify-center items-center text-center py-32 sm:py-40"
       >
-        {/* -------- Background statico (no fixed, no overflow-hidden) -------- */}
+        {/* -------- Background statico -------- */}
         <div
           className="absolute inset-0 z-0"
           style={{
@@ -136,7 +153,7 @@ const Hero = () => {
           aria-hidden="true"
         />
 
-        {/* -------- Overlay scuro + gradiente brand -------- */}
+        {/* -------- Overlay scuro -------- */}
         <div
           className="absolute inset-0 z-10 bg-gradient-to-b from-[#0B1424]/85 via-[#0B1424]/70 to-[#0B1424]/90"
           aria-hidden="true"
@@ -147,13 +164,11 @@ const Hero = () => {
           aria-hidden="true"
         />
 
-        {/* -------- Glow decorativo (fisso, fuori dal flusso) -------- */}
+        {/* -------- Glow decorativi (fissi) -------- */}
         <motion.div
           className="pointer-events-none fixed top-1/3 -left-40 w-[28rem] h-[28rem] bg-[#4A6FA5]/25 rounded-full blur-[120px] z-[1]"
           animate={
-            shouldReduceMotion
-              ? undefined
-              : { x: [0, 60, 0], y: [0, 40, 0] }
+            shouldReduceMotion ? undefined : { x: [0, 60, 0], y: [0, 40, 0] }
           }
           transition={{ duration: 14, repeat: Infinity, ease: "easeInOut" }}
           aria-hidden="true"
@@ -161,9 +176,7 @@ const Hero = () => {
         <motion.div
           className="pointer-events-none fixed bottom-0 -right-40 w-[26rem] h-[26rem] bg-[#E8A44D]/15 rounded-full blur-[120px] z-[1]"
           animate={
-            shouldReduceMotion
-              ? undefined
-              : { x: [0, -50, 0], y: [0, -30, 0] }
+            shouldReduceMotion ? undefined : { x: [0, -50, 0], y: [0, -30, 0] }
           }
           transition={{ duration: 16, repeat: Infinity, ease: "easeInOut" }}
           aria-hidden="true"
@@ -192,7 +205,7 @@ const Hero = () => {
             </span>
           </motion.div>
 
-          {/* Titolo */}
+          {/* Titolo — con py-3 sul gradiente per la "g" */}
           <motion.h1
             variants={fadeIn}
             className="text-4xl sm:text-6xl md:text-7xl font-extrabold tracking-tight text-white leading-[1.1]"
@@ -213,7 +226,7 @@ const Hero = () => {
             <span className="text-white font-semibold">gas</span>.
           </motion.p>
 
-          {/* Value props — 2 card inline */}
+          {/* Value props */}
           <motion.div
             variants={fadeIn}
             className="mt-10 flex flex-col sm:flex-row gap-3 sm:gap-4 justify-center items-stretch max-w-3xl mx-auto"
@@ -244,10 +257,13 @@ const Hero = () => {
             variants={fadeIn}
             className="mt-8 text-sm sm:text-base text-white/70 max-w-2xl mx-auto leading-relaxed"
           >
-            Che tu sia un <span className="text-white/95 font-semibold">privato</span>,{" "}
-            un'<span className="text-white/95 font-semibold">azienda</span> o un{" "}
-            <span className="text-white/95 font-semibold">libero professionista</span>,
-            affida a me le tue utenze e goditi il risparmio.
+            Che tu sia un{" "}
+            <span className="text-white/95 font-semibold">privato</span>, un'
+            <span className="text-white/95 font-semibold">azienda</span> o un{" "}
+            <span className="text-white/95 font-semibold">
+              libero professionista
+            </span>
+            , affida a me le tue utenze e goditi il risparmio.
           </motion.p>
 
           {/* CTA */}
@@ -255,12 +271,10 @@ const Hero = () => {
             variants={fadeIn}
             className="mt-12 flex flex-col sm:flex-row gap-4 justify-center"
           >
-            {/* Primary */}
+            {/* Primary → Profile */}
             <motion.a
-              onClick={(e) => {
-                e.preventDefault();
-                scrollToElement("Profile");
-              }}
+              href="#Profile"
+              onClick={handleProfileClick}
               whileHover={shouldReduceMotion ? undefined : { y: -3 }}
               whileTap={shouldReduceMotion ? undefined : { scale: 0.97 }}
               transition={{ type: "spring", stiffness: 380, damping: 28 }}
@@ -274,7 +288,6 @@ const Hero = () => {
                          focus:outline-none focus-visible:ring-4 focus-visible:ring-[#4A6FA5]/50
                          overflow-hidden"
             >
-              {/* Shine */}
               <span className="pointer-events-none absolute inset-0 overflow-hidden rounded-full">
                 <span
                   className="absolute inset-y-0 -left-1/2 w-1/3 -skew-x-12
@@ -287,13 +300,10 @@ const Hero = () => {
               <FaArrowRight className="relative z-10 text-sm transition-transform duration-300 group-hover:translate-x-1" />
             </motion.a>
 
-            {/* Secondary — ghost glass */}
+            {/* Secondary → Contatti */}
             <motion.a
               href="#Contatti"
-              onClick={(e) => {
-                e.preventDefault();
-                scrollToElement("Contatti");
-              }}
+              onClick={handleContactClick}
               whileHover={shouldReduceMotion ? undefined : { y: -3 }}
               whileTap={shouldReduceMotion ? undefined : { scale: 0.97 }}
               transition={{ type: "spring", stiffness: 380, damping: 28 }}
@@ -340,7 +350,7 @@ const Hero = () => {
       </section>
 
       {/* =========================================================
-          BANNER SLOGAN — ridisegnato in stile moderno
+          BANNER SLOGAN
          ========================================================= */}
       <motion.div
         initial="hidden"
@@ -356,7 +366,6 @@ const Hero = () => {
           <div className="absolute inset-0 bg-gradient-to-b from-slate-950 via-slate-900 to-slate-950" />
           <div className="absolute top-0 left-1/2 -translate-x-1/2 w-full max-w-3xl h-full bg-[#E8A44D]/8 rounded-full blur-[140px]" />
           <div className="absolute bottom-0 right-1/4 w-80 h-80 bg-[#4A6FA5]/15 rounded-full blur-[120px]" />
-          {/* Grid pattern sottile */}
           <div
             className="absolute inset-0 opacity-[0.04]"
             style={{
@@ -393,16 +402,16 @@ const Hero = () => {
               Non si tratta solo di trovare il prezzo più basso.
             </motion.h3>
 
-            {/* Riga 2 — hook principale */}
+            {/* Riga 2 — con inline-block per non tagliare la "p" di "trasparenti" */}
             <motion.h2
               variants={fadeIn}
               className="text-3xl md:text-5xl font-extrabold leading-tight
                          text-transparent bg-clip-text
-                         bg-gradient-to-r from-white via-slate-100 to-slate-400"
+                         bg-gradient-to-r from-white via-slate-100 to-slate-400
+                         inline-block py-1"
             >
               Offerte sempre aggiornate, trasparenti{" "}
-              <br className="hidden md:block" />
-              e senza costi nascosti.
+              <br className="hidden md:block" />e senza costi nascosti.
             </motion.h2>
 
             {/* Separatore */}
@@ -410,21 +419,24 @@ const Hero = () => {
               <div className="w-24 h-[2px] bg-gradient-to-r from-transparent via-[#E8A44D]/60 to-transparent" />
             </motion.div>
 
-            {/* Box glassmorphism */}
+            {/* Box glassmorphism — con inline-block per non tagliare la "p" */}
             <motion.div
               variants={fadeIn}
               className="relative p-[1px] rounded-2xl max-w-2xl mx-auto
                          bg-gradient-to-b from-white/15 to-white/[0.02]
                          transition-transform duration-300 hover:scale-[1.015]"
             >
-              <div className="px-8 py-7 bg-slate-950/70 backdrop-blur-xl rounded-[15px]
-                              ring-1 ring-inset ring-white/5">
+              <div
+                className="px-8 py-7 bg-slate-950/70 backdrop-blur-xl rounded-[15px]
+                            ring-1 ring-inset ring-white/5"
+              >
                 <p className="text-lg md:text-2xl font-medium text-slate-200 leading-relaxed">
                   Delegando a me il 100% delle pratiche,
                   <span
                     className="block mt-3 text-2xl md:text-4xl font-extrabold tracking-tight
                                bg-gradient-to-r from-[#E8A44D] via-[#F5C176] to-[#E8A44D]
-                               bg-clip-text text-transparent"
+                               bg-clip-text text-transparent
+                               inline-block py-2"
                   >
                     senza spendere un euro.
                   </span>
@@ -448,13 +460,16 @@ const Hero = () => {
             viewport={{ once: true, margin: "-100px" }}
             variants={fadeIn}
           >
-            <span className="inline-block px-4 py-1.5 rounded-full
-                             bg-[#4A6FA5]/10 text-[#4A6FA5]
-                             text-[11px] font-bold uppercase tracking-[0.2em] mb-4">
+            <span
+              className="inline-block px-4 py-1.5 rounded-full
+                         bg-[#4A6FA5]/10 text-[#4A6FA5]
+                         text-[11px] font-bold uppercase tracking-[0.2em] mb-4"
+            >
               Cosa faccio
             </span>
             <h2 className="text-4xl sm:text-5xl font-extrabold mb-4">
-              <span className="bg-gradient-to-r from-[#4A6FA5] to-[#357ABD] bg-clip-text text-transparent">
+              {/* inline-block + py-1 per non tagliare la "g" di "Servizi" */}
+              <span className="inline-block py-1 bg-gradient-to-r from-[#4A6FA5] to-[#357ABD] bg-clip-text text-transparent">
                 Servizi offerti
               </span>
             </h2>
@@ -464,7 +479,7 @@ const Hero = () => {
             </p>
           </motion.div>
 
-          {/* Cards servizi */}
+          {/* Cards servizi — ora cliccabili */}
           <motion.div
             className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6 lg:gap-8 mb-20"
             initial="hidden"
@@ -475,13 +490,18 @@ const Hero = () => {
             {SERVICES.map((service, index) => {
               const IconComponent = service.icon;
               return (
-                <motion.div
+                <motion.a
                   key={index}
+                  href="#Profile"
+                  onClick={handleProfileClick}
+                  aria-label={`Scopri di più su: ${service.title}`}
                   className="group relative bg-white rounded-3xl p-8
                              ring-1 ring-gray-100 hover:ring-[#4A6FA5]/30
                              shadow-[0_1px_2px_rgba(16,24,40,0.04),0_4px_8px_rgba(16,24,40,0.04)]
                              hover:shadow-[0_4px_12px_rgba(16,24,40,0.06),0_16px_40px_rgba(74,111,165,0.15)]
-                             transition-all duration-500 overflow-hidden"
+                             transition-all duration-500 overflow-hidden
+                             cursor-pointer
+                             focus:outline-none focus-visible:ring-2 focus-visible:ring-[#4A6FA5]/40"
                   variants={cardFadeIn}
                   whileHover={shouldReduceMotion ? undefined : { y: -6 }}
                 >
@@ -508,7 +528,8 @@ const Hero = () => {
                     </div>
                   </div>
 
-                  <h3 className="text-xl font-bold text-gray-900 mb-3 tracking-tight">
+                  <h3 className="text-xl font-bold text-gray-900 mb-3 tracking-tight
+                                 group-hover:text-[#4A6FA5] transition-colors duration-300">
                     {service.title}
                   </h3>
                   <p className="text-gray-600 text-[15px] leading-relaxed">
@@ -516,15 +537,18 @@ const Hero = () => {
                   </p>
 
                   {/* Arrow footer */}
-                  <div className="mt-6 pt-5 border-t border-gray-100 flex items-center justify-between">
-                    <span className="text-sm font-semibold text-[#4A6FA5]">
-                      Scopri di più
-                    </span>
-                    <FaArrowRight className="text-[#4A6FA5] text-sm
-                                             transition-transform duration-300
-                                             group-hover:translate-x-1" />
+                  <div className="mt-6 pt-5 border-t border-gray-100 flex items-center justify-between
+                                  text-[#4A6FA5]">
+                    <span className="text-sm font-semibold">Scopri di più</span>
+                    <FaArrowRight className="text-sm transition-transform duration-300 group-hover:translate-x-1" />
                   </div>
-                </motion.div>
+
+                  {/* Accent line bottom */}
+                  <span className="pointer-events-none absolute bottom-0 left-0 h-[3px] w-0
+                                   group-hover:w-full
+                                   bg-gradient-to-r from-[#4A6FA5] via-[#357ABD] to-[#E8A44D]
+                                   transition-all duration-500 rounded-b-3xl" />
+                </motion.a>
               );
             })}
           </motion.div>
@@ -556,7 +580,10 @@ const Hero = () => {
                   <div className="grid place-items-center w-12 h-12 mx-auto mb-5
                                   rounded-2xl bg-white shadow-[0_4px_12px_rgba(74,111,165,0.2)]
                                   ring-1 ring-[#4A6FA5]/10">
-                    <IconComponent className="text-2xl text-[#4A6FA5]" aria-hidden="true" />
+                    <IconComponent
+                      className="text-2xl text-[#4A6FA5]"
+                      aria-hidden="true"
+                    />
                   </div>
                   <h3 className="text-4xl sm:text-5xl font-extrabold text-[#4A6FA5] mb-2 tracking-tight">
                     {stat.count}
