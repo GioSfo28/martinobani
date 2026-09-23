@@ -2,7 +2,7 @@ import React from "react";
 import { Swiper, SwiperSlide } from "swiper/react";
 import { Autoplay, Pagination } from "swiper/modules";
 import { motion, useReducedMotion } from "framer-motion";
-import { FaCheckCircle, FaArrowRight } from "react-icons/fa";
+import { FaCheckCircle } from "react-icons/fa";
 
 import "swiper/css";
 import "swiper/css/pagination";
@@ -101,7 +101,7 @@ const Partners = () => {
             variants={fadeIn}
             className="text-4xl sm:text-5xl font-extrabold mb-4 tracking-tight"
           >
-            <span className="bg-gradient-to-r from-[#4A6FA5] to-[#357ABD] bg-clip-text text-transparent">
+            <span className="inline-block py-1 bg-gradient-to-r from-[#4A6FA5] to-[#357ABD] bg-clip-text text-transparent">
               I miei partner
             </span>
           </motion.h2>
@@ -163,16 +163,14 @@ const Partners = () => {
                                    rounded-full bg-[#4A6FA5]/10 blur-3xl
                                    opacity-0 group-hover:opacity-100 transition-opacity duration-500" />
 
-                  {/* Logo container */}
+                  {/* Logo container — loghi sempre a colori */}
                   <div className="relative flex items-center justify-center h-24 w-full mb-4">
                     <img
                       src={partner.logo}
                       alt={`Logo ${partner.name}`}
                       loading="lazy"
                       className="max-h-20 max-w-[160px] object-contain
-                                 transition-all duration-500
-                                 grayscale opacity-70
-                                 group-hover:grayscale-0 group-hover:opacity-100
+                                 transition-transform duration-500
                                  group-hover:scale-105"
                     />
                   </div>
@@ -186,14 +184,6 @@ const Partners = () => {
                                 group-hover:text-[#4A6FA5] transition-colors duration-300">
                     {partner.name}
                   </p>
-
-                  {/* Hover arrow bottom-right */}
-                  <span className="absolute bottom-3 right-3 grid place-items-center w-7 h-7
-                                   rounded-full bg-[#4A6FA5]/10 text-[#4A6FA5] text-xs
-                                   opacity-0 -translate-x-1 group-hover:opacity-100 group-hover:translate-x-0
-                                   transition-all duration-300">
-                    <FaArrowRight aria-hidden="true" />
-                  </span>
                 </motion.div>
               </SwiperSlide>
             ))}

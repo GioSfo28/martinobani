@@ -233,7 +233,8 @@ const Hero = () => {
           >
             {[
               { emoji: "⚡", text: "Risparmia tempo e denaro" },
-              { emoji: "🔥", text: "Zero scadenze, zero contratti" },
+              { emoji: "📵", text: "Basta uffici, basta call center"},
+              { emoji: "🔥", text: "Penso io alle scadenze e ai contratti" },
             ].map((item, i) => (
               <div
                 key={i}
