@@ -5,7 +5,6 @@ import {
   FaMapPin,
   FaClock,
   FaShieldAlt,
-  FaArrowRight,
   FaCookieBite,
   FaChevronRight,
 } from "react-icons/fa";

@@ -158,31 +158,36 @@ const Profile = () => {
             {/* Ring esterno gradiente (rotante) */}
             <motion.div
               className="absolute -inset-1.5 rounded-full
-                         bg-[conic-gradient(from_0deg,#4A6FA5,#357ABD,#E8A44D,#4A6FA5)]
-                         opacity-90"
+                 bg-[conic-gradient(from_0deg,#4A6FA5,#357ABD,#E8A44D,#4A6FA5)]
+                 opacity-90"
               animate={shouldReduceMotion ? undefined : { rotate: 360 }}
               transition={{ duration: 12, repeat: Infinity, ease: "linear" }}
               aria-hidden="true"
             />
+
             {/* Ring bianco di separazione */}
             <div
               className="absolute -inset-1 rounded-full bg-white"
               aria-hidden="true"
             />
 
-            {/* Foto */}
-            <img
-              src={profileImage}
-              alt="Martino Bani"
-              className="relative w-full h-full rounded-full object-cover
-                         shadow-[0_8px_32px_rgba(74,111,165,0.25)]
-                         ring-1 ring-black/5"
-            />
+            {/* Contenitore INTERNO foto: overflow-hidden qui */}
+            <div className="relative w-full h-full rounded-full overflow-hidden">
+              <img
+                src={profileImage}
+                alt="Martino Bani"
+                className="w-full h-full object-cover"
+                style={{
+                  objectPosition: "center 30%",
+                  transform: "scale(1.08)",
+                }}
+              />
+            </div>
 
             {/* Glow pulsante dietro */}
             <motion.div
               className="absolute -inset-6 rounded-full
-                         bg-gradient-to-r from-[#4A6FA5]/25 to-[#E8A44D]/20 blur-2xl -z-10"
+                 bg-gradient-to-r from-[#4A6FA5]/25 to-[#E8A44D]/20 blur-2xl -z-10"
               animate={
                 shouldReduceMotion
                   ? undefined
@@ -193,13 +198,13 @@ const Profile = () => {
             />
           </motion.div>
 
-          {/* Badge "Disponibile" sotto la foto */}
-          <motion.div variants={fadeIn} className="mt-5 flex justify-center">
+          {/* Badge "Disponibile" sotto la foto — con mt-8 per più respiro */}
+          <motion.div variants={fadeIn} className="mt-8 flex justify-center">
             <span
               className="inline-flex items-center gap-2 px-4 py-1.5
-                         rounded-full bg-white/80 backdrop-blur-md
-                         ring-1 ring-gray-200 shadow-sm
-                         text-gray-700 text-[11px] font-bold uppercase tracking-[0.18em]"
+                 rounded-full bg-white/80 backdrop-blur-md
+                 ring-1 ring-gray-200 shadow-sm
+                 text-gray-700 text-[11px] font-bold uppercase tracking-[0.18em]"
             >
               <span className="relative flex w-2 h-2">
                 <span className="absolute inline-flex w-full h-full rounded-full bg-[#E8A44D] opacity-75 animate-ping" />
@@ -215,7 +220,7 @@ const Profile = () => {
           variants={fadeIn}
           className="text-4xl sm:text-6xl font-extrabold tracking-tight text-gray-900"
         >
-          <span className="bg-gradient-to-r from-[#4A6FA5] to-[#357ABD] bg-clip-text text-transparent">
+          <span className="inline-block py-1 bg-gradient-to-r from-[#4A6FA5] to-[#357ABD] bg-clip-text text-transparent">
             Martino Bani
           </span>
         </motion.h1>
@@ -309,7 +314,7 @@ const Profile = () => {
               Chi sono
             </span>
             <h2 className="text-3xl sm:text-5xl font-extrabold tracking-tight">
-              <span className="bg-gradient-to-r from-[#4A6FA5] to-[#357ABD] bg-clip-text text-transparent">
+              <span className="inline-block py-1 bg-gradient-to-r from-[#4A6FA5] to-[#357ABD] bg-clip-text text-transparent">
                 Il valore di un consulente al tuo fianco
               </span>
             </h2>
