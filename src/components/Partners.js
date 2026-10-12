@@ -15,6 +15,7 @@ import AlperiaLogo from "../assets/alperia.png";
 import EniPlenitudeLogo from "../assets/eni-plenitude.png";
 import Iren from "../assets/Iren.png";
 import Esmart from "../assets/e.smart.jpg";
+import MET from "..assets/MET.jpg";
 
 /* ============================================================
    ANIMATION VARIANTS
@@ -42,13 +43,14 @@ const staggerContainer = {
    DATA
    ============================================================ */
 const PARTNERS = [
-  { name: "Bluenergy", logo: BluenergyLogo },
-  { name: "Vivigas", logo: VivigasLogo },
-  { name: "Energia Corrente", logo: EnergiaCorrenteLogo },
-  { name: "Alperia", logo: AlperiaLogo },
-  { name: "Eni Plenitude", logo: EniPlenitudeLogo },
   { name: "ESmart", logo: Esmart },
+  { name: "MET - Energia Italia", logo: MET },
+  { name: "Bluenergy", logo: BluenergyLogo },
+  { name: "Alperia", logo: AlperiaLogo },
+  { name: "Vivigas", logo: VivigasLogo },
+  { name: "Eni Plenitude", logo: EniPlenitudeLogo },
   { name: "Iren", logo: Iren },
+  { name: "Energia Corrente", logo: EnergiaCorrenteLogo },
 ];
 
 /* ============================================================
