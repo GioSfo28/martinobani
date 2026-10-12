@@ -15,7 +15,7 @@ import AlperiaLogo from "../assets/alperia.png";
 import EniPlenitudeLogo from "../assets/eni-plenitude.png";
 import Iren from "../assets/Iren.png";
 import Esmart from "../assets/e.smart.jpg";
-import MET from "..assets/MET.jpg";
+import MET from "../assets/MET.jpg";
 
 /* ============================================================
    ANIMATION VARIANTS
